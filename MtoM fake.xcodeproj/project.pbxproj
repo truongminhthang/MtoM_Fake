@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF8C353D1C0C63D10024474F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C353C1C0C63D10024474F /* AppDelegate.swift */; };
+		FF8C353F1C0C63D10024474F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C353E1C0C63D10024474F /* ViewController.swift */; };
+		FF8C35421C0C63D10024474F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF8C35401C0C63D10024474F /* Main.storyboard */; };
+		FF8C35441C0C63D10024474F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF8C35431C0C63D10024474F /* Assets.xcassets */; };
+		FF8C35471C0C63D10024474F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF8C35451C0C63D10024474F /* LaunchScreen.storyboard */; };
+		FF8C35521C0C63D10024474F /* MtoM_fakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C35511C0C63D10024474F /* MtoM_fakeTests.swift */; };
+		FF8C355D1C0C63D10024474F /* MtoM_fakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C355C1C0C63D10024474F /* MtoM_fakeUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FF8C354E1C0C63D10024474F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF8C35311C0C63D10024474F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF8C35381C0C63D10024474F;
+			remoteInfo = "MtoM fake";
+		};
+		FF8C35591C0C63D10024474F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF8C35311C0C63D10024474F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF8C35381C0C63D10024474F;
+			remoteInfo = "MtoM fake";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FF8C35391C0C63D10024474F /* MtoM fake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MtoM fake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF8C353C1C0C63D10024474F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FF8C353E1C0C63D10024474F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF8C35411C0C63D10024474F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FF8C35431C0C63D10024474F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF8C35461C0C63D10024474F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FF8C35481C0C63D10024474F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF8C354D1C0C63D10024474F /* MtoM fakeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MtoM fakeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF8C35511C0C63D10024474F /* MtoM_fakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MtoM_fakeTests.swift; sourceTree = "<group>"; };
+		FF8C35531C0C63D10024474F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF8C35581C0C63D10024474F /* MtoM fakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MtoM fakeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF8C355C1C0C63D10024474F /* MtoM_fakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MtoM_fakeUITests.swift; sourceTree = "<group>"; };
+		FF8C355E1C0C63D10024474F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF8C35361C0C63D10024474F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF8C354A1C0C63D10024474F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF8C35551C0C63D10024474F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FF8C35301C0C63D10024474F = {
+			isa = PBXGroup;
+			children = (
+				FF8C353B1C0C63D10024474F /* MtoM fake */,
+				FF8C35501C0C63D10024474F /* MtoM fakeTests */,
+				FF8C355B1C0C63D10024474F /* MtoM fakeUITests */,
+				FF8C353A1C0C63D10024474F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FF8C353A1C0C63D10024474F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF8C35391C0C63D10024474F /* MtoM fake.app */,
+				FF8C354D1C0C63D10024474F /* MtoM fakeTests.xctest */,
+				FF8C35581C0C63D10024474F /* MtoM fakeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF8C353B1C0C63D10024474F /* MtoM fake */ = {
+			isa = PBXGroup;
+			children = (
+				FF8C353C1C0C63D10024474F /* AppDelegate.swift */,
+				FF8C353E1C0C63D10024474F /* ViewController.swift */,
+				FF8C35401C0C63D10024474F /* Main.storyboard */,
+				FF8C35431C0C63D10024474F /* Assets.xcassets */,
+				FF8C35451C0C63D10024474F /* LaunchScreen.storyboard */,
+				FF8C35481C0C63D10024474F /* Info.plist */,
+			);
+			path = "MtoM fake";
+			sourceTree = "<group>";
+		};
+		FF8C35501C0C63D10024474F /* MtoM fakeTests */ = {
+			isa = PBXGroup;
+			children = (
+				FF8C35511C0C63D10024474F /* MtoM_fakeTests.swift */,
+				FF8C35531C0C63D10024474F /* Info.plist */,
+			);
+			path = "MtoM fakeTests";
+			sourceTree = "<group>";
+		};
+		FF8C355B1C0C63D10024474F /* MtoM fakeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FF8C355C1C0C63D10024474F /* MtoM_fakeUITests.swift */,
+				FF8C355E1C0C63D10024474F /* Info.plist */,
+			);
+			path = "MtoM fakeUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF8C35381C0C63D10024474F /* MtoM fake */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF8C35611C0C63D10024474F /* Build configuration list for PBXNativeTarget "MtoM fake" */;
+			buildPhases = (
+				FF8C35351C0C63D10024474F /* Sources */,
+				FF8C35361C0C63D10024474F /* Frameworks */,
+				FF8C35371C0C63D10024474F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MtoM fake";
+			productName = "MtoM fake";
+			productReference = FF8C35391C0C63D10024474F /* MtoM fake.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FF8C354C1C0C63D10024474F /* MtoM fakeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF8C35641C0C63D10024474F /* Build configuration list for PBXNativeTarget "MtoM fakeTests" */;
+			buildPhases = (
+				FF8C35491C0C63D10024474F /* Sources */,
+				FF8C354A1C0C63D10024474F /* Frameworks */,
+				FF8C354B1C0C63D10024474F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF8C354F1C0C63D10024474F /* PBXTargetDependency */,
+			);
+			name = "MtoM fakeTests";
+			productName = "MtoM fakeTests";
+			productReference = FF8C354D1C0C63D10024474F /* MtoM fakeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FF8C35571C0C63D10024474F /* MtoM fakeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF8C35671C0C63D10024474F /* Build configuration list for PBXNativeTarget "MtoM fakeUITests" */;
+			buildPhases = (
+				FF8C35541C0C63D10024474F /* Sources */,
+				FF8C35551C0C63D10024474F /* Frameworks */,
+				FF8C35561C0C63D10024474F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF8C355A1C0C63D10024474F /* PBXTargetDependency */,
+			);
+			name = "MtoM fakeUITests";
+			productName = "MtoM fakeUITests";
+			productReference = FF8C35581C0C63D10024474F /* MtoM fakeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF8C35311C0C63D10024474F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Trương Thắng";
+				TargetAttributes = {
+					FF8C35381C0C63D10024474F = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					FF8C354C1C0C63D10024474F = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = FF8C35381C0C63D10024474F;
+					};
+					FF8C35571C0C63D10024474F = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = FF8C35381C0C63D10024474F;
+					};
+				};
+			};
+			buildConfigurationList = FF8C35341C0C63D10024474F /* Build configuration list for PBXProject "MtoM fake" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF8C35301C0C63D10024474F;
+			productRefGroup = FF8C353A1C0C63D10024474F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF8C35381C0C63D10024474F /* MtoM fake */,
+				FF8C354C1C0C63D10024474F /* MtoM fakeTests */,
+				FF8C35571C0C63D10024474F /* MtoM fakeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF8C35371C0C63D10024474F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF8C35471C0C63D10024474F /* LaunchScreen.storyboard in Resources */,
+				FF8C35441C0C63D10024474F /* Assets.xcassets in Resources */,
+				FF8C35421C0C63D10024474F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF8C354B1C0C63D10024474F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF8C35561C0C63D10024474F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF8C35351C0C63D10024474F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF8C353F1C0C63D10024474F /* ViewController.swift in Sources */,
+				FF8C353D1C0C63D10024474F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF8C35491C0C63D10024474F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF8C35521C0C63D10024474F /* MtoM_fakeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF8C35541C0C63D10024474F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF8C355D1C0C63D10024474F /* MtoM_fakeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FF8C354F1C0C63D10024474F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF8C35381C0C63D10024474F /* MtoM fake */;
+			targetProxy = FF8C354E1C0C63D10024474F /* PBXContainerItemProxy */;
+		};
+		FF8C355A1C0C63D10024474F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF8C35381C0C63D10024474F /* MtoM fake */;
+			targetProxy = FF8C35591C0C63D10024474F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FF8C35401C0C63D10024474F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF8C35411C0C63D10024474F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FF8C35451C0C63D10024474F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF8C35461C0C63D10024474F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FF8C355F1C0C63D10024474F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FF8C35601C0C63D10024474F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FF8C35621C0C63D10024474F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "MtoM fake/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "truongthang.test.MtoM-fake";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FF8C35631C0C63D10024474F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "MtoM fake/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "truongthang.test.MtoM-fake";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FF8C35651C0C63D10024474F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "MtoM fakeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "truongthang.test.MtoM-fakeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MtoM fake.app/MtoM fake";
+			};
+			name = Debug;
+		};
+		FF8C35661C0C63D10024474F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "MtoM fakeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "truongthang.test.MtoM-fakeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MtoM fake.app/MtoM fake";
+			};
+			name = Release;
+		};
+		FF8C35681C0C63D10024474F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "MtoM fakeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "truongthang.test.MtoM-fakeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "MtoM fake";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		FF8C35691C0C63D10024474F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "MtoM fakeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "truongthang.test.MtoM-fakeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "MtoM fake";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF8C35341C0C63D10024474F /* Build configuration list for PBXProject "MtoM fake" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF8C355F1C0C63D10024474F /* Debug */,
+				FF8C35601C0C63D10024474F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF8C35611C0C63D10024474F /* Build configuration list for PBXNativeTarget "MtoM fake" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF8C35621C0C63D10024474F /* Debug */,
+				FF8C35631C0C63D10024474F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FF8C35641C0C63D10024474F /* Build configuration list for PBXNativeTarget "MtoM fakeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF8C35651C0C63D10024474F /* Debug */,
+				FF8C35661C0C63D10024474F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FF8C35671C0C63D10024474F /* Build configuration list for PBXNativeTarget "MtoM fakeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF8C35681C0C63D10024474F /* Debug */,
+				FF8C35691C0C63D10024474F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FF8C35311C0C63D10024474F /* Project object */;
+}
