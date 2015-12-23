@@ -7,10 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF30B46E1C16D00C00550D71 /* InformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B46D1C16D00C00550D71 /* InformationVC.swift */; };
+		FF30B4731C16D9EE00550D71 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B4721C16D9EE00550D71 /* TitleCell.swift */; };
+		FF30B4751C16DA1300550D71 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B4741C16DA1300550D71 /* TextCell.swift */; };
+		FF30B4771C16DA2100550D71 /* IncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B4761C16DA2100550D71 /* IncomeCell.swift */; };
+		FF30B4791C16DA5800550D71 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B4781C16DA5800550D71 /* DetailsCell.swift */; };
+		FF30B47B1C16DA6600550D71 /* ApplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B47A1C16DA6600550D71 /* ApplyCell.swift */; };
+		FF30B47F1C16F30C00550D71 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B47E1C16F30C00550D71 /* Job.swift */; };
 		FF5F52DB1C0F0A66005EAD2C /* WorkingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F52DA1C0F0A66005EAD2C /* WorkingTableViewCell.swift */; };
 		FF5F52DD1C0F1F37005EAD2C /* SexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F52DC1C0F1F37005EAD2C /* SexViewController.swift */; };
 		FF5F52DF1C0F1F55005EAD2C /* SexTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F52DE1C0F1F55005EAD2C /* SexTableViewCell.swift */; };
 		FF7624F01C0DD9AB00F21D31 /* WorkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7624EF1C0DD9AB00F21D31 /* WorkingViewController.swift */; };
+		FF7758761C2A8E9200C0457B /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7758751C2A8E9200C0457B /* MenuButton.swift */; };
+		FF77587E1C2AB0ED00C0457B /* MTAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77587D1C2AB0ED00C0457B /* MTAutoLayout.swift */; };
+		FF7758801C2AB10200C0457B /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF77587F1C2AB10200C0457B /* Menu.swift */; };
+		FF7C6CF11C159C37003FE40C /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C6CF01C159C37003FE40C /* PickerViewController.swift */; };
+		FF82B80F1C199EE600DBF9DC /* SetDashLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82B80E1C199EE600DBF9DC /* SetDashLine.swift */; };
 		FF8C353D1C0C63D10024474F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C353C1C0C63D10024474F /* AppDelegate.swift */; };
 		FF8C353F1C0C63D10024474F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C353E1C0C63D10024474F /* ViewController.swift */; };
 		FF8C35421C0C63D10024474F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF8C35401C0C63D10024474F /* Main.storyboard */; };
@@ -41,10 +53,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF30B46D1C16D00C00550D71 /* InformationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationVC.swift; sourceTree = "<group>"; };
+		FF30B4721C16D9EE00550D71 /* TitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
+		FF30B4741C16DA1300550D71 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
+		FF30B4761C16DA2100550D71 /* IncomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeCell.swift; sourceTree = "<group>"; };
+		FF30B4781C16DA5800550D71 /* DetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
+		FF30B47A1C16DA6600550D71 /* ApplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplyCell.swift; sourceTree = "<group>"; };
+		FF30B47E1C16F30C00550D71 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		FF5F52DA1C0F0A66005EAD2C /* WorkingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingTableViewCell.swift; sourceTree = "<group>"; };
 		FF5F52DC1C0F1F37005EAD2C /* SexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexViewController.swift; sourceTree = "<group>"; };
 		FF5F52DE1C0F1F55005EAD2C /* SexTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexTableViewCell.swift; sourceTree = "<group>"; };
 		FF7624EF1C0DD9AB00F21D31 /* WorkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingViewController.swift; sourceTree = "<group>"; };
+		FF7758751C2A8E9200C0457B /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		FF77587D1C2AB0ED00C0457B /* MTAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MTAutoLayout.swift; path = ../../../Documents/MtoM_IOS/MtoM/MTAutoLayout.swift; sourceTree = "<group>"; };
+		FF77587F1C2AB10200C0457B /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		FF7C6CF01C159C37003FE40C /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		FF82B80E1C199EE600DBF9DC /* SetDashLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashLine.swift; sourceTree = "<group>"; };
 		FF8C35391C0C63D10024474F /* MtoM fake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MtoM fake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8C353C1C0C63D10024474F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF8C353E1C0C63D10024474F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +112,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF30B4691C16CF6D00550D71 /* Living */ = {
+			isa = PBXGroup;
+			children = (
+				FF8C356E1C0C7E9A0024474F /* LivingPlaceViewController.swift */,
+				FF8C356C1C0C77230024474F /* LivingPlaceTableViewCell.swift */,
+			);
+			name = Living;
+			sourceTree = "<group>";
+		};
+		FF30B46A1C16CF7900550D71 /* Working */ = {
+			isa = PBXGroup;
+			children = (
+				FF7624EF1C0DD9AB00F21D31 /* WorkingViewController.swift */,
+				FF5F52DA1C0F0A66005EAD2C /* WorkingTableViewCell.swift */,
+			);
+			name = Working;
+			sourceTree = "<group>";
+		};
+		FF30B46B1C16CF8600550D71 /* SexVc */ = {
+			isa = PBXGroup;
+			children = (
+				FF5F52DC1C0F1F37005EAD2C /* SexViewController.swift */,
+				FF5F52DE1C0F1F55005EAD2C /* SexTableViewCell.swift */,
+			);
+			name = SexVc;
+			sourceTree = "<group>";
+		};
+		FF30B46C1C16CF9E00550D71 /* PickerAgeVc */ = {
+			isa = PBXGroup;
+			children = (
+				FF7C6CF01C159C37003FE40C /* PickerViewController.swift */,
+			);
+			name = PickerAgeVc;
+			sourceTree = "<group>";
+		};
+		FF30B4711C16D9D500550D71 /* JobSearch */ = {
+			isa = PBXGroup;
+			children = (
+				FF77587D1C2AB0ED00C0457B /* MTAutoLayout.swift */,
+				FF30B46D1C16D00C00550D71 /* InformationVC.swift */,
+				FF7758751C2A8E9200C0457B /* MenuButton.swift */,
+				FF30B4721C16D9EE00550D71 /* TitleCell.swift */,
+				FF30B4741C16DA1300550D71 /* TextCell.swift */,
+				FF30B4761C16DA2100550D71 /* IncomeCell.swift */,
+				FF30B4781C16DA5800550D71 /* DetailsCell.swift */,
+				FF30B47A1C16DA6600550D71 /* ApplyCell.swift */,
+				FF82B80E1C199EE600DBF9DC /* SetDashLine.swift */,
+				FF77587F1C2AB10200C0457B /* Menu.swift */,
+			);
+			name = JobSearch;
+			sourceTree = "<group>";
+		};
+		FF30B4801C16F31400550D71 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF30B47E1C16F30C00550D71 /* Job.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		FF8C35301C0C63D10024474F = {
 			isa = PBXGroup;
 			children = (
@@ -113,17 +197,17 @@
 			children = (
 				FF8C353C1C0C63D10024474F /* AppDelegate.swift */,
 				FF8C353E1C0C63D10024474F /* ViewController.swift */,
-				FF8C356C1C0C77230024474F /* LivingPlaceTableViewCell.swift */,
-				FF8C356E1C0C7E9A0024474F /* LivingPlaceViewController.swift */,
 				FF8C35701C0C84860024474F /* Utils.swift */,
-				FF8C35401C0C63D10024474F /* Main.storyboard */,
+				FF30B4691C16CF6D00550D71 /* Living */,
+				FF30B46A1C16CF7900550D71 /* Working */,
+				FF30B46B1C16CF8600550D71 /* SexVc */,
+				FF30B46C1C16CF9E00550D71 /* PickerAgeVc */,
+				FF30B4801C16F31400550D71 /* Model */,
+				FF30B4711C16D9D500550D71 /* JobSearch */,
 				FF8C35431C0C63D10024474F /* Assets.xcassets */,
+				FF8C35401C0C63D10024474F /* Main.storyboard */,
 				FF8C35451C0C63D10024474F /* LaunchScreen.storyboard */,
 				FF8C35481C0C63D10024474F /* Info.plist */,
-				FF7624EF1C0DD9AB00F21D31 /* WorkingViewController.swift */,
-				FF5F52DA1C0F0A66005EAD2C /* WorkingTableViewCell.swift */,
-				FF5F52DC1C0F1F37005EAD2C /* SexViewController.swift */,
-				FF5F52DE1C0F1F55005EAD2C /* SexTableViewCell.swift */,
 			);
 			path = "MtoM fake";
 			sourceTree = "<group>";
@@ -277,13 +361,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF30B47B1C16DA6600550D71 /* ApplyCell.swift in Sources */,
+				FF30B4731C16D9EE00550D71 /* TitleCell.swift in Sources */,
+				FF7C6CF11C159C37003FE40C /* PickerViewController.swift in Sources */,
 				FF8C353F1C0C63D10024474F /* ViewController.swift in Sources */,
+				FF82B80F1C199EE600DBF9DC /* SetDashLine.swift in Sources */,
 				FF5F52DD1C0F1F37005EAD2C /* SexViewController.swift in Sources */,
+				FF30B46E1C16D00C00550D71 /* InformationVC.swift in Sources */,
 				FF8C356D1C0C77230024474F /* LivingPlaceTableViewCell.swift in Sources */,
+				FF30B4771C16DA2100550D71 /* IncomeCell.swift in Sources */,
+				FF7758801C2AB10200C0457B /* Menu.swift in Sources */,
+				FF77587E1C2AB0ED00C0457B /* MTAutoLayout.swift in Sources */,
 				FF5F52DB1C0F0A66005EAD2C /* WorkingTableViewCell.swift in Sources */,
+				FF30B4751C16DA1300550D71 /* TextCell.swift in Sources */,
 				FF5F52DF1C0F1F55005EAD2C /* SexTableViewCell.swift in Sources */,
+				FF7758761C2A8E9200C0457B /* MenuButton.swift in Sources */,
 				FF8C35711C0C84860024474F /* Utils.swift in Sources */,
 				FF8C353D1C0C63D10024474F /* AppDelegate.swift in Sources */,
+				FF30B4791C16DA5800550D71 /* DetailsCell.swift in Sources */,
+				FF30B47F1C16F30C00550D71 /* Job.swift in Sources */,
 				FF8C356F1C0C7E9A0024474F /* LivingPlaceViewController.swift in Sources */,
 				FF7624F01C0DD9AB00F21D31 /* WorkingViewController.swift in Sources */,
 			);

@@ -29,7 +29,7 @@ class SexViewController: UIViewController , UITableViewDelegate,UITableViewDataS
         self.edgesForExtendedLayout = UIRectEdge.None
         
         self.navigationItem.title = "Choise Female or Male"
-        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
     }
 
     override func didReceiveMemoryWarning() {

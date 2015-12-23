@@ -32,9 +32,13 @@ class LivingPlaceViewController: UIViewController , UITableViewDataSource, UITab
         
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ic_action_bar_indicator")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ic_action_bar_indicator")
-        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        self.navigationItem.title = "Living Place"
+//        if self.navigationItem.backBarButtonItem == nil {
+//            let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_action_bar_indicator"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("backAction"))
+//            leftBarButtonItem.title = ""
+//            self.navigationItem.backBarButtonItem = leftBarButtonItem
+//        }
+//        
 
     }
     override func didReceiveMemoryWarning() {

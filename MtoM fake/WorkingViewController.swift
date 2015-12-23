@@ -24,8 +24,8 @@ class WorkingViewController: UIViewController,UITableViewDataSource,UITableViewD
 
         // Do any additional setup after loading the view.
         self.edgesForExtendedLayout = UIRectEdge.None
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ic_action_bar_indicator")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ic_action_bar_indicator")
+//        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ic_action_bar_indicator")
+//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ic_action_bar_indicator")
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.navigationItem.title = "Want Working Place"
