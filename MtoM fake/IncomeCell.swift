@@ -8,8 +8,18 @@
 
 import UIKit
 
-class IncomeCell: UITableViewCell {
+class IncomeCell: TextCell {
 
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        textContentLabel.font = UIFont.boldSystemFontOfSize(20)
+        textContentLabel.tintColor = UIColor.mainColor()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

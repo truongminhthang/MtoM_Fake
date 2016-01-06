@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8BC00055EA61F311A6846C5A8C0E03426B45509B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B2CBF03C70F4DC013C2903F057B7BB26A4D38334" : 0,
+    "8BC00055EA61F311A6846C5A8C0E03426B45509B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B0C59A81-00B6-4D76-B0F8-6C53CD895A2E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B2CBF03C70F4DC013C2903F057B7BB26A4D38334" : "..\/Documents\/MtoM_IOS",
+    "8BC00055EA61F311A6846C5A8C0E03426B45509B" : "MtoM%20fake\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MtoM fake",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MtoM fake.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tinhvv\/MtoM",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8BC00055EA61F311A6846C5A8C0E03426B45509B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:truongminhthang\/MtoM_IOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B2CBF03C70F4DC013C2903F057B7BB26A4D38334"
+    }
+  ]
+}

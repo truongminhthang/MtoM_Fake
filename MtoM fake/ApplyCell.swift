@@ -9,19 +9,39 @@
 import UIKit
 
 class ApplyCell: UITableViewCell {
-    @IBOutlet weak var applyView: UIView!
+    var applyView = UIView()
+    var webButton = UIButton()
+    var callButton = UIButton()
 
-    @IBOutlet weak var webButton: UIButton!
-    
-    @IBOutlet weak var callButton: UIButton!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        webButton.roundBorder()
-        callButton.roundBorder()
-        applyView.roundBorder()
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setLayoutOfApplyCell()
+        
     }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setLayoutOfApplyCell() {
+        self.addSubview(applyView)
+        applyView.mt_innerAlign(left: 8, top: 0, right: 8, bottom: 0)
+        applyView.roundBorder()
+        applyView.backgroundColor = UIColor.whiteColor()
+        
+        applyView.addSubview(webButton)
+        applyView.addSubview(callButton)
+        mt_createVerticalMenu([webButton,callButton], edge: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8), gap: 2, seperateColor: UIColor.redColor())
+    }
+    
+    
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        // Initialization code
+//        webButton.roundBorder()
+//        callButton.roundBorder()
+//        applyView.roundBorder()
+//    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

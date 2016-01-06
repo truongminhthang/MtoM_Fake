@@ -17,21 +17,33 @@ class Menu: UIView {
         // Drawing code
     }
     */
+    
+    
+    
     let spaceFilter = MenuButton()
     let salaryFilter = MenuButton()
     let jobFilter = MenuButton()
+    
+    
+    
     override func layoutSubviews() {
         self.clipsToBounds = true
         setTitleForFilterButton()
         asignSetOfButtonForMenuButton()
         addMenuButtonToSubView()
-        mt_splitVerticallyByViews([spaceFilter, salaryFilter,jobFilter], edge: UIEdgeInsets(top: 4, left: 4, bottom: -5, right: 4), gap: 4)
+        mt_createVerticalMenu([spaceFilter, salaryFilter,jobFilter], edge: UIEdgeInsets(top: 4, left: 4, bottom: -5, right: 4), gap: 4, seperateColor: UIColor.grayColor())
+        setTextButtonPadding()
     }
     
     func setTitleForFilterButton() {
-        spaceFilter.setTitle("space \nFilter", forState: UIControlState.Normal)
-        salaryFilter.setTitle("Salary \nFilter ", forState: .Normal)
-        jobFilter.setTitle("Job \nFilter", forState: UIControlState.Normal)
+        spaceFilter.title = "Place"
+        spaceFilter.subTitle = "Ha Noi"
+        
+        salaryFilter.title = "Salary"
+        salaryFilter.subTitle = "> 1000USD"
+        jobFilter.title = "Job"
+        jobFilter.subTitle = "IT"
+        
     }
     
     func asignSetOfButtonForMenuButton() {
@@ -47,6 +59,9 @@ class Menu: UIView {
         self.addSubview(jobFilter)
     }
     
-    
-
+    func setTextButtonPadding() {
+        spaceFilter.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 16, right: 8)
+        salaryFilter.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 16, right: 8)
+        jobFilter.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 16, right: 8)
+    }
 }

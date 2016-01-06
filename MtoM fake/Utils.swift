@@ -42,12 +42,23 @@ extension UIView {
     }
 }
 
-
-extension UIButton{
-    func centerTextWithSpacing(spacing: CGFloat) {
-        let insetAmount = spacing / 2
-//        imageEdgeInsets = UIEdgeInsets(top: 0, left: -insetAmount, bottom: 0, right: insetAmount)
-        titleEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 16, right: -insetAmount)
-//        contentEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: insetAmount)
+extension UIView {
+    func setHeight(height : CGFloat) {
+        var frame: CGRect = self.frame
+        frame.size.height = height
+        
+        self.frame = frame
     }
+    
+    func SetWidth(width: CGFloat) {
+        var frame: CGRect = self.frame
+        frame.size.width = width
+        
+        self.frame = frame
+    }
+}
+
+
+func += (inout lhs: NSMutableAttributedString, rhs: NSMutableAttributedString) {
+    lhs.appendAttributedString(rhs)
 }
