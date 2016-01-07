@@ -27,21 +27,18 @@ class ApplyCell: UITableViewCell {
         self.addSubview(applyView)
         applyView.mt_innerAlign(left: 8, top: 0, right: 8, bottom: 0)
         applyView.roundBorder()
-        applyView.backgroundColor = UIColor.whiteColor()
+        applyView.backgroundColor = UIColor.contentCellColor()
         
         applyView.addSubview(webButton)
         applyView.addSubview(callButton)
-        mt_createVerticalMenu([webButton,callButton], edge: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8), gap: 2, seperateColor: UIColor.redColor())
+        mt_createVerticalMenu([webButton,callButton], edge: UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16), gap: 8, seperateColor: UIColor.clearColor())
+        
+        webButton.roundBorder()
+        callButton.roundBorder()
+        webButton.setTitle("Web", forState: .Normal)
+        callButton.setTitle("Call", forState: .Normal)
     }
     
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//        webButton.roundBorder()
-//        callButton.roundBorder()
-//        applyView.roundBorder()
-//    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
