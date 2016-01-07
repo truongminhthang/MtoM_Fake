@@ -37,24 +37,21 @@ class TitleCell: UITableViewCell {
     
     func layoutHeaderCell() {
         
-        let view = UIView()
-        view.addSubview(headerOfCell)
-        
-        headerOfCell.mt_innerAlign(left: (0, nil), top: (0,nil), right: (0,nil), bottom: (-5,backgroundOfCell))
-        headerOfCell.setHeight(10)
+        // layout headerCell
+        headerOfCell.mt_innerAlign(left: 8, top: 4, right: 8, bottom: 16)
+        headerOfCell.backgroundColor = UIColor.mainColor()
         headerOfCell.roundBorder()
-        headerOfCell.backgroundColor = UIColor.redColor()
     }
     
     func layoutBodyCell() {
         
         // layout background
-        backgroundOfCell.mt_innerAlign(left: 8, top: 8, right: 8, bottom: 0)
-        backgroundOfCell.backgroundColor = UIColor.whiteColor()
-        backgroundOfCell.setHeight(70)
+        backgroundOfCell.mt_innerAlign(left: 8, top: 9, right: 8, bottom: 0)
+        backgroundOfCell.backgroundColor = UIColor.contentCellColor()
+        
         // layout detailLabel
         backgroundOfCell.addSubview(detailLabel)
-        detailLabel.mt_innerAlign(left: (8, backgroundOfCell), top: (8, backgroundOfCell), right: (8, backgroundOfCell), bottom: (8, backgroundOfCell))
+        detailLabel.mt_innerAlign(left: 16, top: 8, right: 8, bottom: 8)
         // layout seperateLine
         
     }
