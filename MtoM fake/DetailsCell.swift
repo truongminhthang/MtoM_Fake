@@ -26,16 +26,15 @@ class DetailsCell: UITableViewCell {
     
     func LayoutOfDetailsCell() {
         detailView.mt_innerAlign(left: 8, top: 0, right: 8, bottom: 0)
-        
+        detailView.backgroundColor = UIColor.contentCellColor()
         detailView.addSubview(detailButton)
         
-        detailButton.mt_splitHorizontallyByViews([detailView], edge: UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16), gap: 1)
-        
-        
+        detailButton.mt_innerAlign(left: 16, top: 8, right: 16, bottom: 8)
         detailButton.roundBorder()
         detailButton.layer.borderColor = UIColor.borderColor().CGColor
         detailButton.layer.borderWidth = 1
         detailButton.clipsToBounds = true
+        detailButton.backgroundColor = UIColor.whiteColor()
         
     }
     
