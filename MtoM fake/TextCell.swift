@@ -20,6 +20,7 @@ class TextCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(viewText)
         layoutBodyCell()
+        contentView.backgroundColor = UIColor.contentCellColor()
     
     }
 
@@ -31,12 +32,18 @@ class TextCell: UITableViewCell {
     func layoutBodyCell() {
         viewText.addSubview(textDetailLabel)
         viewText.addSubview(textContentLabel)
-        viewText.mt_innerAlign(left: 8, top: 0, right: 8, bottom: 0)
-        textDetailLabel.mt_innerAlign(left: (8, viewText), top: (16, viewText), right: nil, bottom: nil)
-        textDetailLabel.setHeight(20)
+        textDetailLabel.tintColor = UIColor.blackColor()
+        textContentLabel.tintColor = UIColor.blackColor()
         
-        textContentLabel.mt_innerAlign(left: nil, top: (16, viewText), right: (8,viewText), bottom: nil)
-        textContentLabel.setHeight(20)
+        viewText.mt_innerAlign(left: 8, top: 1, right: 8, bottom: 0)
+        viewText.backgroundColor = UIColor.whiteColor()
+        
+        textDetailLabel.mt_innerAlign(left: 8, top: 8, right: nil, bottom: 8)
+        textDetailLabel.mt_setWidth(100)
+        
+        textContentLabel.mt_innerAlign(left: nil, top: 8, right: 8, bottom: 8)
+        textContentLabel.mt_innerAlign(left: (16, textDetailLabel), top: nil, right: nil, bottom: nil)
+        
         
     }
     
