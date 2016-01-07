@@ -26,6 +26,11 @@ extension UIColor{
     static func menuColor() -> UIColor {
         return UIColor.colorFormHext(0x535353, alpha: 1)
     }
+    
+    
+    static func contentCellColor() -> UIColor {
+        return UIColor.colorFormHext(0xFFD9B1, alpha: 1)
+    }
     static func colorFormHext(hex: UInt32, alpha: Int) -> UIColor{
         let div = CGFloat (255)
         let red = CGFloat ((hex & 0xFF0000) >> 16) / div
