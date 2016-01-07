@@ -20,7 +20,7 @@ class TextCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(viewText)
         layoutBodyCell()
-        contentView.backgroundColor = UIColor.contentCellColor()
+        contentView.backgroundColor = UIColor.headerColor()
     
     }
 
@@ -35,7 +35,7 @@ class TextCell: UITableViewCell {
         textDetailLabel.tintColor = UIColor.blackColor()
         textContentLabel.tintColor = UIColor.blackColor()
         
-        viewText.mt_innerAlign(left: 8, top: 1, right: 8, bottom: 0)
+        viewText.mt_innerAlign(left: 8, top: 0, right: 8, bottom: 0)
         viewText.backgroundColor = UIColor.whiteColor()
         
         textDetailLabel.mt_innerAlign(left: 8, top: 8, right: nil, bottom: 8)

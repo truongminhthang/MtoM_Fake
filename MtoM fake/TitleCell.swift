@@ -47,7 +47,7 @@ class TitleCell: UITableViewCell {
         
         // layout background
         backgroundOfCell.mt_innerAlign(left: 8, top: 9, right: 8, bottom: 0)
-        backgroundOfCell.backgroundColor = UIColor.contentCellColor()
+        backgroundOfCell.backgroundColor = UIColor.whiteColor()
         
         // layout detailLabel
         backgroundOfCell.addSubview(detailLabel)

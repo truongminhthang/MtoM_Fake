@@ -89,9 +89,10 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.edgesForExtendedLayout = UIRectEdge.None
         self.tbv.separatorStyle =  UITableViewCellSeparatorStyle.None
         
-        layoutMenu()
+        tbv.registerClass(DetailsCell.self, forCellReuseIdentifier: "detailCell")
+//        layoutMenu()
         createTableView()
-        createPopFilter()
+//        createPopFilter()
     }
     
     
@@ -171,12 +172,17 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     func layoutTableView() {
         view.addSubview(tbv)
         tbv.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
+        self.tbv.backgroundColor = UIColor.headerColor()
     }
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.clearColor()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -186,53 +192,60 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return CellType.All.rawValue
     }
-    
+    var count :Int = 0
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cellType: CellType = CellType(rawValue: indexPath.row)!
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellType.cellId())
+        var cell = tbv.dequeueReusableCellWithIdentifier(cellType.cellId())
         if cell == nil {
             switch cellType.cellId() {
-            case "titleCell":
-                cell = TitleCell(style: UITableViewCellStyle.Default, reuseIdentifier: "titleCell")
-            case "IncomeCell":
-                cell = IncomeCell(style: UITableViewCellStyle.Default, reuseIdentifier: "IncomeCell")
-            case "textCell":
-                cell = TextCell(style: UITableViewCellStyle.Default, reuseIdentifier: "textCell")
-            case "detailsCell":
-                cell = DetailsCell(style: UITableViewCellStyle.Default, reuseIdentifier: "detailsCell")
-                case "applyCell":
-                cell = ApplyCell(style: UITableViewCellStyle.Default, reuseIdentifier: "applyCell")
-            default:
-                break
+            case "titleCell" :
+                cell = TitleCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellType.cellId())
+            case "IncomeCell" :
+                cell = IncomeCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellType.cellId())
+            case "textCell" :
+                cell = TextCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellType.cellId())
+            case "detailCell" :
+                cell = DetailsCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellType.cellId())
+            case "applyCell" :
+                cell = ApplyCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellType.cellId())
+                
+            default : break
                 
             }
         }
         switch cellType {
         case .Title:
             let titleCell = cell as! TitleCell
-            titleCell.job = data[indexPath.section]
+            titleCell.detailLabel.text = data[indexPath.row].title
+            titleCell.detailLabel.tintColor = UIColor.redColor()
         case .Income:
-            let incomeCell = cell as! TextCell
+            let incomeCell = cell as! IncomeCell
             incomeCell.textDetailLabel.text = "Income"
-            incomeCell.textContentLabel.text = data[indexPath.section].income
-            incomeCell.textContentLabel.textColor = UIColor.redColor()
+            incomeCell.textContentLabel.text = data[indexPath.row].income
         case .Address:
             let addressCell = cell as! TextCell
             addressCell.textDetailLabel.text = "Address"
-            addressCell.textContentLabel.text = data[indexPath.section].address
-            
+            addressCell.textContentLabel.text = data[indexPath.row].address
         case .Description:
             let descriptionCell = cell as! TextCell
             descriptionCell.textDetailLabel.text = "Description"
-            descriptionCell.textContentLabel.text = data[indexPath.section].description
+            descriptionCell.textContentLabel.text = data[indexPath.row].description
         case .Jobtype:
-            let jobtypeCell = cell as! TextCell
-            jobtypeCell.textDetailLabel.text = "JobType"
-            jobtypeCell.textContentLabel.text = data[indexPath.section].address
-        default:
-            return UITableViewCell()
+            let jobCell = cell as! TextCell
+            jobCell.textDetailLabel.text = "Job"
+            jobCell.textContentLabel.text = "this is my Job"
+        case .GoDetail:
+            let goDetailCell = cell as! DetailsCell
+            goDetailCell.detailButton.setTitle("Search", forState: .Highlighted)
+            
+        case .Apply:
+            let applyCell = cell as! ApplyCell
+            applyCell.webButton.setTitle("Web", forState: .Normal)
+            applyCell.callButton.setTitle("Call", forState: .Normal)
+        default : break
         }
+        
         return cell!
         
     }

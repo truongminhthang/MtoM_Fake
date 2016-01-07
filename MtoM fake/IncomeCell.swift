@@ -13,7 +13,7 @@ class IncomeCell: TextCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         textContentLabel.font = UIFont.boldSystemFontOfSize(20)
-        textContentLabel.tintColor = UIColor.mainColor()
+        textContentLabel.tintColor = UIColor.redColor()
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -26,7 +26,7 @@ class DetailsCell: UITableViewCell {
     
     func LayoutOfDetailsCell() {
         detailView.mt_innerAlign(left: 8, top: 0, right: 8, bottom: 0)
-        detailView.backgroundColor = UIColor.contentCellColor()
+        detailView.backgroundColor = UIColor.whiteColor()
         detailView.addSubview(detailButton)
         
         detailButton.mt_innerAlign(left: 16, top: 8, right: 16, bottom: 8)
@@ -36,6 +36,7 @@ class DetailsCell: UITableViewCell {
         detailButton.clipsToBounds = true
         detailButton.backgroundColor = UIColor.whiteColor()
         
+        detailButton.tintColor = UIColor.redColor()
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
