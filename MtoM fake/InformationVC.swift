@@ -7,11 +7,6 @@
 //
 
 import UIKit
-
-
-
-
-
 enum CellType: Int {
     case Title
     case Income
@@ -55,29 +50,42 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         item.income = "1000USD ~ 2000USD"
         item.address = "13st Floor Keangnam Landmark 72"
         item.description = "iOS developer"
+        item.job = "aabbcc"
         r += [item]
         var item2 = Job()
         item2.title = "Keangnam Pro"
         item2.income = "1450USD ~ 1750USD"
         item2.address = "14st Floot Nguyen Tuan"
         item2.description = "Apple"
+        item2.job = "bbccdd"
         r += [item2]
         var item3 = Job()
         item3.title = "Keangnam Pro"
         item3.income = "1450USD ~ 1750USD"
         item3.address = "14st Floot Nguyen Tuan"
         item3.description = "Apple"
+        item3.job = "ccddee"
         r += [item3]
         var item4 = Job()
         item4.title = "Keangnam Pro"
         item4.income = "1450USD ~ 1750USD"
         item4.address = "14st Floot Nguyen Tuan"
         item4.description = "Apple"
+        item4.job = "djashdoiash"
         r += [item4]
         return r
     }()
     
     var menu = Menu()
+    var menuButton = MenuButton()
+    let pop = UIView()
+    let popBody = UIView()
+    var coverButton = UIButton()
+    var cityLabel = UILabel()
+    var provinceLabel = UILabel()
+    let cityTextFeild = UITextField()
+    let clickButton = UIButton()
+    let provinceTextFeild = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,11 +98,10 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.tbv.separatorStyle =  UITableViewCellSeparatorStyle.None
         
         tbv.registerClass(DetailsCell.self, forCellReuseIdentifier: "detailCell")
-//        layoutMenu()
+        layoutMenu()
         createTableView()
-//        createPopFilter()
+        createPopFilter()
     }
-    
     
     func layoutMenu() {
         view.addSubview(menu)
@@ -104,40 +111,62 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func createPopFilter() {
-        let pop = UIView()
         view.addSubview(pop)
-        
         pop.mt_innerAlign(left: (0, nil), top: (0, menu), right: (0, nil), bottom: (0,nil))
-        
-        let coverButton = createCoverButton()
+        coverButton = createCoverButton()
         pop.addSubview(coverButton)
         coverButton.mt_InnerAlign(allSpace: 0)
         
-        let popBody = UIView()
+        createPopbody()
+        createCityLabel()
+        createProvinceLabel()
+        createCityTextFeild()
+        createProvinceTextFeild()
+        creataClickButton()
+    }
+    
+    func createPopbody(){
         pop.addSubview(popBody)
         popBody.mt_innerAlign(left: 4, top: 0, right: 4, bottom: nil)
         popBody.mt_setHeight(150)
         popBody.roundBorder()
         popBody.backgroundColor = UIColor.whiteColor()
-        
-        let cityLabel = creatLabel("City : ")
+    }
+    
+    func createCityLabel(){
+        cityLabel = creatLabel("City : ")
         popBody.addSubview(cityLabel)
-        
         cityLabel.mt_innerAlign(left: 16, top: 16, right: nil, bottom: nil)
-        cityLabel.setHeight(19)
-        
-        
-        let laybel1_2 = creatLabel("Province : ")
-        popBody.addSubview(laybel1_2)
-        laybel1_2.mt_innerAlign(left: 16, top: 30, right: nil, bottom: nil)
-        laybel1_2.setHeight(19)
-        
-        let popBody1 = UIView()
-        pop.addSubview(popBody1)
-        popBody1.mt_innerAlign(left: 4, top: 0, right: 4, bottom: nil)
-        popBody1.mt_setHeight(5)
-        popBody1.backgroundColor = UIColor.whiteColor()
-        
+    }
+    
+    func createProvinceLabel(){
+        provinceLabel = creatLabel("Province : ")
+        popBody.addSubview(provinceLabel)
+        provinceLabel.mt_innerAlign(left: 16, top: nil, right: nil, bottom: nil)
+        provinceLabel.mt_innerAlign(left: nil, top: (16, cityLabel), right: nil, bottom: nil)
+    }
+    
+    func createCityTextFeild(){
+        popBody.addSubview(cityTextFeild)
+        cityTextFeild.mt_innerAlign(left: nil, top: 24, right: 16, bottom: nil)
+        cityTextFeild.mt_innerAlign(left: (16, cityLabel), top: nil, right: nil, bottom: nil)
+        cityTextFeild.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
+    }
+    
+    func createProvinceTextFeild(){
+        popBody.addSubview(provinceTextFeild)
+        provinceTextFeild.mt_innerAlign(left: (16, provinceLabel), top: (16, cityTextFeild), right: nil, bottom: nil)
+        provinceTextFeild.mt_innerAlign(left: nil, top: nil, right: 16, bottom: nil)
+        provinceTextFeild.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
+    }
+    
+    func creataClickButton(){
+        popBody.addSubview(clickButton)
+        clickButton.mt_innerAlign(left: 90, top: nil, right: 90, bottom: 16)
+        clickButton.backgroundColor = UIColor.mainColor()
+        clickButton.setTitle("Click", forState: .Normal)
+        clickButton.roundBorder()
+        clickButton.setHeight(50)
     }
     
     func createCoverButton() -> UIButton {
@@ -151,15 +180,11 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         let cityLabel = UILabel()
         cityLabel.text = title
         cityLabel.tintColor = UIColor.blackColor()
-        
         return cityLabel
     }
     
     func setupTableView() {
         layoutTableView()
-        
-        
-        
     }
     
     func createTableView() {
@@ -171,7 +196,8 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     func layoutTableView() {
         view.addSubview(tbv)
-        tbv.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
+        tbv.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
+        tbv.mt_innerAlign(left: nil, top: (0, menu), right: nil, bottom: nil)
         self.tbv.backgroundColor = UIColor.headerColor()
     }
     
@@ -192,7 +218,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return CellType.All.rawValue
     }
-    var count :Int = 0
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cellType: CellType = CellType(rawValue: indexPath.row)!
         
@@ -209,9 +235,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                 cell = DetailsCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellType.cellId())
             case "applyCell" :
                 cell = ApplyCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellType.cellId())
-                
             default : break
-                
             }
         }
         switch cellType {
@@ -237,7 +261,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             jobCell.textContentLabel.text = "this is my Job"
         case .GoDetail:
             let goDetailCell = cell as! DetailsCell
-            goDetailCell.detailButton.setTitle("Search", forState: .Highlighted)
+            goDetailCell.detailButton.setTitle("Search", forState: .Normal)
             
         case .Apply:
             let applyCell = cell as! ApplyCell
@@ -245,8 +269,10 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             applyCell.callButton.setTitle("Call", forState: .Normal)
         default : break
         }
-        
         return cell!
+    }
+    
+    func setupDetailLabel(){
         
     }
     
@@ -273,5 +299,4 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     // Pass the selected object to the new view controller.
     }
     */
-    
 }
