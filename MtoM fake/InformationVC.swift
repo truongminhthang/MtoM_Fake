@@ -42,6 +42,17 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     
     var tbv = UITableView()
+    var menu = Menu()
+    var menuButton = MenuButton()
+    let pop = UIView()
+    let popBody = UIView()
+    var coverButton = UIButton()
+    var cityLabel = UILabel()
+    var provinceLabel = UILabel()
+    var cityTextFeild = UITextField()
+    let clickButton = UIButton()
+    var provinceTextFeild = UITextField()
+
     var data : [Job] = {
         var r = [Job]()
         
@@ -75,18 +86,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         r += [item4]
         return r
     }()
-    
-    var menu = Menu()
-    var menuButton = MenuButton()
-    let pop = UIView()
-    let popBody = UIView()
-    var coverButton = UIButton()
-    var cityLabel = UILabel()
-    var provinceLabel = UILabel()
-    let cityTextFeild = UITextField()
-    let clickButton = UIButton()
-    let provinceTextFeild = UITextField()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,11 +97,13 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.edgesForExtendedLayout = UIRectEdge.None
         self.tbv.separatorStyle =  UITableViewCellSeparatorStyle.None
         
-        tbv.registerClass(DetailsCell.self, forCellReuseIdentifier: "detailCell")
+//        tbv.registerClass(DetailsCell.self, forCellReuseIdentifier: "detailCell")
         layoutMenu()
         createTableView()
         createPopFilter()
     }
+    
+//    MARK: - Create Pop View
     
     func layoutMenu() {
         view.addSubview(menu)
@@ -112,55 +114,62 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     func createPopFilter() {
         view.addSubview(pop)
-        pop.mt_innerAlign(left: (0, nil), top: (0, menu), right: (0, nil), bottom: (0,nil))
+        pop.hidden = true
+        
+        pop.mt_innerAlign(left: (0, nil), top: (0,menu), right: (0, nil), bottom: (0,nil))
         coverButton = createCoverButton()
         pop.addSubview(coverButton)
         coverButton.mt_InnerAlign(allSpace: 0)
+        coverButton.addTarget(self, action: "HidePopView", forControlEvents: UIControlEvents.TouchUpInside)
         
         createPopbody()
         createCityLabel()
         createProvinceLabel()
         createCityTextFeild()
         createProvinceTextFeild()
-        creataClickButton()
+        createClickButton()
     }
     
-    func createPopbody(){
+    func createPopbody() {
         pop.addSubview(popBody)
-        popBody.mt_innerAlign(left: 4, top: 0, right: 4, bottom: nil)
+        popBody.mt_innerAlign(left: 4, top: 4, right: 4, bottom: nil)
         popBody.mt_setHeight(150)
         popBody.roundBorder()
         popBody.backgroundColor = UIColor.whiteColor()
     }
     
-    func createCityLabel(){
+    func createCityLabel() {
         cityLabel = creatLabel("City : ")
         popBody.addSubview(cityLabel)
         cityLabel.mt_innerAlign(left: 16, top: 16, right: nil, bottom: nil)
     }
     
-    func createProvinceLabel(){
+    func createProvinceLabel() {
         provinceLabel = creatLabel("Province : ")
         popBody.addSubview(provinceLabel)
         provinceLabel.mt_innerAlign(left: 16, top: nil, right: nil, bottom: nil)
         provinceLabel.mt_innerAlign(left: nil, top: (16, cityLabel), right: nil, bottom: nil)
     }
     
-    func createCityTextFeild(){
+    func createCityTextFeild() {
         popBody.addSubview(cityTextFeild)
-        cityTextFeild.mt_innerAlign(left: nil, top: 24, right: 16, bottom: nil)
+        cityTextFeild.mt_innerAlign(left: nil, top: 16, right: 16, bottom: nil)
         cityTextFeild.mt_innerAlign(left: (16, cityLabel), top: nil, right: nil, bottom: nil)
-        cityTextFeild.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
+        cityTextFeild.layer.borderColor = UIColor.grayColor().CGColor
+        cityTextFeild.layer.borderWidth = 1
+        cityTextFeild.roundBorder()
     }
     
-    func createProvinceTextFeild(){
+    func createProvinceTextFeild() {
         popBody.addSubview(provinceTextFeild)
         provinceTextFeild.mt_innerAlign(left: (16, provinceLabel), top: (16, cityTextFeild), right: nil, bottom: nil)
         provinceTextFeild.mt_innerAlign(left: nil, top: nil, right: 16, bottom: nil)
-        provinceTextFeild.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
+        provinceTextFeild.layer.borderColor = UIColor.grayColor().CGColor
+        provinceTextFeild.layer.borderWidth = 1
+        provinceTextFeild.roundBorder()
     }
     
-    func creataClickButton(){
+    func createClickButton() {
         popBody.addSubview(clickButton)
         clickButton.mt_innerAlign(left: 90, top: nil, right: 90, bottom: 16)
         clickButton.backgroundColor = UIColor.mainColor()
@@ -173,6 +182,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         let coverButton = UIButton()
         coverButton.setTitle("", forState: UIControlState.Normal)
         coverButton.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        
         return coverButton
     }
     
@@ -201,11 +211,12 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.tbv.backgroundColor = UIColor.headerColor()
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+//    MARK: - UITableView
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.clearColor()
@@ -258,7 +269,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         case .Jobtype:
             let jobCell = cell as! TextCell
             jobCell.textDetailLabel.text = "Job"
-            jobCell.textContentLabel.text = "this is my Job"
+            jobCell.textContentLabel.text = "abc"
         case .GoDetail:
             let goDetailCell = cell as! DetailsCell
             goDetailCell.detailButton.setTitle("Search", forState: .Normal)
@@ -289,6 +300,16 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             return 40
         }
     }
+    
+//    MARK: - MenuButton
+    func HidePopView(sender: UIButton!){
+        self.pop.hidden = true
+    }
+    
+    func ShowPopView(sender: AnyObject) {
+        self.pop.hidden = false
+    }
+    
     
     /*
     // MARK: - Navigation
