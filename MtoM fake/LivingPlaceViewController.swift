@@ -16,8 +16,14 @@ class LivingPlaceViewController: UIViewController , UITableViewDataSource, UITab
         result += ["Thai Binh"]
         result += ["Ha Noi"]
         result += ["TP HCM"]
-        
-        
+        result += ["Ca Mau"]
+        result += ["Hai Phong"]
+        result += ["Hai Duong"]
+        result += ["Nam Dinh"]
+        result += ["Ninh Binh"]
+        result += ["Ha Noi2"]
+        result += ["Son La"]
+        result += ["Da Nang"]
         return result
     }()
     

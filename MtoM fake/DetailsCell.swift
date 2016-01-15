@@ -29,7 +29,7 @@ class DetailsCell: UITableViewCell {
         detailView.mt_innerAlign(left: 8, top: 0, right: 8, bottom: 0)
         detailView.backgroundColor = UIColor.whiteColor()
         detailView.addSubview(detailButton)
-        detailButton.mt_innerAlign(left: 16, top: 4, right: 16, bottom: 4)
+        detailButton.mt_innerAlign(left: 8, top: 4, right: 8, bottom: 4)
         setupDetailButton()
         setupSearchView()
     }

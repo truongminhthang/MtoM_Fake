@@ -18,21 +18,34 @@ class Menu: UIView {
     }
     */
     
+    convenience init(vc: InformationVC, frame: CGRect) {
+        self.init(frame: frame)
+        self.vc = vc
+        spaceFilter = MenuButton(informationVC: vc)
+        salaryFilter = MenuButton(informationVC: vc)
+        jobFilter = MenuButton(informationVC: vc)
+    }
     
+    var vc: InformationVC?
     
-    let spaceFilter = MenuButton()
-    let salaryFilter = MenuButton()
-    let jobFilter = MenuButton()
+    var spaceFilter = MenuButton()
+    var salaryFilter = MenuButton()
+    var jobFilter = MenuButton()
+    
     
     
     
     override func layoutSubviews() {
+        spaceFilter = MenuButton(menuBt: self)
+        salaryFilter = MenuButton(menuBt: self)
+        jobFilter = MenuButton(menuBt: self)
         self.clipsToBounds = true
         setTitleForFilterButton()
         asignSetOfButtonForMenuButton()
         addMenuButtonToSubView()
         mt_createVerticalMenu([spaceFilter, salaryFilter,jobFilter], edge: UIEdgeInsets(top: 4, left: 4, bottom: -5, right: 4), gap: 4, seperateColor: UIColor.grayColor())
         setTextButtonPadding()
+//        showPlacePopView()
     }
     
     func setTitleForFilterButton() {
@@ -41,16 +54,16 @@ class Menu: UIView {
         
         salaryFilter.title = "Salary"
         salaryFilter.subTitle = "> 1000USD"
+        
         jobFilter.title = "Job"
         jobFilter.subTitle = "IT"
-        
     }
     
     func asignSetOfButtonForMenuButton() {
         let buttons = [spaceFilter,salaryFilter,jobFilter]
         for item in buttons {
             item.otherButtons = buttons
-        }
+        } 
     }
     
     func addMenuButtonToSubView() {
@@ -63,5 +76,24 @@ class Menu: UIView {
         spaceFilter.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 16, right: 8)
         salaryFilter.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 16, right: 8)
         jobFilter.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 16, right: 8)
+    }
+    func showPlacePopView(){
+        vc?.placePopView?.ShowPopView(self)
+    }
+    func showSafaryPopView() {
+        vc?.salaryPopView.ShowPopView(self)
+    }
+    func showJobPopView() {
+        vc?.jobPopView.ShowPopView(self)
+    }
+    
+    func hidePlacePopView() {
+        vc?.placePopView?.HidePopView(self)  
+    }
+    func hideSalaryPopView() {
+        vc?.salaryPopView.HidePopView(self)
+    }
+    func hideJobPopView() {
+        vc?.jobPopView.HidePopView(self)
     }
 }

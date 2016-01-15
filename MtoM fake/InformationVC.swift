@@ -42,159 +42,96 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     
     var tbv = UITableView()
-    var menu = Menu()
-    var menuButton = MenuButton()
-    let pop = UIView()
-    let popBody = UIView()
-    var coverButton = UIButton()
-    var cityLabel = UILabel()
-    var provinceLabel = UILabel()
-    var cityTextFeild = UITextField()
-    let clickButton = UIButton()
-    var provinceTextFeild = UITextField()
-
+    var menuVC : Menu?
+    var placePopView : PlacePopView?
+    var salaryPopView : SalaryPopView!
+    var jobPopView : JobPopView!
+    var popView: PopView?
+    
     var data : [Job] = {
-        var r = [Job]()
+        var result = [Job]()
         
         var item = Job()
-        item.title = "Framgia tuyen dung lap trinh vien"
+        item.title = "Keangnam Pro 0"
         item.income = "1000USD ~ 2000USD"
         item.address = "13st Floor Keangnam Landmark 72"
         item.description = "iOS developer"
-        item.job = "aabbcc"
-        r += [item]
+        item.job = "Swift Developer"
+        result += [item]
         var item2 = Job()
-        item2.title = "Keangnam Pro"
-        item2.income = "1450USD ~ 1750USD"
-        item2.address = "14st Floot Nguyen Tuan"
+        item2.title = "Keangnam Pro 1"
+        item2.income = "140USD ~ 170USD"
+        item2.address = "14st Floot Nguyen Tuan 1"
         item2.description = "Apple"
-        item2.job = "bbccdd"
-        r += [item2]
+        item2.job = "Java Developer"
+        result += [item2]
         var item3 = Job()
-        item3.title = "Keangnam Pro"
-        item3.income = "1450USD ~ 1750USD"
-        item3.address = "14st Floot Nguyen Tuan"
+        item3.title = "Keangnam Pro 2"
+        item3.income = "150USD ~ 1450USD"
+        item3.address = "13st Floot Nguyen Tuan 2"
         item3.description = "Apple"
-        item3.job = "ccddee"
-        r += [item3]
+        item3.job = "Object-tive C Developer"
+        result += [item3]
         var item4 = Job()
-        item4.title = "Keangnam Pro"
-        item4.income = "1450USD ~ 1750USD"
-        item4.address = "14st Floot Nguyen Tuan"
+        item4.title = "Keangnam Pro 3"
+        item4.income = "145USD ~ 175USD"
+        item4.address = "12st Floot Nguyen Tuan 3"
         item4.description = "Apple"
-        item4.job = "djashdoiash"
-        r += [item4]
-        return r
+        item4.job = "C# Developer"
+        result += [item4]
+        return result
+        
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        menuVC = Menu(vc: self, frame: CGRectZero)
+        placePopView = PlacePopView(vc: self)
+        salaryPopView = SalaryPopView(vc: self)
+        jobPopView = JobPopView(vc: self)
+        popView = PopView(vc: self)
         // Do any additional setup after loading the view.
         self.navigationItem.title = "Job Search"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.navigationItem.hidesBackButton = true
         self.edgesForExtendedLayout = UIRectEdge.None
         self.tbv.separatorStyle =  UITableViewCellSeparatorStyle.None
-        
-//        tbv.registerClass(DetailsCell.self, forCellReuseIdentifier: "detailCell")
+
         layoutMenu()
         createTableView()
-        createPopFilter()
+        layoutPopView()
+        
     }
     
-//    MARK: - Create Pop View
+    func layoutPlacePopView() {
+        view.addSubview(placePopView!)
+        placePopView!.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
+        placePopView!.mt_innerAlign(left: nil , top: (0, menuVC), right: nil, bottom: nil)
+    }
     
+    func layoutSalaryPopView() {
+        view.addSubview(salaryPopView)
+        salaryPopView.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
+        salaryPopView.mt_innerAlign(left: nil, top: (0, menuVC), right: nil, bottom: nil)
+    }
+    
+    func layoutJobopView() {
+        view.addSubview(jobPopView)
+        jobPopView.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
+        jobPopView.mt_innerAlign(left: nil, top: (0, menuVC), right: nil, bottom: nil)
+    }
+
     func layoutMenu() {
-        view.addSubview(menu)
-        menu.mt_innerAlign(left: 0, top: 0, right: 0, bottom: nil)
-        menu.mt_setHeight(60)
-        menu.backgroundColor = UIColor.darkGrayColor()
+        view.addSubview(menuVC!)
+        menuVC!.mt_innerAlign(left: 0, top: 0, right: 0, bottom: nil)
+        menuVC!.mt_setHeight(60)
+        menuVC!.backgroundColor = UIColor.darkGrayColor()
     }
     
-    func createPopFilter() {
-        view.addSubview(pop)
-        pop.hidden = true
-        
-        pop.mt_innerAlign(left: (0, nil), top: (0,menu), right: (0, nil), bottom: (0,nil))
-        coverButton = createCoverButton()
-        pop.addSubview(coverButton)
-        coverButton.mt_InnerAlign(allSpace: 0)
-        coverButton.addTarget(self, action: "HidePopView", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        createPopbody()
-        createCityLabel()
-        createProvinceLabel()
-        createCityTextFeild()
-        createProvinceTextFeild()
-        createClickButton()
-    }
-    
-    func createPopbody() {
-        pop.addSubview(popBody)
-        popBody.mt_innerAlign(left: 4, top: 4, right: 4, bottom: nil)
-        popBody.mt_setHeight(150)
-        popBody.roundBorder()
-        popBody.backgroundColor = UIColor.whiteColor()
-    }
-    
-    func createCityLabel() {
-        cityLabel = creatLabel("City : ")
-        popBody.addSubview(cityLabel)
-        cityLabel.mt_innerAlign(left: 16, top: 16, right: nil, bottom: nil)
-    }
-    
-    func createProvinceLabel() {
-        provinceLabel = creatLabel("Province : ")
-        popBody.addSubview(provinceLabel)
-        provinceLabel.mt_innerAlign(left: 16, top: nil, right: nil, bottom: nil)
-        provinceLabel.mt_innerAlign(left: nil, top: (16, cityLabel), right: nil, bottom: nil)
-    }
-    
-    func createCityTextFeild() {
-        popBody.addSubview(cityTextFeild)
-        cityTextFeild.mt_innerAlign(left: nil, top: 16, right: 16, bottom: nil)
-        cityTextFeild.mt_innerAlign(left: (16, cityLabel), top: nil, right: nil, bottom: nil)
-        cityTextFeild.layer.borderColor = UIColor.grayColor().CGColor
-        cityTextFeild.layer.borderWidth = 1
-        cityTextFeild.roundBorder()
-    }
-    
-    func createProvinceTextFeild() {
-        popBody.addSubview(provinceTextFeild)
-        provinceTextFeild.mt_innerAlign(left: (16, provinceLabel), top: (16, cityTextFeild), right: nil, bottom: nil)
-        provinceTextFeild.mt_innerAlign(left: nil, top: nil, right: 16, bottom: nil)
-        provinceTextFeild.layer.borderColor = UIColor.grayColor().CGColor
-        provinceTextFeild.layer.borderWidth = 1
-        provinceTextFeild.roundBorder()
-    }
-    
-    func createClickButton() {
-        popBody.addSubview(clickButton)
-        clickButton.mt_innerAlign(left: 90, top: nil, right: 90, bottom: 16)
-        clickButton.backgroundColor = UIColor.mainColor()
-        clickButton.setTitle("Click", forState: .Normal)
-        clickButton.roundBorder()
-        clickButton.setHeight(50)
-    }
-    
-    func createCoverButton() -> UIButton {
-        let coverButton = UIButton()
-        coverButton.setTitle("", forState: UIControlState.Normal)
-        coverButton.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
-        
-        return coverButton
-    }
-    
-    func creatLabel(title: String) -> UILabel {
-        let cityLabel = UILabel()
-        cityLabel.text = title
-        cityLabel.tintColor = UIColor.blackColor()
-        return cityLabel
-    }
-    
-    func setupTableView() {
-        layoutTableView()
+    func layoutPopView() {
+        layoutPlacePopView()
+        layoutSalaryPopView()
+        layoutJobopView()
     }
     
     func createTableView() {
@@ -207,7 +144,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     func layoutTableView() {
         view.addSubview(tbv)
         tbv.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
-        tbv.mt_innerAlign(left: nil, top: (0, menu), right: nil, bottom: nil)
+        tbv.mt_innerAlign(left: nil, top: (0, menuVC), right: nil, bottom: nil)
         self.tbv.backgroundColor = UIColor.headerColor()
     }
     
@@ -229,7 +166,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return CellType.All.rawValue
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cellType: CellType = CellType(rawValue: indexPath.row)!
         
@@ -252,24 +189,24 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         switch cellType {
         case .Title:
             let titleCell = cell as! TitleCell
-            titleCell.detailLabel.text = data[indexPath.row].title
+            titleCell.detailLabel.text = data[indexPath.section].title
             titleCell.detailLabel.tintColor = UIColor.redColor()
         case .Income:
             let incomeCell = cell as! IncomeCell
             incomeCell.textDetailLabel.text = "Income"
-            incomeCell.textContentLabel.text = data[indexPath.row].income
+            incomeCell.textContentLabel.text = data[indexPath.section].income
         case .Address:
             let addressCell = cell as! TextCell
             addressCell.textDetailLabel.text = "Address"
-            addressCell.textContentLabel.text = data[indexPath.row].address
+            addressCell.textContentLabel.text = data[indexPath.section].address
         case .Description:
             let descriptionCell = cell as! TextCell
             descriptionCell.textDetailLabel.text = "Description"
-            descriptionCell.textContentLabel.text = data[indexPath.row].description
+            descriptionCell.textContentLabel.text = data[indexPath.section].description
         case .Jobtype:
             let jobCell = cell as! TextCell
             jobCell.textDetailLabel.text = "Job"
-            jobCell.textContentLabel.text = "abc"
+            jobCell.textContentLabel.text = data[indexPath.section].job
         case .GoDetail:
             let goDetailCell = cell as! DetailsCell
             goDetailCell.detailButton.setTitle("Search", forState: .Normal)
@@ -300,16 +237,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             return 40
         }
     }
-    
-//    MARK: - MenuButton
-    func HidePopView(sender: UIButton!){
-        self.pop.hidden = true
     }
-    
-    func ShowPopView(sender: AnyObject) {
-        self.pop.hidden = false
-    }
-    
     
     /*
     // MARK: - Navigation
@@ -320,4 +248,3 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     // Pass the selected object to the new view controller.
     }
     */
-}

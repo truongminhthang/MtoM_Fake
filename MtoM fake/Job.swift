@@ -13,4 +13,5 @@ class Job {
     var income: String = ""
     var address: String = ""
     var description: String = ""
+    var job: String = ""
 }
