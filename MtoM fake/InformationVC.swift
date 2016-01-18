@@ -43,10 +43,9 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     var tbv = UITableView()
     var menuVC : Menu?
-    var placePopView : PlacePopView?
+    var placePopView : PlacePopView!
     var salaryPopView : SalaryPopView!
     var jobPopView : JobPopView!
-    var popView: PopView?
     
     var data : [Job] = {
         var result = [Job]()
@@ -89,36 +88,19 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         placePopView = PlacePopView(vc: self)
         salaryPopView = SalaryPopView(vc: self)
         jobPopView = JobPopView(vc: self)
-        popView = PopView(vc: self)
+
         // Do any additional setup after loading the view.
         self.navigationItem.title = "Job Search"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.navigationItem.hidesBackButton = true
         self.edgesForExtendedLayout = UIRectEdge.None
         self.tbv.separatorStyle =  UITableViewCellSeparatorStyle.None
+        self.tbv.allowsSelection = false
 
         layoutMenu()
         createTableView()
         layoutPopView()
         
-    }
-    
-    func layoutPlacePopView() {
-        view.addSubview(placePopView!)
-        placePopView!.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
-        placePopView!.mt_innerAlign(left: nil , top: (0, menuVC), right: nil, bottom: nil)
-    }
-    
-    func layoutSalaryPopView() {
-        view.addSubview(salaryPopView)
-        salaryPopView.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
-        salaryPopView.mt_innerAlign(left: nil, top: (0, menuVC), right: nil, bottom: nil)
-    }
-    
-    func layoutJobopView() {
-        view.addSubview(jobPopView)
-        jobPopView.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
-        jobPopView.mt_innerAlign(left: nil, top: (0, menuVC), right: nil, bottom: nil)
     }
 
     func layoutMenu() {
@@ -129,9 +111,23 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func layoutPopView() {
-        layoutPlacePopView()
-        layoutSalaryPopView()
-        layoutJobopView()
+        var popViews = [PopView]()
+        if let placePV = placePopView {
+            popViews += [placePV]
+        }
+        
+        if let salaryPV = salaryPopView {
+            popViews += [salaryPV]
+        }
+        
+        if let jobPV = jobPopView {
+            popViews += [jobPV]
+        }
+        for item in popViews {
+            view.addSubview(item)
+            item.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
+            item.mt_innerAlign(left: nil, top: (0, menuVC), right: nil, bottom: nil)
+        }
     }
     
     func createTableView() {
@@ -209,8 +205,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             jobCell.textContentLabel.text = data[indexPath.section].job
         case .GoDetail:
             let goDetailCell = cell as! DetailsCell
-            goDetailCell.detailButton.setTitle("Search", forState: .Normal)
-            
+            goDetailCell.detailButton.setTitle("Search", forState: .Normal)  
         case .Apply:
             let applyCell = cell as! ApplyCell
             applyCell.webButton.setTitle("Web", forState: .Normal)
@@ -218,10 +213,6 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         default : break
         }
         return cell!
-    }
-    
-    func setupDetailLabel(){
-        
     }
     
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{

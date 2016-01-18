@@ -12,7 +12,7 @@ class DetailsCell: UITableViewCell {
     var detailView = UIView()
     var searchImageView = UIImageView()
     var searchImage = UIImage(named: "ic_search")
-    var detailButton = UIButton()
+    var detailButton = UIButton(type: UIButtonType.System)
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

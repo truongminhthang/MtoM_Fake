@@ -9,7 +9,7 @@
 import UIKit
 
 class MenuButton: UIButton {
-
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -28,6 +28,8 @@ class MenuButton: UIButton {
     var informationVC : InformationVC?
     var popView : PopView?
     weak var menuBt : Menu!
+    
+    
     
     convenience init(informationVC:InformationVC) {
         self.init()
@@ -100,9 +102,12 @@ class MenuButton: UIButton {
         super.layoutSubviews()
         if selected {
             backgroundColor = UIColor.whiteColor()
+            menuBt.showPopView(self)
         } else {
             backgroundColor = UIColor.clearColor()
+            menuBt.hidePopViewIfNeed()
         }
+        
         layoutArrowDown()
     }
     
@@ -117,32 +122,10 @@ class MenuButton: UIButton {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
         resetOtherButton()
-        print("touchesBegan \(self.selected)")
         selected = !selected
-        if menuBt.spaceFilter.selected == true{        
-            menuBt.showPlacePopView()
-            menuBt.hideSalaryPopView()
-            menuBt.hideJobPopView()
-        }else if menuBt.salaryFilter.selected {
-            menuBt.showSafaryPopView()
-            menuBt.hidePlacePopView()
-            menuBt.hideJobPopView()
-        } else if menuBt.jobFilter.selected{
-            menuBt.showJobPopView()
-            menuBt.hidePlacePopView()
-            menuBt.hideSalaryPopView()
-        }else {
-            menuBt.hidePlacePopView()
-            menuBt.hideSalaryPopView()
-            menuBt.hideJobPopView()
-        }
     }
-    
-    func showPlaceView() {
-        menuBt?.showPlacePopView()
-    }
-    
     func resetOtherButton() {
         for item in otherButtons {
             if item.selected == true {

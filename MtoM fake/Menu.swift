@@ -9,12 +9,12 @@
 import UIKit
 
 class Menu: UIView {
-
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
-        // Drawing code
+    // Drawing code
     }
     */
     
@@ -45,7 +45,6 @@ class Menu: UIView {
         addMenuButtonToSubView()
         mt_createVerticalMenu([spaceFilter, salaryFilter,jobFilter], edge: UIEdgeInsets(top: 4, left: 4, bottom: -5, right: 4), gap: 4, seperateColor: UIColor.grayColor())
         setTextButtonPadding()
-//        showPlacePopView()
     }
     
     func setTitleForFilterButton() {
@@ -63,7 +62,7 @@ class Menu: UIView {
         let buttons = [spaceFilter,salaryFilter,jobFilter]
         for item in buttons {
             item.otherButtons = buttons
-        } 
+        }
     }
     
     func addMenuButtonToSubView() {
@@ -77,23 +76,45 @@ class Menu: UIView {
         salaryFilter.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 16, right: 8)
         jobFilter.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 16, right: 8)
     }
-    func showPlacePopView(){
-        vc?.placePopView?.ShowPopView(self)
-    }
-    func showSafaryPopView() {
-        vc?.salaryPopView.ShowPopView(self)
-    }
-    func showJobPopView() {
-        vc?.jobPopView.ShowPopView(self)
-    }
     
-    func hidePlacePopView() {
-        vc?.placePopView?.HidePopView(self)  
+    func showPopView(sender: MenuButton) {
+        switch sender {
+        case spaceFilter:
+            vc?.placePopView?.showPopView(self)
+        case salaryFilter:
+            vc?.salaryPopView.showPopView(self)
+        case jobFilter:
+            vc?.jobPopView.showPopView(self)
+        default : break
+        }
     }
-    func hideSalaryPopView() {
-        vc?.salaryPopView.HidePopView(self)
+ /*
+    func hidePopViewsIfNeed(popViews: [PopView]) {
+        for item in popViews {
+            if item.isActive == true {
+                item.active = !item.active
+                return item
+            }
+            
+        }
     }
-    func hideJobPopView() {
-        vc?.jobPopView.HidePopView(self)
+*/
+    func hidePopViewIfNeed() {
+        var popViews = [PopView]()
+        if let placePV = vc?.placePopView {
+            popViews += [placePV]
+        }
+        
+        if let salaryPV = vc?.salaryPopView {
+            popViews += [salaryPV]
+        }
+        
+        if let jobPV = vc?.jobPopView {
+            popViews += [jobPV]
+        }
+        
+        for item in popViews {
+            item.hidePopView(self)
+        }
     }
 }

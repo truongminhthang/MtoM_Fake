@@ -8,28 +8,17 @@
 
 import UIKit
 
-class ProvincePickerView: UIView ,UIPickerViewDataSource,UIPickerViewDelegate{
+class ProvincePickerView: PickerView , UIPickerViewDataSource{
 
     var provincePickerView = UIPickerView()
-    var popView : PopView!
-    convenience init(popView: PopView) {
-        self.init()
-        self.popView = popView
-    }
     
-    var dataProvincePickerView = ["Thai Binh", "Ha Noi", "TPHCM"]
+    var dataProvincePickerView = ["Thai Binh","TPHCM","Ha Noi"]
     
-    override func layoutSubviews() {
-        self.addSubview(provincePickerView)
-        provincePickerView.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
+    override func createPickerView() {
+        super.createPickerView()
         provincePickerView.dataSource = self
-        provincePickerView.delegate = self
-        provincePickerView.selectRow(1, inComponent: 0, animated: true)
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dataProvincePickerView.count
@@ -37,6 +26,7 @@ class ProvincePickerView: UIView ,UIPickerViewDataSource,UIPickerViewDelegate{
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dataProvincePickerView[row]
     }
+    
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         popView.provinceButton.setTitle(dataProvincePickerView[row], forState: UIControlState.Normal)
     }

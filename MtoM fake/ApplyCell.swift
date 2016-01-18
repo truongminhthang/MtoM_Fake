@@ -30,18 +30,27 @@ class ApplyCell: UITableViewCell {
         applyView.mt_innerAlign(left: 8, top: 0, right: 8, bottom: 0)
         applyView.roundBorder()
         applyView.backgroundColor = UIColor.whiteColor()
-        
-        applyView.addSubview(webButton)
-        applyView.addSubview(callButton)
+        setupWebButton()
+        setupCallButton()
         mt_createVerticalMenu([webButton,callButton], edge: UIEdgeInsets(top: 8, left: 16, bottom: 16, right: 16), gap: 8, seperateColor: UIColor.clearColor())
-        setupButton()
     }
     
-    func setupButton(){
-        webButton.roundBorder()
-        callButton.roundBorder()
-        webButton.backgroundColor = UIColor.redColor()
-        callButton.backgroundColor = UIColor.redColor()
+    func setupWebButton(){
+        webButton = setupButton()
+        applyView.addSubview(webButton)
+    }
+    
+    func setupCallButton(){
+        callButton = setupButton()
+        applyView.addSubview(callButton)
+    }
+    
+    func setupButton() -> UIButton {
+        let button = UIButton(type: UIButtonType.System)
+        button.roundBorder()
+        button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        button.backgroundColor = UIColor.redColor()
+        return button
     }
     
     func setLayoutOfHeaderCell() {

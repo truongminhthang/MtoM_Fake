@@ -9,8 +9,7 @@
 import UIKit
 
 class PopView: UIView {
-    
-    var pop = UIView()
+
     var coverButton = UIButton()
     var popBody = UIView()
     let line1 = UIView()
@@ -22,10 +21,8 @@ class PopView: UIView {
     var cityButton = UIButton()
     var provinceButton = UIButton()
     var clickButton = UIButton()
-    
     var cityPickerView : CityPickerView?
-    
-    
+    var provincePickerView : ProvincePickerView?
     var vc : InformationVC?
     
     convenience init(vc: InformationVC) {
@@ -36,53 +33,45 @@ class PopView: UIView {
     override func layoutSubviews() {
         self.clipsToBounds = true
         cityPickerView = CityPickerView(popView: self)
+        provincePickerView = ProvincePickerView(popView: self)
         createPopFilter()
+        
     }
     
     func createPopFilter(){
-        self.addSubview(pop)
-        pop.hidden = true
-        pop.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
         createCoverButton()
         createPopBody()
         createLine4()
+        
     }
     
     func createLine4(){
-        pop.addSubview(line4)
+        self.addSubview(line4)
         line4.mt_innerAlign(left: 4, top: nil, right: 4, bottom: 0)
         line4.mt_innerAlign(left: nil, top: (150, popBody), right: nil, bottom: nil)
-        line4.hidden = true
     }
     
     func createCoverButton(){
-        pop.addSubview(coverButton)
+        self.addSubview(coverButton)
         coverButton.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
         coverButton.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
+        coverButton.addTarget(self, action: "hidePopView", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func createPopBody(){
-        pop.addSubview(popBody)
+        self.addSubview(popBody)
         popBody.mt_innerAlign(left: 4, top: 4, right: 4, bottom: nil)
         popBody.mt_setHeight(150)
         popBody.backgroundColor = UIColor.whiteColor()
         popBody.mt_splitHorizontallyByViews([line1,line2,line3], edge: UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8), gap: 8)
         popBody.roundBorder()
-        createLine()
         createCityLabel("")
         createProvinceLabel("")
         createCityButton()
         createProvinceButton()
         createClickButton()
-        createPickerView()
+        layoutPickerView()
         
-    }
-    
-    func createLine(){
-        line1.backgroundColor = UIColor.clearColor()
-        line2.backgroundColor = UIColor.clearColor()
-        line3.backgroundColor = UIColor.clearColor()
-        line4.backgroundColor = UIColor.clearColor()
     }
     
     func createCityLabel(titleLable : String){
@@ -106,18 +95,19 @@ class PopView: UIView {
         line1.addSubview(cityButton)
         cityButton.mt_innerAlign(left: nil, top: 4, right: 8, bottom: 4)
         cityButton.mt_innerAlign(left: (16, cityLabel), top: nil, right: nil, bottom: nil)
-        cityButton.addTarget(self, action: "showCityPickerView:", forControlEvents: UIControlEvents.TouchUpInside)
+        cityButton.setTitle(cityPickerView?.dataCityPickerView.first, forState: UIControlState.Normal)
+        cityButton.addTarget(self, action: "showCityPickerView", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
-    func showCityPickerView() {
-        cityPickerView?.hidden = false
-    }
     
+ 
     func createProvinceButton(){
         provinceButton = createButton()
         line2.addSubview(provinceButton)
         provinceButton.mt_innerAlign(left: nil, top: 4, right: 8, bottom: 4)
         provinceButton.mt_innerAlign(left: (16, provinceLabel), top: nil, right: nil, bottom: nil)
+        provinceButton.setTitle(provincePickerView?.dataProvincePickerView.first, forState: UIControlState.Normal)
+        provinceButton.addTarget(self, action: "showProvincePickerView", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func createClickButton(){
@@ -126,13 +116,24 @@ class PopView: UIView {
         clickButton.mt_innerAlign(left: 60, top: 0, right: 60, bottom: 0)
         clickButton.setTitle("Click", forState: .Normal)
         clickButton.backgroundColor = UIColor.redColor()
+        clickButton.addTarget(self, action: "showTableView", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
-    func createPickerView(){
-        line4.addSubview(cityPickerView!)
-        cityPickerView?.mt_innerAlign(left: 0, top: 0, right: 0, bottom: -5)
-        cityPickerView?.backgroundColor = UIColor.whiteColor()
-        cityPickerView?.roundBorder()
+    func layoutPickerView(){
+        var pickerViews = [PickerView]()
+        if let cityPV = cityPickerView {
+            pickerViews += [cityPV]
+        }
+        if let provincePV = provincePickerView {
+            pickerViews += [provincePV]
+        }
+        for item in pickerViews {
+            line4.addSubview(item)
+            item.hidden = true
+            item.mt_innerAlign(left: 4, top: 0, right: 4, bottom: -5)
+            item.backgroundColor = UIColor.whiteColor()
+            item.roundBorder()
+        }
     }
     
     func createLabel() -> UILabel{
@@ -143,7 +144,7 @@ class PopView: UIView {
     }
     
     func createButton() -> UIButton {
-        let button = UIButton()
+        let button = UIButton(type: UIButtonType.System)
         button.roundBorder()
         button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         button.layer.borderColor = UIColor.borderColor().CGColor
@@ -151,13 +152,27 @@ class PopView: UIView {
         return button
     }
     
-    func ShowPopView(sender: AnyObject) {
-        self.pop.hidden = false
+    func showCityPickerView() {
+        cityPickerView?.hidden = false
+    }
+    
+    func showProvincePickerView() {
+        provincePickerView?.hidden = false
+    }
+    
+    func hidePickerView() {
+        cityPickerView?.hidden = true
+        provincePickerView?.hidden = true
+    }
+    
+    func showPopView(sender: AnyObject) {
+        self.hidden = false
     }
 
-    func HidePopView(sender: AnyObject) {
-        self.pop.hidden = true
+    func hidePopView(sender: AnyObject) {
+        self.hidden = true
     }
+    
     
     /*
     // Only override drawRect: if you perform custom drawing.

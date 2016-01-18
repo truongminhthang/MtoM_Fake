@@ -15,6 +15,7 @@
 		3FA125871C464AC3000F4530 /* PlacePopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA125861C464AC3000F4530 /* PlacePopView.swift */; };
 		3FA125891C464B21000F4530 /* SalaryPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA125881C464B21000F4530 /* SalaryPopView.swift */; };
 		3FA1258B1C464B46000F4530 /* JobPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1258A1C464B46000F4530 /* JobPopView.swift */; };
+		3FEE36B71C4CC96E00598F5B /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE36B61C4CC96E00598F5B /* PickerView.swift */; };
 		FF30B46E1C16D00C00550D71 /* InformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B46D1C16D00C00550D71 /* InformationVC.swift */; };
 		FF30B4731C16D9EE00550D71 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B4721C16D9EE00550D71 /* TitleCell.swift */; };
 		FF30B4751C16DA1300550D71 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B4741C16DA1300550D71 /* TextCell.swift */; };
@@ -67,6 +68,7 @@
 		3FA125861C464AC3000F4530 /* PlacePopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePopView.swift; sourceTree = "<group>"; };
 		3FA125881C464B21000F4530 /* SalaryPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryPopView.swift; sourceTree = "<group>"; };
 		3FA1258A1C464B46000F4530 /* JobPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobPopView.swift; sourceTree = "<group>"; };
+		3FEE36B61C4CC96E00598F5B /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		FF30B46D1C16D00C00550D71 /* InformationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationVC.swift; sourceTree = "<group>"; };
 		FF30B4721C16D9EE00550D71 /* TitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		FF30B4741C16DA1300550D71 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		3F7B9C471C48867D00987819 /* PickerView */ = {
 			isa = PBXGroup;
 			children = (
+				3FEE36B61C4CC96E00598F5B /* PickerView.swift */,
 				3F82CEC01C45F9DD00C27413 /* CityPickerView.swift */,
 				3F82CEC21C4601EE00C27413 /* ProvincePickerView.swift */,
 			);
@@ -423,6 +426,7 @@
 				3FA125891C464B21000F4530 /* SalaryPopView.swift in Sources */,
 				3F82CEC31C4601EE00C27413 /* ProvincePickerView.swift in Sources */,
 				FF30B4771C16DA2100550D71 /* IncomeCell.swift in Sources */,
+				3FEE36B71C4CC96E00598F5B /* PickerView.swift in Sources */,
 				FF7758801C2AB10200C0457B /* Menu.swift in Sources */,
 				FF5F52DB1C0F0A66005EAD2C /* WorkingTableViewCell.swift in Sources */,
 				3FA1258B1C464B46000F4530 /* JobPopView.swift in Sources */,

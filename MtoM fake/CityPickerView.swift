@@ -8,31 +8,16 @@
 
 import UIKit
 
-class CityPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
+class CityPickerView: PickerView , UIPickerViewDataSource {
     var cityPickerView = UIPickerView()
-    var popView : PopView!
-    convenience init(popView: PopView) {
-        self.init()
-        self.popView = popView
-    }
     
-    var dataCityPickerView = ["Thai Binh", "Ha Noi", "TPHCM"]
+    var dataCityPickerView = ["Nam Dinh","Hai Phong","Hai Duong"]
     
-    override func layoutSubviews() {
-        createPickerView()
-    }
-    
-    func createPickerView(){
-        self.addSubview(cityPickerView)
-        cityPickerView.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
+    override func createPickerView(){
+        super.createPickerView()
         cityPickerView.dataSource = self
-        cityPickerView.delegate = self
-        cityPickerView.selectRow(1, inComponent: 0, animated: true)
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dataCityPickerView.count
@@ -40,8 +25,10 @@ class CityPickerView: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dataCityPickerView[row]
     }
+
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-       popView.cityButton.setTitle(dataCityPickerView[row], forState: .Normal)
+        let data = dataCityPickerView[row]
+       popView.cityButton.setTitle(data, forState: .Normal)
     }
     
     /*
