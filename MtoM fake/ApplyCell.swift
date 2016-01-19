@@ -10,15 +10,17 @@ import UIKit
 
 class ApplyCell: UITableViewCell {
     var applyView = UIView()
+    var headerApplyView = UIView()
     var webButton = UIButton()
     var callButton = UIButton()
-
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setLayoutOfHeaderCell()
         setLayoutOfApplyCell()
         
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,25 +30,39 @@ class ApplyCell: UITableViewCell {
         applyView.mt_innerAlign(left: 8, top: 0, right: 8, bottom: 0)
         applyView.roundBorder()
         applyView.backgroundColor = UIColor.whiteColor()
-        
+        setupWebButton()
+        setupCallButton()
+        mt_createVerticalMenu([webButton,callButton], edge: UIEdgeInsets(top: 8, left: 16, bottom: 16, right: 16), gap: 8, seperateColor: UIColor.clearColor())
+    }
+    
+    func setupWebButton(){
+        webButton = setupButton()
         applyView.addSubview(webButton)
+    }
+    
+    func setupCallButton(){
+        callButton = setupButton()
         applyView.addSubview(callButton)
-        mt_createVerticalMenu([webButton,callButton], edge: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8), gap: 2, seperateColor: UIColor.redColor())
+    }
+    
+    func setupButton() -> UIButton {
+        let button = UIButton(type: UIButtonType.System)
+        button.roundBorder()
+        button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        button.backgroundColor = UIColor.redColor()
+        return button
+    }
+    
+    func setLayoutOfHeaderCell() {
+        self.addSubview(headerApplyView)
+        headerApplyView.mt_innerAlign(left: 8, top: 0, right: 8, bottom: 16)
+        headerApplyView.backgroundColor = UIColor.whiteColor()
     }
     
     
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//        webButton.roundBorder()
-//        callButton.roundBorder()
-//        applyView.roundBorder()
-//    }
-
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
 }

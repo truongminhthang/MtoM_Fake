@@ -10,15 +10,16 @@ import UIKit
 
 class DetailsCell: UITableViewCell {
     var detailView = UIView()
-    var detailButton = UIButton()
-
+    var searchImageView = UIImageView()
+    var searchImage = UIImage(named: "ic_search")
+    var detailButton = UIButton(type: UIButtonType.System)
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(detailView)
         LayoutOfDetailsCell()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -26,23 +27,33 @@ class DetailsCell: UITableViewCell {
     
     func LayoutOfDetailsCell() {
         detailView.mt_innerAlign(left: 8, top: 0, right: 8, bottom: 0)
-        
+        detailView.backgroundColor = UIColor.whiteColor()
         detailView.addSubview(detailButton)
-        
-        detailButton.mt_splitHorizontallyByViews([detailView], edge: UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16), gap: 1)
-        
-        
+        detailButton.mt_innerAlign(left: 8, top: 4, right: 8, bottom: 4)
+        setupDetailButton()
+        setupSearchView()
+    }
+    
+    func setupDetailButton(){
         detailButton.roundBorder()
         detailButton.layer.borderColor = UIColor.borderColor().CGColor
         detailButton.layer.borderWidth = 1
         detailButton.clipsToBounds = true
-        
+        detailButton.backgroundColor = UIColor.whiteColor()
+        detailButton.setTitleColor(UIColor.mainColor(), forState: .Normal)
+    }
+    
+    func setupSearchView(){
+        detailButton.addSubview(searchImageView)
+        searchImageView.image = UIImage(named: "ic_search")
+        searchImageView.mt_innerAlign(left: nil, top: 6, right: nil  , bottom: 6)
+        searchImageView.mt_innerAlign(left: nil, top: nil, right: (2, detailButton.titleLabel), bottom: nil)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

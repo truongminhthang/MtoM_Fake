@@ -14,9 +14,17 @@ class WorkingViewController: UIViewController,UITableViewDataSource,UITableViewD
     @IBOutlet weak var tableView: UITableView!
     var TwoLabel: [String] = {
         var result = [String]()
-        result += ["Ca Mau"]
+        result += ["Thai Binh"]
+        result += ["Ha Noi"]
         result += ["TP HCM"]
-        result += ["Vung Tau"]
+        result += ["Ca Mau"]
+        result += ["Hai Phong"]
+        result += ["Hai Duong"]
+        result += ["Nam Dinh"]
+        result += ["Ninh Binh"]
+        result += ["Ha Noi2"]
+        result += ["Son La"]
+        result += ["Da Nang"]
         return result
     }()
     override func viewDidLoad() {

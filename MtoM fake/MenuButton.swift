@@ -10,17 +10,13 @@ import UIKit
 
 class MenuButton: UIButton {
     
-    
-
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
-        // Drawing code
+    // Drawing code
     }
     */
-    
-    
     
     private var selectedButtonTitle = NSMutableAttributedString()
     private var normalButtonTitle = NSMutableAttributedString()
@@ -28,6 +24,23 @@ class MenuButton: UIButton {
     
     var otherButtons = [MenuButton]()
     let imageArrow = UIImageView(image: UIImage(named: "ic_arrow_down"))
+    
+    var informationVC : InformationVC?
+    var popView : PopView?
+    weak var menuBt : Menu!
+    
+    
+    
+    convenience init(informationVC:InformationVC) {
+        self.init()
+        self.informationVC = informationVC
+    }
+    
+    convenience init(menuBt: Menu) {
+        self.init()
+        self.menuBt = menuBt
+        
+    }
     
     var title : String = "" {
         didSet {
@@ -41,6 +54,7 @@ class MenuButton: UIButton {
             setNormalButtonTitle()
         }
     }
+    
     var subTitle : String = "" {
         didSet {
             if subTitle != "" {
@@ -51,13 +65,10 @@ class MenuButton: UIButton {
         }
     }
     
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupMenuButton()
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -74,7 +85,6 @@ class MenuButton: UIButton {
         setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         titleLabel?.numberOfLines = 2
         titleLabel?.textAlignment = .Center
-        
         self.roundBorder()
     }
     
@@ -89,16 +99,18 @@ class MenuButton: UIButton {
     }
     
     override func layoutSubviews() {
-        
         super.layoutSubviews()
         if selected {
             backgroundColor = UIColor.whiteColor()
-
+            menuBt.showPopView(self)
         } else {
             backgroundColor = UIColor.clearColor()
+            menuBt.hidePopViewIfNeed()
         }
+        
         layoutArrowDown()
     }
+    
     func layoutArrowDown() {
         print(selected)
         if !selected {
@@ -109,23 +121,20 @@ class MenuButton: UIButton {
         }
     }
     
-    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
         resetOtherButton()
-        print("touchesBegan \(self.selected)")
         selected = !selected
-        
     }
-    
     func resetOtherButton() {
         for item in otherButtons {
             if item.selected == true {
                 if item != self {
                     item.selected = false
                 }
-
+                
             }
         }
     }
-
+    
 }
