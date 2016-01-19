@@ -18,11 +18,23 @@ class PopView: UIView {
     let line4 = UIView()
     var cityLabel = UILabel()
     var provinceLabel = UILabel()
-    var cityButton = UIButton()
-    var provinceButton = UIButton()
+    var menuPV : Menu?
+    
+    var cityButton : CityButton!
+    var provinceButton : PickerButton!
+    var salaryTypeButton : PickerButton!
+    var salaryButton : PickerButton!
+    var jobTypeButton : PickerButton!
+    var jobButton : PickerButton!
+    
     var clickButton = UIButton()
     var cityPickerView : CityPickerView?
     var provincePickerView : ProvincePickerView?
+    var salaryTypePickerView : SalaryTypePickerView?
+    var salaryPickerView : SalaryPickerView?
+    var jobTypePickerView : JobTypePickerView?
+    var jobPickerView : JobPickerView?
+    
     var vc : InformationVC?
     
     convenience init(vc: InformationVC) {
@@ -30,19 +42,41 @@ class PopView: UIView {
         self.vc = vc
     }
     
+    convenience init(menuPV: Menu) {
+        self.init()
+        self.menuPV = menuPV
+    }
+    
     override func layoutSubviews() {
         self.clipsToBounds = true
-        cityPickerView = CityPickerView(popView: self)
-        provincePickerView = ProvincePickerView(popView: self)
+        connectPickerView()
+        connectPickerViewButton()
         createPopFilter()
         
+    }
+    
+    func connectPickerView() {
+        cityPickerView = CityPickerView(popView: self)
+        provincePickerView = ProvincePickerView(popView: self)
+        salaryTypePickerView = SalaryTypePickerView(popView: self)
+        salaryPickerView = SalaryPickerView(popView: self)
+        jobTypePickerView = JobTypePickerView(popView: self)
+        jobPickerView = JobPickerView(popView: self)
+    }
+    
+    func connectPickerViewButton() {
+        cityButton = CityButton(popView: self)
+        provinceButton = PickerButton(popView: self)
+        salaryTypeButton = PickerButton(popView: self)
+        salaryButton = PickerButton(popView: self)
+        jobTypeButton = PickerButton(popView: self)
+        jobButton = PickerButton(popView: self)
     }
     
     func createPopFilter(){
         createCoverButton()
         createPopBody()
         createLine4()
-        
     }
     
     func createLine4(){
@@ -67,11 +101,12 @@ class PopView: UIView {
         popBody.roundBorder()
         createCityLabel("")
         createProvinceLabel("")
-        createCityButton()
-        createProvinceButton()
+        
         createClickButton()
         layoutPickerView()
         
+        createHightButton()
+        createLowButton()
     }
     
     func createCityLabel(titleLable : String){
@@ -89,27 +124,44 @@ class PopView: UIView {
         provinceLabel.mt_setWidth(80)
         provinceLabel.text = titleLabel
     }
-    
-    func createCityButton(){
-        cityButton = createButton()
-        line1.addSubview(cityButton)
-        cityButton.mt_innerAlign(left: nil, top: 4, right: 8, bottom: 4)
-        cityButton.mt_innerAlign(left: (16, cityLabel), top: nil, right: nil, bottom: nil)
-        cityButton.setTitle(cityPickerView?.dataCityPickerView.first, forState: UIControlState.Normal)
-        cityButton.addTarget(self, action: "showCityPickerView", forControlEvents: UIControlEvents.TouchUpInside)
+    func createHightButton() {
+        var hightButtons = [PickerButton]()
+        if let cityBT = cityButton {
+            hightButtons += [cityBT]
+        }
+        if let salaryTypeBT = salaryTypeButton {
+            hightButtons += [salaryTypeBT]
+        }
+        if let jobTypeBT = jobTypeButton {
+            hightButtons += [jobTypeBT]
+        }
+        for items in hightButtons {
+            line1.addSubview(items)
+            items.mt_innerAlign(left: nil, top: 4, right: 8, bottom: 4)
+            items.mt_innerAlign(left: (16, cityLabel), top: nil, right: nil, bottom: nil)
+            items.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        }
     }
     
-    
- 
-    func createProvinceButton(){
-        provinceButton = createButton()
-        line2.addSubview(provinceButton)
-        provinceButton.mt_innerAlign(left: nil, top: 4, right: 8, bottom: 4)
-        provinceButton.mt_innerAlign(left: (16, provinceLabel), top: nil, right: nil, bottom: nil)
-        provinceButton.setTitle(provincePickerView?.dataProvincePickerView.first, forState: UIControlState.Normal)
-        provinceButton.addTarget(self, action: "showProvincePickerView", forControlEvents: UIControlEvents.TouchUpInside)
+    func createLowButton() {
+        var lowButtons = [PickerButton]()
+        if let provinceBT = provinceButton {
+            lowButtons += [provinceBT]
+        }
+        if let salaryBT = salaryButton {
+            lowButtons += [salaryBT]
+        }
+        if let jobBT = jobButton {
+            lowButtons += [jobBT]
+        }
+        for items in lowButtons {
+            line2.addSubview(items)
+            items.mt_innerAlign(left: nil, top: 4, right: 8, bottom: 4)
+            items.mt_innerAlign(left: (16, provinceLabel), top: nil, right: nil, bottom: nil)
+            items.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        }
     }
-    
+
     func createClickButton(){
         clickButton = createButton()
         line3.addSubview(clickButton)
@@ -127,9 +179,20 @@ class PopView: UIView {
         if let provincePV = provincePickerView {
             pickerViews += [provincePV]
         }
+        if let salaryTypePV = salaryTypePickerView {
+            pickerViews += [salaryTypePV]
+        }
+        if let salaryPV = salaryPickerView {
+            pickerViews += [salaryPV]
+        }
+        if let jobTypePV = jobTypePickerView {
+            pickerViews += [jobTypePV]
+        }
+        if let jobPV = jobPickerView {
+            pickerViews += [jobPV]
+        }
         for item in pickerViews {
             line4.addSubview(item)
-            item.hidden = true
             item.mt_innerAlign(left: 4, top: 0, right: 4, bottom: -5)
             item.backgroundColor = UIColor.whiteColor()
             item.roundBorder()
@@ -152,17 +215,47 @@ class PopView: UIView {
         return button
     }
     
-    func showCityPickerView() {
-        cityPickerView?.hidden = false
-    }
-    
-    func showProvincePickerView() {
-        provincePickerView?.hidden = false
+    func showPickerView(sender: PickerButton) {
+        switch sender {
+        case cityButton:
+            cityPickerView?.hidden = false
+        case provinceButton:
+            provincePickerView?.hidden = false
+        case salaryTypeButton:
+            salaryTypePickerView?.hidden = false
+        case salaryButton:
+            salaryPickerView?.hidden = false
+        case jobTypeButton:
+            jobTypePickerView?.hidden = false
+        case jobButton:
+            jobPickerView?.hidden = false
+        default: break
+        }
     }
     
     func hidePickerView() {
-        cityPickerView?.hidden = true
-        provincePickerView?.hidden = true
+        var pickerViews = [PickerView]()
+        if let cityPV = cityPickerView {
+            pickerViews += [cityPV]
+        }
+        if let provincePV = provincePickerView {
+            pickerViews += [provincePV]
+        }
+        if let salaryTypePV = salaryTypePickerView {
+            pickerViews += [salaryTypePV]
+        }
+        if let salaryPV = salaryPickerView {
+            pickerViews += [salaryPV]
+        }
+        if let jobTpyePV = jobTypePickerView {
+            pickerViews += [jobTpyePV]
+        }
+        if let jobPV = jobPickerView {
+            pickerViews += [jobPV]
+        }
+        for items in pickerViews {
+            items.hidden = true
+        }
     }
     
     func showPopView(sender: AnyObject) {

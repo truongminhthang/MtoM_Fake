@@ -26,6 +26,8 @@ class Menu: UIView {
         jobFilter = MenuButton(informationVC: vc)
     }
     
+    var popView : PopView!
+    
     var vc: InformationVC?
     
     var spaceFilter = MenuButton()
@@ -33,12 +35,12 @@ class Menu: UIView {
     var jobFilter = MenuButton()
     
     
-    
-    
     override func layoutSubviews() {
         spaceFilter = MenuButton(menuBt: self)
         salaryFilter = MenuButton(menuBt: self)
         jobFilter = MenuButton(menuBt: self)
+        
+        popView = PopView(menuPV: self)
         self.clipsToBounds = true
         setTitleForFilterButton()
         asignSetOfButtonForMenuButton()

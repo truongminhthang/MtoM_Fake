@@ -72,13 +72,12 @@ class MenuButton: UIButton {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupMenuButton()
+//        setupMenuButton()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
     func setupMenuButton() {
         selected = false
         setTitleColor(UIColor.redColor(), forState: UIControlState.Selected)

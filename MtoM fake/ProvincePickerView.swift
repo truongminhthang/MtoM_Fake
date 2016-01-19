@@ -28,7 +28,8 @@ class ProvincePickerView: PickerView , UIPickerViewDataSource{
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        popView.provinceButton.setTitle(dataProvincePickerView[row], forState: UIControlState.Normal)
+        let data = dataProvincePickerView[row]
+        popView.provinceButton.setTitle(data, forState: UIControlState.Normal)
     }
 
     /*

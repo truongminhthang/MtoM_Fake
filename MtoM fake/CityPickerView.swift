@@ -9,6 +9,7 @@
 import UIKit
 
 class CityPickerView: PickerView , UIPickerViewDataSource {
+    
     var cityPickerView = UIPickerView()
     
     var dataCityPickerView = ["Nam Dinh","Hai Phong","Hai Duong"]
@@ -28,7 +29,7 @@ class CityPickerView: PickerView , UIPickerViewDataSource {
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let data = dataCityPickerView[row]
-       popView.cityButton.setTitle(data, forState: .Normal)
+       popView.cityButton!.setTitle(data, forState: .Normal)
     }
     
     /*

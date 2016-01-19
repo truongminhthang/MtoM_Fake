@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F7AC9CF1C4E3E7E000B08C9 /* CityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AC9CE1C4E3E7E000B08C9 /* CityButton.swift */; };
 		3F7FB6851C47461A00A60BAB /* PopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7FB6841C47461A00A60BAB /* PopView.swift */; };
 		3F82CEBF1C45ECA900C27413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F82CEBD1C45ECA900C27413 /* Main.storyboard */; };
 		3F82CEC11C45F9DD00C27413 /* CityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82CEC01C45F9DD00C27413 /* CityPickerView.swift */; };
 		3F82CEC31C4601EE00C27413 /* ProvincePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82CEC21C4601EE00C27413 /* ProvincePickerView.swift */; };
+		3F84F9211C4DCF1100E0B7FB /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84F9201C4DCF1100E0B7FB /* PickerButton.swift */; };
+		3F84F9231C4DD90B00E0B7FB /* SalaryTypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84F9221C4DD90B00E0B7FB /* SalaryTypePickerView.swift */; };
+		3F84F9251C4DE09A00E0B7FB /* SalaryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84F9241C4DE09A00E0B7FB /* SalaryPickerView.swift */; };
+		3F84F9271C4DE0FB00E0B7FB /* JobTypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84F9261C4DE0FB00E0B7FB /* JobTypePickerView.swift */; };
+		3F84F9291C4DE1A000E0B7FB /* JobPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84F9281C4DE1A000E0B7FB /* JobPickerView.swift */; };
 		3FA0DBE01C3D0E99005B4D4E /* MTAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0DBDF1C3D0E99005B4D4E /* MTAutoLayout.swift */; };
 		3FA125871C464AC3000F4530 /* PlacePopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA125861C464AC3000F4530 /* PlacePopView.swift */; };
 		3FA125891C464B21000F4530 /* SalaryPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA125881C464B21000F4530 /* SalaryPopView.swift */; };
@@ -60,10 +66,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F7AC9CE1C4E3E7E000B08C9 /* CityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityButton.swift; sourceTree = "<group>"; };
 		3F7FB6841C47461A00A60BAB /* PopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopView.swift; sourceTree = "<group>"; };
 		3F82CEBE1C45ECA900C27413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../MtoM_Fake copy/MtoM fake/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		3F82CEC01C45F9DD00C27413 /* CityPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityPickerView.swift; sourceTree = "<group>"; };
 		3F82CEC21C4601EE00C27413 /* ProvincePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvincePickerView.swift; sourceTree = "<group>"; };
+		3F84F9201C4DCF1100E0B7FB /* PickerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
+		3F84F9221C4DD90B00E0B7FB /* SalaryTypePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryTypePickerView.swift; sourceTree = "<group>"; };
+		3F84F9241C4DE09A00E0B7FB /* SalaryPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryPickerView.swift; sourceTree = "<group>"; };
+		3F84F9261C4DE0FB00E0B7FB /* JobTypePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTypePickerView.swift; sourceTree = "<group>"; };
+		3F84F9281C4DE1A000E0B7FB /* JobPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobPickerView.swift; sourceTree = "<group>"; };
 		3FA0DBDF1C3D0E99005B4D4E /* MTAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTAutoLayout.swift; sourceTree = "<group>"; };
 		3FA125861C464AC3000F4530 /* PlacePopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePopView.swift; sourceTree = "<group>"; };
 		3FA125881C464B21000F4530 /* SalaryPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryPopView.swift; sourceTree = "<group>"; };
@@ -126,12 +138,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F7AC9CD1C4E3D83000B08C9 /* PickerButton */ = {
+			isa = PBXGroup;
+			children = (
+				3F84F9201C4DCF1100E0B7FB /* PickerButton.swift */,
+				3F7AC9CE1C4E3E7E000B08C9 /* CityButton.swift */,
+			);
+			name = PickerButton;
+			sourceTree = "<group>";
+		};
 		3F7B9C471C48867D00987819 /* PickerView */ = {
 			isa = PBXGroup;
 			children = (
 				3FEE36B61C4CC96E00598F5B /* PickerView.swift */,
 				3F82CEC01C45F9DD00C27413 /* CityPickerView.swift */,
 				3F82CEC21C4601EE00C27413 /* ProvincePickerView.swift */,
+				3F84F9221C4DD90B00E0B7FB /* SalaryTypePickerView.swift */,
+				3F84F9241C4DE09A00E0B7FB /* SalaryPickerView.swift */,
+				3F84F9261C4DE0FB00E0B7FB /* JobTypePickerView.swift */,
+				3F84F9281C4DE1A000E0B7FB /* JobPickerView.swift */,
 			);
 			name = PickerView;
 			sourceTree = "<group>";
@@ -143,6 +168,7 @@
 				3FA125861C464AC3000F4530 /* PlacePopView.swift */,
 				3FA125881C464B21000F4530 /* SalaryPopView.swift */,
 				3FA1258A1C464B46000F4530 /* JobPopView.swift */,
+				3F7AC9CD1C4E3D83000B08C9 /* PickerButton */,
 				3F7B9C471C48867D00987819 /* PickerView */,
 			);
 			name = PopView;
@@ -418,11 +444,15 @@
 				FF30B4731C16D9EE00550D71 /* TitleCell.swift in Sources */,
 				3FA0DBE01C3D0E99005B4D4E /* MTAutoLayout.swift in Sources */,
 				FF7C6CF11C159C37003FE40C /* PickerViewController.swift in Sources */,
+				3F84F9211C4DCF1100E0B7FB /* PickerButton.swift in Sources */,
+				3F84F9271C4DE0FB00E0B7FB /* JobTypePickerView.swift in Sources */,
 				FF8C353F1C0C63D10024474F /* ViewController.swift in Sources */,
 				FF82B80F1C199EE600DBF9DC /* SetDashLine.swift in Sources */,
 				FF5F52DD1C0F1F37005EAD2C /* SexViewController.swift in Sources */,
 				FF30B46E1C16D00C00550D71 /* InformationVC.swift in Sources */,
 				FF8C356D1C0C77230024474F /* LivingPlaceTableViewCell.swift in Sources */,
+				3F84F9231C4DD90B00E0B7FB /* SalaryTypePickerView.swift in Sources */,
+				3F7AC9CF1C4E3E7E000B08C9 /* CityButton.swift in Sources */,
 				3FA125891C464B21000F4530 /* SalaryPopView.swift in Sources */,
 				3F82CEC31C4601EE00C27413 /* ProvincePickerView.swift in Sources */,
 				FF30B4771C16DA2100550D71 /* IncomeCell.swift in Sources */,
@@ -431,10 +461,12 @@
 				FF5F52DB1C0F0A66005EAD2C /* WorkingTableViewCell.swift in Sources */,
 				3FA1258B1C464B46000F4530 /* JobPopView.swift in Sources */,
 				FF30B4751C16DA1300550D71 /* TextCell.swift in Sources */,
+				3F84F9251C4DE09A00E0B7FB /* SalaryPickerView.swift in Sources */,
 				3FA125871C464AC3000F4530 /* PlacePopView.swift in Sources */,
 				3F7FB6851C47461A00A60BAB /* PopView.swift in Sources */,
 				FF5F52DF1C0F1F55005EAD2C /* SexTableViewCell.swift in Sources */,
 				FF7758761C2A8E9200C0457B /* MenuButton.swift in Sources */,
+				3F84F9291C4DE1A000E0B7FB /* JobPickerView.swift in Sources */,
 				FF8C35711C0C84860024474F /* Utils.swift in Sources */,
 				FF8C353D1C0C63D10024474F /* AppDelegate.swift in Sources */,
 				FF30B4791C16DA5800550D71 /* DetailsCell.swift in Sources */,

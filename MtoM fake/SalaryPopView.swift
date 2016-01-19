@@ -19,7 +19,7 @@ class SalaryPopView: PopView {
     */
     override func createPopBody() {
         super.createPopBody()
-        createCityLabel("Type")
+        createCityLabel("S Type")
         createProvinceLabel("Salary")
     }
 
