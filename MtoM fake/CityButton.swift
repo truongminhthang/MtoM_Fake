@@ -9,15 +9,35 @@
 import UIKit
 
 class CityButton: PickerButton {
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if selected {
-            popView?.cityPickerView?.hidden = false
-        }else {
-            popView?.cityPickerView?.hidden = true
-        }
+    
+    var cityPickerView = PickerView()
+    convenience init(cityPV: PickerView) {
+        self.init()
+        self.cityPickerView = cityPV
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        showCityPickerView()
+    }
+    
+    func showCityPickerView() {
+        cityPickerView.hidden = false
+    }
+    
+    var dataCityPickerView = ["Nam Dinh","Hai Phong","Hai Duong"]
+    
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dataCityPickerView.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dataCityPickerView[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let data = dataCityPickerView[row]
+        popView!.cityButton!.setTitle(data, forState: .Normal)
+    }  
 }

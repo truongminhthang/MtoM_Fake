@@ -16,6 +16,7 @@ class PickerButton: UIButton {
 
     var informationVC : InformationVC?
     var popView : PopView?
+    var pickerView : PickerView?
     
     convenience init(informationVC: InformationVC) {
         self.init()
@@ -25,7 +26,11 @@ class PickerButton: UIButton {
     convenience init(popView: PopView) {
         self.init()
         self.popView = popView
-        
+    }
+    
+    convenience init(pickerView: PickerView) {
+        self.init()
+        self.pickerView = pickerView
     }
     
     override init(frame: CGRect) {
@@ -40,9 +45,9 @@ class PickerButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         if selected {
-            popView?.showPickerView(self)
+            popView!.showPickerView(self)
         }else {
-            popView?.hidePickerView()
+            popView!.hidePickerView()
         }
         layoutArrowDown()
     }

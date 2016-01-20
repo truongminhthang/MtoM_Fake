@@ -8,12 +8,12 @@
 
 import UIKit
 
-class PickerView: UIView ,UIPickerViewDelegate {
+class PickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     var pickerView = UIPickerView()
-    
+    var data = ["sa","sad","sdsdg"]
     var defaultRow = 0
 
-    weak var popView : PopView!
+    var popView : PopView!
     convenience init(popView: PopView) {
         self.init()
         self.popView = popView
@@ -31,13 +31,17 @@ class PickerView: UIView ,UIPickerViewDelegate {
         self.addSubview(pickerView)
         pickerView.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
         pickerView.delegate = self
+        pickerView.dataSource = self
         pickerView.selectRow(defaultRow, inComponent: 0, animated: true)
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        return data.count
+    }
+
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

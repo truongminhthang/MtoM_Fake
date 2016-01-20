@@ -41,7 +41,6 @@ class Menu: UIView {
         jobFilter = MenuButton(menuBt: self)
         
         popView = PopView(menuPV: self)
-        self.clipsToBounds = true
         setTitleForFilterButton()
         asignSetOfButtonForMenuButton()
         addMenuButtonToSubView()

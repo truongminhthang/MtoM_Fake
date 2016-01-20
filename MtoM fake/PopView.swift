@@ -9,7 +9,7 @@
 import UIKit
 
 class PopView: UIView {
-
+    
     var coverButton = UIButton()
     var popBody = UIView()
     let line1 = UIView()
@@ -21,20 +21,14 @@ class PopView: UIView {
     var menuPV : Menu?
     
     var cityButton : CityButton!
-    var provinceButton : PickerButton!
-    var salaryTypeButton : PickerButton!
-    var salaryButton : PickerButton!
-    var jobTypeButton : PickerButton!
-    var jobButton : PickerButton!
+    var provinceButton : ProvinceButton!
+    var salaryTypeButton : SalaryTypeButton!
+    var salaryButton : SalaryButton!
+    var jobTypeButton : JobTypeButton!
+    var jobButton : JobButton!
     
     var clickButton = UIButton()
-    var cityPickerView : CityPickerView?
-    var provincePickerView : ProvincePickerView?
-    var salaryTypePickerView : SalaryTypePickerView?
-    var salaryPickerView : SalaryPickerView?
-    var jobTypePickerView : JobTypePickerView?
-    var jobPickerView : JobPickerView?
-    
+    var pickerView: PickerView?
     var vc : InformationVC?
     
     convenience init(vc: InformationVC) {
@@ -49,28 +43,18 @@ class PopView: UIView {
     
     override func layoutSubviews() {
         self.clipsToBounds = true
-        connectPickerView()
         connectPickerViewButton()
         createPopFilter()
-        
-    }
-    
-    func connectPickerView() {
-        cityPickerView = CityPickerView(popView: self)
-        provincePickerView = ProvincePickerView(popView: self)
-        salaryTypePickerView = SalaryTypePickerView(popView: self)
-        salaryPickerView = SalaryPickerView(popView: self)
-        jobTypePickerView = JobTypePickerView(popView: self)
-        jobPickerView = JobPickerView(popView: self)
+        self.pickerView = PickerView(popView: self)
     }
     
     func connectPickerViewButton() {
         cityButton = CityButton(popView: self)
-        provinceButton = PickerButton(popView: self)
-        salaryTypeButton = PickerButton(popView: self)
-        salaryButton = PickerButton(popView: self)
-        jobTypeButton = PickerButton(popView: self)
-        jobButton = PickerButton(popView: self)
+        provinceButton = ProvinceButton(popView: self)
+        salaryTypeButton = SalaryTypeButton(popView: self)
+        salaryButton = SalaryButton(popView: self)
+        jobTypeButton = JobTypeButton(popView: self)
+        jobButton = JobButton(popView: self)
     }
     
     func createPopFilter(){
@@ -161,7 +145,7 @@ class PopView: UIView {
             items.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         }
     }
-
+    
     func createClickButton(){
         clickButton = createButton()
         line3.addSubview(clickButton)
@@ -172,31 +156,33 @@ class PopView: UIView {
     }
     
     func layoutPickerView(){
-        var pickerViews = [PickerView]()
-        if let cityPV = cityPickerView {
-            pickerViews += [cityPV]
-        }
-        if let provincePV = provincePickerView {
-            pickerViews += [provincePV]
-        }
-        if let salaryTypePV = salaryTypePickerView {
-            pickerViews += [salaryTypePV]
-        }
-        if let salaryPV = salaryPickerView {
-            pickerViews += [salaryPV]
-        }
-        if let jobTypePV = jobTypePickerView {
-            pickerViews += [jobTypePV]
-        }
-        if let jobPV = jobPickerView {
-            pickerViews += [jobPV]
-        }
-        for item in pickerViews {
-            line4.addSubview(item)
-            item.mt_innerAlign(left: 4, top: 0, right: 4, bottom: -5)
-            item.backgroundColor = UIColor.whiteColor()
-            item.roundBorder()
-        }
+        
+                var pickerViews = [PickerView]()
+        
+                if let cityPV = cityButton?.cityPickerView {
+                    pickerViews += [cityPV]
+                }
+                if let provincePV = provinceButton?.provincePickerView {
+                    pickerViews += [provincePV]
+                }
+                if let salaryTypePV = salaryTypeButton?.salaryTypePickerView{
+                    pickerViews += [salaryTypePV]
+                }
+                if let salaryPV = salaryButton?.salaryPickerView {
+                    pickerViews += [salaryPV]
+                }
+                if let jobTypePV = jobTypeButton?.jobTypePickerView {
+                    pickerViews += [jobTypePV]
+                }
+                if let jobPV = jobButton?.jobPickerView {
+                    pickerViews += [jobPV]
+                }
+                for item in pickerViews {
+                    line4.addSubview(item)
+                    item.mt_innerAlign(left: 4, top: 0, right: 4, bottom: -5)
+                    item.backgroundColor = UIColor.whiteColor()
+                    item.roundBorder()
+                }
     }
     
     func createLabel() -> UILabel{
@@ -218,39 +204,39 @@ class PopView: UIView {
     func showPickerView(sender: PickerButton) {
         switch sender {
         case cityButton:
-            cityPickerView?.hidden = false
+            cityButton.showCityPickerView()
         case provinceButton:
-            provincePickerView?.hidden = false
+            provinceButton.provincePickerView.hidden = false
         case salaryTypeButton:
-            salaryTypePickerView?.hidden = false
+            salaryTypeButton.salaryTypePickerView.hidden = false
         case salaryButton:
-            salaryPickerView?.hidden = false
+            salaryButton.salaryPickerView.hidden = false
         case jobTypeButton:
-            jobTypePickerView?.hidden = false
+            jobTypeButton.jobTypePickerView.hidden = false
         case jobButton:
-            jobPickerView?.hidden = false
+            jobButton.jobPickerView.hidden = false
         default: break
         }
     }
     
     func hidePickerView() {
         var pickerViews = [PickerView]()
-        if let cityPV = cityPickerView {
+        if let cityPV = cityButton?.cityPickerView {
             pickerViews += [cityPV]
         }
-        if let provincePV = provincePickerView {
+        if let provincePV = provinceButton?.provincePickerView {
             pickerViews += [provincePV]
         }
-        if let salaryTypePV = salaryTypePickerView {
+        if let salaryTypePV = salaryTypeButton?.salaryTypePickerView {
             pickerViews += [salaryTypePV]
         }
-        if let salaryPV = salaryPickerView {
+        if let salaryPV = salaryButton?.salaryPickerView {
             pickerViews += [salaryPV]
         }
-        if let jobTpyePV = jobTypePickerView {
+        if let jobTpyePV = jobTypeButton?.jobTypePickerView {
             pickerViews += [jobTpyePV]
         }
-        if let jobPV = jobPickerView {
+        if let jobPV = jobButton?.jobPickerView {
             pickerViews += [jobPV]
         }
         for items in pickerViews {
@@ -261,7 +247,7 @@ class PopView: UIView {
     func showPopView(sender: AnyObject) {
         self.hidden = false
     }
-
+    
     func hidePopView(sender: AnyObject) {
         self.hidden = true
     }
@@ -271,11 +257,11 @@ class PopView: UIView {
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
-        // Drawing code
+    // Drawing code
     }
     */
     
     
     
-
+    
 }

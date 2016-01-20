@@ -99,6 +99,7 @@ class MenuButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.clearsContextBeforeDrawing = true
         if selected {
             backgroundColor = UIColor.whiteColor()
             menuBt.showPopView(self)
