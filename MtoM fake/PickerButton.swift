@@ -10,21 +10,14 @@ import UIKit
 
 class PickerButton: UIButton {
     
-    let pickerView = ContainerPickerView()
-    var data = [String]()
+    var containerPickerView = ContainerPickerView()
     var defaultRow = 0
-    var popView : PopView!
-    
-    convenience init(popView: PopView) {
-        self.init()
-        self.popView = popView
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupPickerButton()
         layoutArrowDown()
-        pickerView.createPickerView()
+       containerPickerView.roundBorder()
     }
     
 
@@ -40,23 +33,47 @@ class PickerButton: UIButton {
         self.layer.borderWidth = 1
         self.roundBorder()
     }
-    
+
     func layoutArrowDown() {
         self.addSubview(imageArrow)
         imageArrow.mt_InnerAlign(PinPosition.MidRight, space: 5, size: CGSize(width: 15, height: 15))
     }
     
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        return containerPickerView.data.count
+    }
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        self.setTitle(containerPickerView.data[row], forState: UIControlState.Normal)
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        return containerPickerView.data[row]
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
         selected = !selected
+        if selected {
+            showPickerView()
+        }else {
+            hidePickerView()
+        }
     }
     
-    func showPicker() {
-        pickerView.hidden = false
+    func showPickerView() {
+        
+        AppDelegate.shareInstance().window?.addSubview(containerPickerView)
+        containerPickerView.mt_innerAlign(left: 8, top: nil, right: 8, bottom: 0)
+        containerPickerView.mt_innerAlign(left: nil, top: (300, self), right: nil, bottom: nil)
     }
     
-    func hidePicker() {
-        pickerView.hidden = true
+    
+    
+    func hidePickerView() {
+        containerPickerView.removeFromSuperview()
     }
     
     /*

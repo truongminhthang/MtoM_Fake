@@ -25,22 +25,8 @@ class MenuButton: UIButton {
     var otherButtons = [MenuButton]()
     let imageArrow = UIImageView(image: UIImage(named: "ic_arrow_down"))
     
-    var informationVC : InformationVC?
     var popView : PopView?
-    weak var menuBt : Menu!
     
-    
-    
-    convenience init(informationVC:InformationVC) {
-        self.init()
-        self.informationVC = informationVC
-    }
-    
-    convenience init(menuBt: Menu) {
-        self.init()
-        self.menuBt = menuBt
-        
-    }
     
     var title : String = "" {
         didSet {
@@ -102,10 +88,8 @@ class MenuButton: UIButton {
         self.clearsContextBeforeDrawing = true
         if selected {
             backgroundColor = UIColor.whiteColor()
-            menuBt.showPopView(self)
         } else {
             backgroundColor = UIColor.clearColor()
-            menuBt.hidePopViewIfNeed()
         }
         
         layoutArrowDown()

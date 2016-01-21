@@ -10,6 +10,20 @@ import UIKit
 
 class SalaryPopView: PopView {
 
+    var salaryTypeButton = PickerButton()
+    var salaryButton = PickerButton()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        higherLabelTitle = "SalaryType"
+        lowerLabelTitle = "Range"
+        higherButton = salaryTypeButton
+        lowerButton = salaryButton
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -19,8 +33,6 @@ class SalaryPopView: PopView {
     */
     override func createPopBody() {
         super.createPopBody()
-        createCityLabel("S Type")
-        createProvinceLabel("Salary")
     }
 
 }

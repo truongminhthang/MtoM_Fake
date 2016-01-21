@@ -98,9 +98,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.tbv.allowsSelection = false
 
         layoutMenu()
-        createTableView()
-        layoutPopView()
-        
+        createTableView()        
     }
 
     func layoutMenu() {
@@ -108,26 +106,6 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         menuVC!.mt_innerAlign(left: 0, top: 0, right: 0, bottom: nil)
         menuVC!.mt_setHeight(60)
         menuVC!.backgroundColor = UIColor.darkGrayColor()
-    }
-    
-    func layoutPopView() {
-        var popViews = [PopView]()
-        if let placePV = placePopView {
-            popViews += [placePV]
-        }
-        
-        if let salaryPV = salaryPopView {
-            popViews += [salaryPV]
-        }
-        
-        if let jobPV = jobPopView {
-            popViews += [jobPV]
-        }
-        for item in popViews {
-            view.addSubview(item)
-            item.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
-            item.mt_innerAlign(left: nil, top: (0, menuVC), right: nil, bottom: nil)
-        }
     }
     
     func createTableView() {

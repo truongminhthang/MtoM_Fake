@@ -10,6 +10,21 @@ import UIKit
 
 class JobPopView: PopView {
 
+    var jobTypeButton = PickerButton()
+    var jobButton = PickerButton()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        higherLabelTitle = "Job Type"
+        lowerLabelTitle = ""
+        higherButton = jobTypeButton
+        lowerButton = jobButton
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -19,7 +34,5 @@ class JobPopView: PopView {
     */
     override func createPopBody() {
         super.createPopBody()
-        createCityLabel("Job Type")
-        createProvinceLabel("Job")
     }
 }

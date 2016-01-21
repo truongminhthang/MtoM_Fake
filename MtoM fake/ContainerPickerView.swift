@@ -12,11 +12,10 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     var pickerView = UIPickerView()
     var data = [String]()
     var defaultRow = 1
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createPickerView()
+        self.backgroundColor = UIColor.redColor()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -39,18 +38,14 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         return data.count
-    }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
         return data[row]
     }
-    
-    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

@@ -12,60 +12,54 @@ class PopView: UIView {
     
     var coverButton = UIButton()
     var popBody = UIView()
+    
     let line1 = UIView()
     let line2 = UIView()
     let line3 = UIView()
-    let line4 = UIView()
-    var cityLabel = UILabel()
-    var provinceLabel = UILabel()
+    var higherLabel = UILabel()
+    var higherLabelTitle : String
+    var lowerLabel = UILabel()
+    var lowerLabelTitle: String
+    var higherButton : PickerButton
+    var lowerButton :  PickerButton
+    
     var menuPV : Menu?
-    
-    var cityButton : CityButton!
-    var provinceButton : ProvinceButton!
-    var salaryTypeButton : SalaryTypeButton!
-    var salaryButton : SalaryButton!
-    var jobTypeButton : JobTypeButton!
-    var jobButton : JobButton!
-    
+        
     var clickButton = UIButton()
     var vc : InformationVC?
     
-    convenience init(vc: InformationVC) {
-        self.init()
-        self.vc = vc
+    override init(frame: CGRect) {
+        higherLabelTitle = ""
+        lowerLabelTitle = ""
+        higherButton = PickerButton()
+        lowerButton = PickerButton()
+        super.init(frame: frame)
     }
     
-    convenience init(menuPV: Menu) {
-        self.init()
-        self.menuPV = menuPV
+    convenience init(vc: InformationVC) {
+        self.init(frame: CGRectZero)
+        self.vc = vc
     }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     
     override func layoutSubviews() {
         self.clipsToBounds = true
-        connectPickerViewButton()
         createPopFilter()
+        super.layoutSubviews()
     }
     
-    func connectPickerViewButton() {
-        cityButton = CityButton(popView: self)
-        provinceButton = ProvinceButton(popView: self)
-        salaryTypeButton = SalaryTypeButton(popView: self)
-        salaryButton = SalaryButton(popView: self)
-        jobTypeButton = JobTypeButton(popView: self)
-        jobButton = JobButton(popView: self)
-    }
     
+
+    
+    // MARK: - create Views
     func createPopFilter(){
         createCoverButton()
         createPopBody()
-        createLine4()
-    }
-    
-    func createLine4(){
-        self.addSubview(line4)
-        line4.mt_innerAlign(left: 4, top: nil, right: 4, bottom: 0)
-        line4.mt_innerAlign(left: nil, top: (150, popBody), right: nil, bottom: nil)
-        
+        createPopBodyComponent()
     }
     
     func createCoverButton(){
@@ -82,67 +76,56 @@ class PopView: UIView {
         popBody.backgroundColor = UIColor.whiteColor()
         popBody.mt_splitHorizontallyByViews([line1,line2,line3], edge: UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8), gap: 8)
         popBody.roundBorder()
-        createCityLabel("")
-        createProvinceLabel("")
+
         
+
+        
+    }
+    
+    func createPopBodyComponent() {
         createClickButton()
-        layoutPickerView()
-        
+        createPopBodyLabel()
+        createPopBodyButton()
+    }
+    
+    func createPopBodyLabel ()
+    {
+        createHigherLabel()
+        createLowerLabel ()
+    }
+    
+    private func createHigherLabel(){
+        line1.addSubview(higherLabel)
+        higherLabel.mt_innerAlign(left: 8, top: 0, right: nil, bottom: 0)
+        higherLabel.mt_setWidth(80)
+        higherLabel.text = higherLabelTitle
+    }
+    
+    private func createLowerLabel(){
+        line2.addSubview(lowerLabel)
+        lowerLabel.mt_innerAlign(left: 8, top: 0, right: nil, bottom: 0)
+        lowerLabel.mt_setWidth(80)
+        lowerLabel.text = lowerLabelTitle
+    }
+    
+    func createPopBodyButton() {
         createHightButton()
         createLowButton()
     }
     
-    func createCityLabel(titleLable : String){
-        cityLabel = createLabel()
-        line1.addSubview(cityLabel)
-        cityLabel.mt_innerAlign(left: 8, top: 0, right: nil, bottom: 0)
-        cityLabel.mt_setWidth(80)
-        cityLabel.text = titleLable
-    }
-    
-    func createProvinceLabel(titleLabel: String){
-        provinceLabel = createLabel()
-        line2.addSubview(provinceLabel)
-        provinceLabel.mt_innerAlign(left: 8, top: 0, right: nil, bottom: 0)
-        provinceLabel.mt_setWidth(80)
-        provinceLabel.text = titleLabel
-    }
-    func createHightButton() {
-        var hightButtons = [PickerButton]()
-        if let cityBT = cityButton {
-            hightButtons += [cityBT]
-        }
-        if let salaryTypeBT = salaryTypeButton {
-            hightButtons += [salaryTypeBT]
-        }
-        if let jobTypeBT = jobTypeButton {
-            hightButtons += [jobTypeBT]
-        }
-        for items in hightButtons {
-            line1.addSubview(items)
-            items.mt_innerAlign(left: nil, top: 4, right: 8, bottom: 4)
-            items.mt_innerAlign(left: (16, cityLabel), top: nil, right: nil, bottom: nil)
-            items.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        }
+    private func createHightButton() {
+            line1.addSubview(higherButton)
+            higherButton.mt_innerAlign(left: nil, top: 4, right: 8, bottom: 4)
+            higherButton.mt_innerAlign(left: (16, higherLabel), top: nil, right: nil, bottom: nil)
+            higherButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        
     }
     
     func createLowButton() {
-        var lowButtons = [PickerButton]()
-        if let provinceBT = provinceButton {
-            lowButtons += [provinceBT]
-        }
-        if let salaryBT = salaryButton {
-            lowButtons += [salaryBT]
-        }
-        if let jobBT = jobButton {
-            lowButtons += [jobBT]
-        }
-        for items in lowButtons {
-            line2.addSubview(items)
-            items.mt_innerAlign(left: nil, top: 4, right: 8, bottom: 4)
-            items.mt_innerAlign(left: (16, provinceLabel), top: nil, right: nil, bottom: nil)
-            items.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        }
+        line2.addSubview(lowerButton)
+            lowerButton.mt_innerAlign(left: nil, top: 4, right: 8, bottom: 4)
+            lowerButton.mt_innerAlign(left: (16, lowerLabel), top: nil, right: nil, bottom: nil)
+            lowerButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
     }
     
     func createClickButton(){
@@ -154,44 +137,14 @@ class PopView: UIView {
         clickButton.addTarget(self, action: "showTableView", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
-    func layoutPickerView(){
-        
-                var pickerViews = [ContainerPickerView]()
-        
-                if let cityPV = cityButton?.cityPickerView {
-                    pickerViews += [cityPV]
-                }
-                if let provincePV = provinceButton?.provincePickerView {
-                    pickerViews += [provincePV]
-                }
-                if let salaryTypePV = salaryTypeButton?.salaryTypePickerView{
-                    pickerViews += [salaryTypePV]
-                }
-                if let salaryPV = salaryButton?.salaryPickerView {
-                    pickerViews += [salaryPV]
-                }
-                if let jobTypePV = jobTypeButton?.jobTypePickerView {
-                    pickerViews += [jobTypePV]
-                }
-                if let jobPV = jobButton?.jobPickerView {
-                    pickerViews += [jobPV]
-                }
-                for item in pickerViews {
-                    line4.addSubview(item)
-                    item.mt_innerAlign(left: 4, top: 0, right: 4, bottom: -5)
-                    item.backgroundColor = UIColor.whiteColor()
-                    item.roundBorder()
-                }
-    }
-    
-    func createLabel() -> UILabel{
+    private func createLabel() -> UILabel{
         let label = UILabel()
         label.textAlignment = NSTextAlignment.Center
         label.textColor = UIColor.blackColor()
         return label
     }
     
-    func createButton() -> UIButton {
+    private func createButton() -> UIButton {
         let button = UIButton(type: UIButtonType.System)
         button.roundBorder()
         button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -200,48 +153,7 @@ class PopView: UIView {
         return button
     }
     
-    func showPickerView(sender: PickerButton) {
-        switch sender {
-        case cityButton:
-            cityButton.cityPickerView.hidden = false
-        case provinceButton:
-            provinceButton.provincePickerView.hidden = false
-        case salaryTypeButton:
-            salaryTypeButton.salaryTypePickerView.hidden = false
-        case salaryButton:
-            salaryButton.salaryPickerView.hidden = false
-        case jobTypeButton:
-            jobTypeButton.jobTypePickerView.hidden = false
-        case jobButton:
-            jobButton.jobPickerView.hidden = false
-        default: break
-        }
-    }
     
-    func hidePickerView() {
-        var pickerViews = [ContainerPickerView]()
-        if let cityPV = cityButton?.cityPickerView {
-            pickerViews += [cityPV]
-        }
-        if let provincePV = provinceButton?.provincePickerView {
-            pickerViews += [provincePV]
-        }
-        if let salaryTypePV = salaryTypeButton?.salaryTypePickerView {
-            pickerViews += [salaryTypePV]
-        }
-        if let salaryPV = salaryButton?.salaryPickerView {
-            pickerViews += [salaryPV]
-        }
-        if let jobTpyePV = jobTypeButton?.jobTypePickerView {
-            pickerViews += [jobTpyePV]
-        }
-        if let jobPV = jobButton?.jobPickerView {
-            pickerViews += [jobPV]
-        }
-        for items in pickerViews {
-            items.hidden = true
-        }
-    }
     
     func showPopView(sender: AnyObject) {
         self.hidden = false
