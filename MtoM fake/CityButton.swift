@@ -9,35 +9,30 @@
 import UIKit
 
 class CityButton: PickerButton {
-    
-    var cityPickerView = PickerView()
-    convenience init(cityPV: PickerView) {
-        self.init()
-        self.cityPickerView = cityPV
+    var cityPickerView = ContainerPickerView()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupDataForPicker()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        showCityPickerView()
+    
+    func setupDataForPicker() {
+        cityPickerView.data = ["Nam Dinh","Thai Binh", "Ha Noi"]
     }
     
-    func showCityPickerView() {
-        cityPickerView.hidden = false
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        return cityPickerView.data.count
     }
     
-    var dataCityPickerView = ["Nam Dinh","Hai Phong","Hai Duong"]
-    
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dataCityPickerView.count
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        return cityPickerView.data[row]
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataCityPickerView[row]
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        popView.cityButton.setTitle(cityPickerView.data[row], forState: UIControlState.Normal)
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let data = dataCityPickerView[row]
-        popView!.cityButton!.setTitle(data, forState: .Normal)
-    }  
 }

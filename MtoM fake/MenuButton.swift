@@ -72,7 +72,7 @@ class MenuButton: UIButton {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        setupMenuButton()
+        setupMenuButton()
     }
     
     required init?(coder aDecoder: NSCoder) {

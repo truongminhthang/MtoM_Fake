@@ -10,53 +10,35 @@ import UIKit
 
 class PickerButton: UIButton {
     
-    var otherButtons = [PickerButton]()
-    
-    let imageArrow = UIImageView(image: UIImage(named: "ic_arrow_down"))
-
-    var informationVC : InformationVC?
-    var popView : PopView?
-    var pickerView : PickerView?
-    
-    convenience init(informationVC: InformationVC) {
-        self.init()
-        self.informationVC = informationVC
-    }
+    let pickerView = ContainerPickerView()
+    var data = [String]()
+    var defaultRow = 0
+    var popView : PopView!
     
     convenience init(popView: PopView) {
         self.init()
         self.popView = popView
     }
     
-    convenience init(pickerView: PickerView) {
-        self.init()
-        self.pickerView = pickerView
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupPickerButton()
+        layoutArrowDown()
+        pickerView.createPickerView()
     }
+    
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if selected {
-            popView!.showPickerView(self)
-        }else {
-            popView!.hidePickerView()
-        }
-        layoutArrowDown()
-    }
-    
+    let imageArrow = UIImageView(image: UIImage(named: "ic_arrow_down"))
+
     func setupPickerButton() {
-        self.roundBorder()
         self.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         self.layer.borderColor = UIColor.borderColor().CGColor
         self.layer.borderWidth = 1
+        self.roundBorder()
     }
     
     func layoutArrowDown() {
@@ -66,18 +48,15 @@ class PickerButton: UIButton {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
-        resetOtherButton()
         selected = !selected
     }
-    func resetOtherButton() {
-        for item in otherButtons {
-            if item.selected == true {
-                if item != self {
-                    item.selected = false
-                }
-                
-            }
-        }
+    
+    func showPicker() {
+        pickerView.hidden = false
+    }
+    
+    func hidePicker() {
+        pickerView.hidden = true
     }
     
     /*

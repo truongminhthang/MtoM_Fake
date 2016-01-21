@@ -10,25 +10,29 @@ import UIKit
 
 class JobTypeButton: PickerButton {
     
-    var jobTypePickerView = PickerView()
+    var jobTypePickerView = ContainerPickerView()
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupDataForPicker()
     }
     
-    var dataJobType = ["iOS", "Android","App.net"]
-    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    func setupDataForPicker() {
+        jobTypePickerView.data = ["iOS", "Adroid", "Ruby"]
+    }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dataJobType.count
+        return jobTypePickerView.data.count
     }
-    
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataJobType[row]
+        return jobTypePickerView.data[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let data = dataJobType[row]
-        popView!.jobTypeButton.setTitle(data, forState: .Normal)
+        let data = jobTypePickerView.data[row]
+        popView.jobTypeButton.setTitle(data, forState: UIControlState.Normal)
     }
     
 }

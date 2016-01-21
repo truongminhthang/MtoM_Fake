@@ -20,19 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().barTintColor = UIColor.mainColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-//        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-//        // Override point for customization after application launch
-//        self.window!.backgroundColor = UIColor.redColor()
-//        self.window!.makeKeyAndVisible()
-//        
-//        var navController: UINavigationController = UINavigationController()
-//        self.window!.rootViewController = navController
-//        
-//        let myLabel: UILabel = UILabel(frame: CGRectMake(10,90, 100,100))
-//        myLabel.text = "Hello World"
-//        
-//        navController.view.addSubview(myLabel)
-//        navController.setToolbarHidden(false, animated: true)
         
         return true
     }

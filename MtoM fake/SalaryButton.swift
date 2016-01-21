@@ -10,25 +10,30 @@ import UIKit
 
 class SalaryButton: PickerButton {
     
-    var salaryPickerView = PickerView()
+    var salaryPickerView = ContainerPickerView()
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupDataForPicker()
     }
-
-    var dataSalary = ["500$ - 1000$", "5trVND - 10trVND", "1000"]
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    func setupDataForPicker() {
+        salaryPickerView.data = ["500$ -> 1000$", "10trVND -> 20trVND", "5000 Euro"]
+    }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dataSalary.count
+        return salaryPickerView.data.count
     }
-    
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataSalary[row]
+        return salaryPickerView.data[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let data = dataSalary[row]
-        popView!.salaryButton.setTitle(data, forState: .Normal)
+        let data = salaryPickerView.data[row]
+        popView.salaryButton.setTitle(data, forState: UIControlState.Normal)
     }
+
     
 }

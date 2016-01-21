@@ -9,25 +9,31 @@
 import UIKit
 
 class ProvinceButton: PickerButton {
-    var provincePickerView = PickerView()
+    var provincePickerView = ContainerPickerView()
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupDataForPicker()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    var dataProvincePickerView = ["Thai Binh","TPHCM","Ha Noi"]
+    func setupDataForPicker() {
+        provincePickerView.data = ["Ha Noi", "TPHCM", "Ca Mau"]
+    }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dataProvincePickerView.count
+        return provincePickerView.data.count
     }
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataProvincePickerView[row]
+        return provincePickerView.data[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let data = dataProvincePickerView[row]
-        popView!.provinceButton.setTitle(data, forState: UIControlState.Normal)
+        let data = provincePickerView.data[row]
+        popView.provinceButton.setTitle(data, forState: UIControlState.Normal)
     }
     
     

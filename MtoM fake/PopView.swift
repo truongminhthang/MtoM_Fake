@@ -28,7 +28,6 @@ class PopView: UIView {
     var jobButton : JobButton!
     
     var clickButton = UIButton()
-    var pickerView: PickerView?
     var vc : InformationVC?
     
     convenience init(vc: InformationVC) {
@@ -45,7 +44,6 @@ class PopView: UIView {
         self.clipsToBounds = true
         connectPickerViewButton()
         createPopFilter()
-        self.pickerView = PickerView(popView: self)
     }
     
     func connectPickerViewButton() {
@@ -67,6 +65,7 @@ class PopView: UIView {
         self.addSubview(line4)
         line4.mt_innerAlign(left: 4, top: nil, right: 4, bottom: 0)
         line4.mt_innerAlign(left: nil, top: (150, popBody), right: nil, bottom: nil)
+        
     }
     
     func createCoverButton(){
@@ -157,7 +156,7 @@ class PopView: UIView {
     
     func layoutPickerView(){
         
-                var pickerViews = [PickerView]()
+                var pickerViews = [ContainerPickerView]()
         
                 if let cityPV = cityButton?.cityPickerView {
                     pickerViews += [cityPV]
@@ -204,7 +203,7 @@ class PopView: UIView {
     func showPickerView(sender: PickerButton) {
         switch sender {
         case cityButton:
-            cityButton.showCityPickerView()
+            cityButton.cityPickerView.hidden = false
         case provinceButton:
             provinceButton.provincePickerView.hidden = false
         case salaryTypeButton:
@@ -220,7 +219,7 @@ class PopView: UIView {
     }
     
     func hidePickerView() {
-        var pickerViews = [PickerView]()
+        var pickerViews = [ContainerPickerView]()
         if let cityPV = cityButton?.cityPickerView {
             pickerViews += [cityPV]
         }

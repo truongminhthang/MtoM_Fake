@@ -8,18 +8,19 @@
 
 import UIKit
 
-class PickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
+class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     var pickerView = UIPickerView()
-    var data = ["sa","sad","sdsdg"]
-    var defaultRow = 0
-
-    var popView : PopView!
-    convenience init(popView: PopView) {
-        self.init()
-        self.popView = popView
-    }
+    var data = [String]()
+    var defaultRow = 1
     
-    override func layoutSubviews() {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        createPickerView()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         createPickerView()
     }
     
@@ -41,7 +42,15 @@ class PickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         return data.count
     }
-
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        return data[row]
+    }
+    
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
