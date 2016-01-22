@@ -24,33 +24,29 @@ class PopView: UIView {
     
     var higherButton : PickerButton
     var lowerButton :  PickerButton
-    let ctn = ContainerPickerView()
-    
-    var menuPV : Menu?
+    var menuBT = MenuButton()
         
     var clickButton = UIButton()
     var vc : InformationVC?
     
-    override init(frame: CGRect) {
-        higherLabelTitle = ""
-        lowerLabelTitle = ""
-        higherButton = PickerButton()
-        lowerButton = PickerButton()
-        super.init(frame: frame)
-    }
-    
-    convenience init(vc: InformationVC) {
-        self.init(frame: CGRectZero)
-        self.vc = vc
+    init (higherButton: PickerButton, lowerButton: PickerButton, higherLabelTitle: String, lowerLabelTitle: String) {
+        self.higherLabelTitle = higherLabelTitle
+        self.lowerLabelTitle = lowerLabelTitle
+        self.higherButton = higherButton
+        self.lowerButton = lowerButton
+        super.init(frame: CGRectZero)
+
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+
     }
 
     override func layoutSubviews() {
         self.clipsToBounds = true
         createPopFilter()
+        self.menuBT = MenuButton(frame: frame)
         super.layoutSubviews()
     }
 
@@ -106,6 +102,7 @@ class PopView: UIView {
     func createPopBodyButton() {
         createHightButton()
         createLowButton()
+        
     }
     
     private func createHightButton() {
@@ -130,13 +127,7 @@ class PopView: UIView {
         clickButton.backgroundColor = UIColor.redColor()
         clickButton.addTarget(self, action: "showTableView", forControlEvents: UIControlEvents.TouchUpInside)
     }
-    
-    func showTableView() {
-        AppDelegate.shareInstance().window?.addSubview((vc?.tbv)!)
-        (vc?.tbv)!.mt_innerAlign(left: 0, top: nil,right: 0, bottom: 0)
-        (vc?.tbv)!.mt_innerAlign(left: nil, top: (20, self), right: nil, bottom: nil)
-    }
-    
+
     private func createLabel() -> UILabel{
         let label = UILabel()
         label.textAlignment = NSTextAlignment.Center
@@ -155,18 +146,12 @@ class PopView: UIView {
     
     func hidePopView(sender: UIButton) {
         self.removeFromSuperview()
+        hideContainerPickerView()
     }
     
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-    // Drawing code
+    func hideContainerPickerView() {
+        higherButton.containerPickerView.removeFromSuperview()
+        lowerButton.containerPickerView.removeFromSuperview()
     }
-    */
-    
-    
-    
     
 }

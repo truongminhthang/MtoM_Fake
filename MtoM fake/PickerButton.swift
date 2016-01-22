@@ -7,17 +7,26 @@
 //
 
 import UIKit
+protocol PickerButtonProtocol {
+    var anchorTopView: UIView {get}
+}
 
 class PickerButton: UIButton {
     
     var containerPickerView = ContainerPickerView()
-    var popView : PopView?
+
+    var delegate: PickerButtonProtocol?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init (data: [String]) {
+        super.init(frame: CGRectZero)
+        containerPickerView.data = data
         setupPickerButton()
         layoutArrowDown()
         containerPickerView.roundBorder()
+    }
+    
+    convenience init() {
+        self.init(data: [String]())
     }
     
 
@@ -28,6 +37,7 @@ class PickerButton: UIButton {
     let imageArrow = UIImageView(image: UIImage(named: "ic_arrow_down"))
 
     func setupPickerButton() {
+        self.setTitle("", forState: UIControlState.Normal)
         self.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         self.layer.borderColor = UIColor.borderColor().CGColor
         self.layer.borderWidth = 1
@@ -49,23 +59,13 @@ class PickerButton: UIButton {
         }
     }
     
-    func showPickerView() {        
+    func showPickerView() {
         AppDelegate.shareInstance().window?.addSubview(containerPickerView)
-        containerPickerView.mt_innerAlign(left: 8, top: nil, right: 8, bottom: -5)
-        containerPickerView.mt_innerAlign(left: nil, top: (370, popView), right: nil, bottom: nil)
+        containerPickerView.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
+        containerPickerView.mt_innerAlign(left: nil, top: (150, delegate?.anchorTopView), right: nil, bottom: nil)
     }
 
     func hidePickerView() {
         containerPickerView.removeFromSuperview()
     }
-    
- 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

@@ -10,12 +10,12 @@ import UIKit
 
 class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     var pickerView = UIPickerView()
-    var data = ["A","B","C"]
-    var defaultRow = 1
+    var data = [String]()
+    var defaultRow = 0
     override init(frame: CGRect) {
         super.init(frame: frame)
         createPickerView()
-        self.backgroundColor = UIColor.redColor()
+        backgroundColor = UIColor.redColor()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -29,10 +29,14 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     
     func createPickerView(){
         self.addSubview(pickerView)
-        pickerView.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
         pickerView.delegate = self
         pickerView.dataSource = self
+        pickerView.roundBorder()
+        pickerView.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
+        pickerView.mt_setHeight(150)
+        pickerView.backgroundColor = UIColor.whiteColor()
         pickerView.selectRow(defaultRow, inComponent: 0, animated: true)
+        
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -47,6 +51,6 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
         return data[row]
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        
+       
     }
 }

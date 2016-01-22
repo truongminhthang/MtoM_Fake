@@ -10,9 +10,20 @@ import UIKit
 
 class JobMenuButton: MenuButton {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        popView = JobPopView()
+    weak var theMenu: UIView?
+    var jobData : [String] = ["CNTT", "Ky su dien", "DTVT"]
+    var subJobData :[String] = ["Designer", "Coder", "Tester"]
+    var jobPickerButton : PickerButton
+    var subPickerButton : PickerButton
+    
+    init() {
+        jobPickerButton =  PickerButton(data: jobData)
+        subPickerButton = PickerButton (data: subJobData)
+        super.init(frame: CGRectZero)
+        popView = PopView(higherButton: jobPickerButton, lowerButton: subPickerButton, higherLabelTitle: "Job", lowerLabelTitle: "")
+        
+        jobPickerButton.delegate = self
+        subPickerButton.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {

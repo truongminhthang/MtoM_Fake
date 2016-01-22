@@ -43,9 +43,6 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     var tbv = UITableView()
     var menuVC : Menu?
-    var placePopView : PlacePopView!
-    var salaryPopView : SalaryPopView!
-    var jobPopView : JobPopView!
     
     var data : [Job] = {
         var result = [Job]()
@@ -85,10 +82,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         menuVC = Menu(vc: self, frame: CGRectZero)
-        placePopView = PlacePopView(vc: self)
-        salaryPopView = SalaryPopView(vc: self)
-        jobPopView = JobPopView(vc: self)
-
+        
         // Do any additional setup after loading the view.
         self.navigationItem.title = "Job Search"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
@@ -96,7 +90,6 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.edgesForExtendedLayout = UIRectEdge.None
         self.tbv.separatorStyle =  UITableViewCellSeparatorStyle.None
         self.tbv.allowsSelection = false
-
         layoutMenu()
         createTableView()        
     }

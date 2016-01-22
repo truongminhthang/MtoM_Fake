@@ -9,12 +9,22 @@
 import UIKit
 
 class PlaceMenuButton: MenuButton {
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        popView = PlacePopView()
+    
+    weak var theMenu: UIView?
+    var cityList : [String] = ["Ha Noi", "Hue", "Da Nang"]
+    var provinceList :[String] = [" Cau giay", "Hoan kiem ", "Dong Da"]
+    var cityPickerButton : PickerButton
+    var provincePickerButton : PickerButton
+    
+    init() {
+        cityPickerButton =  PickerButton(data: cityList)
+        provincePickerButton = PickerButton (data: provinceList)
+        super.init(frame: CGRectZero)
+        popView = PopView(higherButton: cityPickerButton, lowerButton: provincePickerButton, higherLabelTitle: "City", lowerLabelTitle: "Province")
+        cityPickerButton.delegate = self
+        provincePickerButton.delegate = self
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -8,26 +8,20 @@
 
 import UIKit
 
-class MenuButton: UIButton {
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-    // Drawing code
-    }
-    */
+class MenuButton: UIButton, PickerButtonProtocol {
     
     private var selectedButtonTitle = NSMutableAttributedString()
     private var normalButtonTitle = NSMutableAttributedString()
     private var mutableSubTitle = NSMutableAttributedString()
-    
     var otherButtons = [MenuButton]()
     let imageArrow = UIImageView(image: UIImage(named: "ic_arrow_down"))
-    
     var popView : PopView?
-    var menu : Menu?
-    
+
+    var anchorTopView : UIView {
+        get {
+            return popView!.popBody
+        }
+    }
     var title : String = "" {
         didSet {
             if title != "" {
@@ -66,7 +60,7 @@ class MenuButton: UIButton {
     }
 
     func setupMenuButton() {
-//        selected = false
+        selected = false
         setTitleColor(UIColor.redColor(), forState: UIControlState.Selected)
         setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         titleLabel?.numberOfLines = 2
@@ -86,15 +80,13 @@ class MenuButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.clearsContextBeforeDrawing = true
         if selected {
-            backgroundColor = UIColor.whiteColor()
+            self.backgroundColor = UIColor.whiteColor()
             showPopView()
         } else {
-            backgroundColor = UIColor.clearColor()
+            self.backgroundColor = UIColor.clearColor()
             hidePopView()
         }
-        
         layoutArrowDown()
     }
     
@@ -106,6 +98,7 @@ class MenuButton: UIButton {
     
     func hidePopView() {
         popView?.removeFromSuperview()
+        popView?.hideContainerPickerView()
     }
     
     func layoutArrowDown() {

@@ -11,17 +11,17 @@ import UIKit
 class Menu: UIView {
     
     var vc: InformationVC?
-    var spaceFilter : MenuButton
-    var salaryFilter : MenuButton
-    var jobFilter : MenuButton
+    var spaceFilter = MenuButton()
+    var salaryFilter = MenuButton()
+    var jobFilter = MenuButton()
     
     
     init(vc: InformationVC, frame: CGRect) {
         self.vc = vc
+        super.init(frame: frame)
         spaceFilter = PlaceMenuButton()
         salaryFilter = SalaryMenuButton()
         jobFilter = JobMenuButton()
-        super.init(frame: frame)
     }
 
     required init?(coder aDecoder: NSCoder) {
