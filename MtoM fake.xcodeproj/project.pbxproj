@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F7067571C50ED3500C43F14 /* PlaceMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7067561C50ED3500C43F14 /* PlaceMenuButton.swift */; };
+		3F7067591C50ED4500C43F14 /* SalaryMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7067581C50ED4500C43F14 /* SalaryMenuButton.swift */; };
+		3F70675B1C50ED5400C43F14 /* JobMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70675A1C50ED5400C43F14 /* JobMenuButton.swift */; };
 		3F7AC9CF1C4E3E7E000B08C9 /* CityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7AC9CE1C4E3E7E000B08C9 /* CityButton.swift */; };
 		3F7FB6851C47461A00A60BAB /* PopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7FB6841C47461A00A60BAB /* PopView.swift */; };
 		3F82CEBF1C45ECA900C27413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F82CEBD1C45ECA900C27413 /* Main.storyboard */; };
@@ -65,6 +68,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F7067561C50ED3500C43F14 /* PlaceMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMenuButton.swift; sourceTree = "<group>"; };
+		3F7067581C50ED4500C43F14 /* SalaryMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryMenuButton.swift; sourceTree = "<group>"; };
+		3F70675A1C50ED5400C43F14 /* JobMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobMenuButton.swift; sourceTree = "<group>"; };
 		3F7AC9CE1C4E3E7E000B08C9 /* CityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityButton.swift; sourceTree = "<group>"; };
 		3F7FB6841C47461A00A60BAB /* PopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopView.swift; sourceTree = "<group>"; };
 		3F82CEBE1C45ECA900C27413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../MtoM_Fake copy/MtoM fake/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
@@ -230,6 +236,9 @@
 			isa = PBXGroup;
 			children = (
 				FF7758751C2A8E9200C0457B /* MenuButton.swift */,
+				3F7067561C50ED3500C43F14 /* PlaceMenuButton.swift */,
+				3F7067581C50ED4500C43F14 /* SalaryMenuButton.swift */,
+				3F70675A1C50ED5400C43F14 /* JobMenuButton.swift */,
 				FF77587F1C2AB10200C0457B /* Menu.swift */,
 			);
 			name = menuButton;
@@ -439,8 +448,10 @@
 			files = (
 				FF30B47B1C16DA6600550D71 /* ApplyCell.swift in Sources */,
 				FF30B4731C16D9EE00550D71 /* TitleCell.swift in Sources */,
+				3F70675B1C50ED5400C43F14 /* JobMenuButton.swift in Sources */,
 				3FA0DBE01C3D0E99005B4D4E /* MTAutoLayout.swift in Sources */,
 				FF7C6CF11C159C37003FE40C /* PickerViewController.swift in Sources */,
+				3F7067571C50ED3500C43F14 /* PlaceMenuButton.swift in Sources */,
 				3F84F9211C4DCF1100E0B7FB /* PickerButton.swift in Sources */,
 				3FB329CB1C4F20A700B76B19 /* JobButton.swift in Sources */,
 				FF8C353F1C0C63D10024474F /* ViewController.swift in Sources */,
@@ -457,6 +468,7 @@
 				3FB329C31C4F1DC000B76B19 /* ProvinceButton.swift in Sources */,
 				FF5F52DB1C0F0A66005EAD2C /* WorkingTableViewCell.swift in Sources */,
 				3FA1258B1C464B46000F4530 /* JobPopView.swift in Sources */,
+				3F7067591C50ED4500C43F14 /* SalaryMenuButton.swift in Sources */,
 				FF30B4751C16DA1300550D71 /* TextCell.swift in Sources */,
 				3FB329C91C4F209600B76B19 /* JobTypeButton.swift in Sources */,
 				3FB329C51C4F207E00B76B19 /* SalaryTypeButton.swift in Sources */,

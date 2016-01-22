@@ -10,13 +10,13 @@ import UIKit
 
 class JobPopView: PopView {
 
-    var jobTypeButton = PickerButton()
-    var jobButton = PickerButton()
+    var jobTypeButton = JobTypeButton()
+    var jobButton = JobButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         higherLabelTitle = "Job Type"
-        lowerLabelTitle = ""
+        lowerLabelTitle = "Job"
         higherButton = jobTypeButton
         lowerButton = jobButton
     }

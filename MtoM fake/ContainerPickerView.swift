@@ -10,7 +10,7 @@ import UIKit
 
 class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     var pickerView = UIPickerView()
-    var data = [String]()
+    var data = ["A","B","C"]
     var defaultRow = 1
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,12 +46,7 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
         return data[row]
     }
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-    // Drawing code
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        
     }
-    */
-
 }

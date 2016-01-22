@@ -26,7 +26,7 @@ class MenuButton: UIButton {
     let imageArrow = UIImageView(image: UIImage(named: "ic_arrow_down"))
     
     var popView : PopView?
-    
+    var menu : Menu?
     
     var title : String = "" {
         didSet {
@@ -55,17 +55,18 @@ class MenuButton: UIButton {
         super.init(frame: frame)
         setupMenuButton()
     }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupMenuButton()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+
     func setupMenuButton() {
-        selected = false
+//        selected = false
         setTitleColor(UIColor.redColor(), forState: UIControlState.Selected)
         setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         titleLabel?.numberOfLines = 2
@@ -88,11 +89,23 @@ class MenuButton: UIButton {
         self.clearsContextBeforeDrawing = true
         if selected {
             backgroundColor = UIColor.whiteColor()
+            showPopView()
         } else {
             backgroundColor = UIColor.clearColor()
+            hidePopView()
         }
         
         layoutArrowDown()
+    }
+    
+    func showPopView() {
+        AppDelegate.shareInstance().window?.addSubview(popView!)
+        popView?.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
+        popView?.mt_innerAlign(left: nil, top: (-5, self), right: nil, bottom: nil)
+    }
+    
+    func hidePopView() {
+        popView?.removeFromSuperview()
     }
     
     func layoutArrowDown() {
@@ -110,6 +123,7 @@ class MenuButton: UIButton {
         resetOtherButton()
         selected = !selected
     }
+    
     func resetOtherButton() {
         for item in otherButtons {
             if item.selected == true {

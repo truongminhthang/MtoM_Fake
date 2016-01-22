@@ -10,8 +10,8 @@ import UIKit
 
 class PlacePopView: PopView {
 
-    let cityButton = PickerButton()
-    let provinceButton = PickerButton()
+    let cityButton = CityButton()
+    let provinceButton = ProvinceButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,18 +24,8 @@ class PlacePopView: PopView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
-    
+
     override func createPopBody() {
         super.createPopBody()
-        
     }
-    
 }

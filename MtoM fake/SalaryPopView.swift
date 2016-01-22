@@ -10,8 +10,8 @@ import UIKit
 
 class SalaryPopView: PopView {
 
-    var salaryTypeButton = PickerButton()
-    var salaryButton = PickerButton()
+    var salaryTypeButton = SalaryTypeButton()
+    var salaryButton = SalaryButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

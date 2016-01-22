@@ -18,9 +18,9 @@ class Menu: UIView {
     
     init(vc: InformationVC, frame: CGRect) {
         self.vc = vc
-        spaceFilter = MenuButton()
-        salaryFilter = MenuButton()
-        jobFilter = MenuButton()
+        spaceFilter = PlaceMenuButton()
+        salaryFilter = SalaryMenuButton()
+        jobFilter = JobMenuButton()
         super.init(frame: frame)
     }
 
@@ -30,7 +30,6 @@ class Menu: UIView {
     
     override func layoutSubviews() {
         setupMenuButton()
-        
         mt_createVerticalMenu([spaceFilter, salaryFilter,jobFilter], edge: UIEdgeInsets(top: 4, left: 4, bottom: -5, right: 4), gap: 4, seperateColor: UIColor.grayColor())
     }
     

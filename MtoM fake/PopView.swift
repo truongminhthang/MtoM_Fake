@@ -16,12 +16,15 @@ class PopView: UIView {
     let line1 = UIView()
     let line2 = UIView()
     let line3 = UIView()
+    
     var higherLabel = UILabel()
     var higherLabelTitle : String
     var lowerLabel = UILabel()
     var lowerLabelTitle: String
+    
     var higherButton : PickerButton
     var lowerButton :  PickerButton
+    let ctn = ContainerPickerView()
     
     var menuPV : Menu?
         
@@ -45,16 +48,12 @@ class PopView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
     override func layoutSubviews() {
         self.clipsToBounds = true
         createPopFilter()
         super.layoutSubviews()
     }
-    
-    
 
-    
     // MARK: - create Views
     func createPopFilter(){
         createCoverButton()
@@ -66,7 +65,7 @@ class PopView: UIView {
         self.addSubview(coverButton)
         coverButton.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
         coverButton.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
-        coverButton.addTarget(self, action: "hidePopView", forControlEvents: UIControlEvents.TouchUpInside)
+        coverButton.addTarget(self, action: "hidePopView:", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func createPopBody(){
@@ -76,10 +75,6 @@ class PopView: UIView {
         popBody.backgroundColor = UIColor.whiteColor()
         popBody.mt_splitHorizontallyByViews([line1,line2,line3], edge: UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8), gap: 8)
         popBody.roundBorder()
-
-        
-
-        
     }
     
     func createPopBodyComponent() {
@@ -118,7 +113,6 @@ class PopView: UIView {
             higherButton.mt_innerAlign(left: nil, top: 4, right: 8, bottom: 4)
             higherButton.mt_innerAlign(left: (16, higherLabel), top: nil, right: nil, bottom: nil)
             higherButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        
     }
     
     func createLowButton() {
@@ -137,6 +131,12 @@ class PopView: UIView {
         clickButton.addTarget(self, action: "showTableView", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
+    func showTableView() {
+        AppDelegate.shareInstance().window?.addSubview((vc?.tbv)!)
+        (vc?.tbv)!.mt_innerAlign(left: 0, top: nil,right: 0, bottom: 0)
+        (vc?.tbv)!.mt_innerAlign(left: nil, top: (20, self), right: nil, bottom: nil)
+    }
+    
     private func createLabel() -> UILabel{
         let label = UILabel()
         label.textAlignment = NSTextAlignment.Center
@@ -153,14 +153,8 @@ class PopView: UIView {
         return button
     }
     
-    
-    
-    func showPopView(sender: AnyObject) {
-        self.hidden = false
-    }
-    
-    func hidePopView(sender: AnyObject) {
-        self.hidden = true
+    func hidePopView(sender: UIButton) {
+        self.removeFromSuperview()
     }
     
     

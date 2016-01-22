@@ -22,4 +22,7 @@ class CityButton: PickerButton {
     func setupDataForPicker() {
         containerPickerView.data = ["Nam Dinh","Thai Binh", "Ha Noi"]
     }
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        self.setTitle(containerPickerView.data[row], forState: UIControlState.Normal)
+    }
 }

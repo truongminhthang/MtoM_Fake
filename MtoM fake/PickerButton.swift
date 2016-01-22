@@ -11,13 +11,13 @@ import UIKit
 class PickerButton: UIButton {
     
     var containerPickerView = ContainerPickerView()
-    var defaultRow = 0
+    var popView : PopView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupPickerButton()
         layoutArrowDown()
-       containerPickerView.roundBorder()
+        containerPickerView.roundBorder()
     }
     
 
@@ -39,20 +39,6 @@ class PickerButton: UIButton {
         imageArrow.mt_InnerAlign(PinPosition.MidRight, space: 5, size: CGSize(width: 15, height: 15))
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        return containerPickerView.data.count
-    }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        self.setTitle(containerPickerView.data[row], forState: UIControlState.Normal)
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
-        return containerPickerView.data[row]
-    }
-    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
         selected = !selected
@@ -63,19 +49,17 @@ class PickerButton: UIButton {
         }
     }
     
-    func showPickerView() {
-        
+    func showPickerView() {        
         AppDelegate.shareInstance().window?.addSubview(containerPickerView)
-        containerPickerView.mt_innerAlign(left: 8, top: nil, right: 8, bottom: 0)
-        containerPickerView.mt_innerAlign(left: nil, top: (300, self), right: nil, bottom: nil)
+        containerPickerView.mt_innerAlign(left: 8, top: nil, right: 8, bottom: -5)
+        containerPickerView.mt_innerAlign(left: nil, top: (370, popView), right: nil, bottom: nil)
     }
-    
-    
-    
+
     func hidePickerView() {
         containerPickerView.removeFromSuperview()
     }
     
+ 
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
