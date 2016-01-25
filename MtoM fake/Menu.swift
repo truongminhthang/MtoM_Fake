@@ -11,26 +11,25 @@ import UIKit
 class Menu: UIView {
     
     var vc: InformationVC?
-    var spaceFilter = MenuButton()
-    var salaryFilter = MenuButton()
-    var jobFilter = MenuButton()
+    var spaceFilter : MenuButton
+    var salaryFilter : MenuButton
+    var jobFilter : MenuButton
     
     
     init(vc: InformationVC, frame: CGRect) {
         self.vc = vc
-        super.init(frame: frame)
         spaceFilter = PlaceMenuButton()
         salaryFilter = SalaryMenuButton()
         jobFilter = JobMenuButton()
+        super.init(frame: frame)
+
+        setupMenuButton()
+        mt_createVerticalMenu([spaceFilter, salaryFilter,jobFilter], edge: UIEdgeInsets(top: 4, left: 4, bottom: -5, right: 4), gap: 4, seperateColor: UIColor.grayColor())
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        setupMenuButton()
-        mt_createVerticalMenu([spaceFilter, salaryFilter,jobFilter], edge: UIEdgeInsets(top: 4, left: 4, bottom: -5, right: 4), gap: 4, seperateColor: UIColor.grayColor())
     }
     
     func setupMenuButton() {

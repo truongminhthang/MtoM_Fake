@@ -23,6 +23,7 @@ class PlaceMenuButton: MenuButton {
         popView = PopView(higherButton: cityPickerButton, lowerButton: provincePickerButton, higherLabelTitle: "City", lowerLabelTitle: "Province")
         cityPickerButton.delegate = self
         provincePickerButton.delegate = self
+        popView!.menuBT = self
     }
     
     required init?(coder aDecoder: NSCoder) {

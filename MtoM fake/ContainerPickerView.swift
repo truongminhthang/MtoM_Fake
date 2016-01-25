@@ -11,16 +11,24 @@ import UIKit
 class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     var pickerView = UIPickerView()
     var data = [String]()
-    var defaultRow = 0
+    var defaultRow = 1
+    var dict : [String: NSLayoutConstraint]!
     override init(frame: CGRect) {
         super.init(frame: frame)
         createPickerView()
-        backgroundColor = UIColor.redColor()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         createPickerView()
+    }
+    
+    func showPicker() {
+        let constraintBottom = dict["innerBottomToBottom"]
+        UIView.animateWithDuration(0.5) { () -> Void in
+            constraintBottom?.constant = 0
+            self.layoutIfNeeded()
+        }
     }
     
     func hidePickerView(sender : AnyObject) {
@@ -32,10 +40,11 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.roundBorder()
-        pickerView.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
-        pickerView.mt_setHeight(150)
+        dict = pickerView.mt_InnerAlign(PinPosition.LowCenter, space: 0, size: CGSize(width: 300, height: 120))
+        print(dict)
         pickerView.backgroundColor = UIColor.whiteColor()
         pickerView.selectRow(defaultRow, inComponent: 0, animated: true)
+        
         
     }
     

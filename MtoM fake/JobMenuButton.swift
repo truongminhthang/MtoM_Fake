@@ -24,6 +24,7 @@ class JobMenuButton: MenuButton {
         
         jobPickerButton.delegate = self
         subPickerButton.delegate = self
+        popView!.menuBT = self
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -48,6 +48,7 @@ class MenuButton: UIButton, PickerButtonProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupMenuButton()
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -81,16 +82,15 @@ class MenuButton: UIButton, PickerButtonProtocol {
     override func layoutSubviews() {
         super.layoutSubviews()
         if selected {
-            self.backgroundColor = UIColor.whiteColor()
             showPopView()
         } else {
-            self.backgroundColor = UIColor.clearColor()
             hidePopView()
         }
         layoutArrowDown()
     }
     
     func showPopView() {
+        self.backgroundColor = UIColor.whiteColor()
         AppDelegate.shareInstance().window?.addSubview(popView!)
         popView?.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
         popView?.mt_innerAlign(left: nil, top: (-5, self), right: nil, bottom: nil)
@@ -99,10 +99,10 @@ class MenuButton: UIButton, PickerButtonProtocol {
     func hidePopView() {
         popView?.removeFromSuperview()
         popView?.hideContainerPickerView()
+        self.backgroundColor = UIColor.clearColor()
     }
     
     func layoutArrowDown() {
-        print(selected)
         if !selected {
             self.addSubview(imageArrow)
             imageArrow.mt_InnerAlign(PinPosition.LowCenter, space: 5, size: CGSize(width: 15, height: 15))
@@ -116,6 +116,8 @@ class MenuButton: UIButton, PickerButtonProtocol {
         resetOtherButton()
         selected = !selected
     }
+    
+ 
     
     func resetOtherButton() {
         for item in otherButtons {

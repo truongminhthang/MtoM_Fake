@@ -22,6 +22,7 @@ class SalaryMenuButton: MenuButton {
         popView = PopView(higherButton: salaryTypeButton, lowerButton: salaryRangeButton, higherLabelTitle: "Salary", lowerLabelTitle: "Range")
         salaryTypeButton.delegate = self
         salaryRangeButton.delegate = self
+        popView!.menuBT = self
     }
     
     required init?(coder aDecoder: NSCoder) {

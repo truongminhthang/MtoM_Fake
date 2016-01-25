@@ -14,6 +14,8 @@ class ApplyCell: UITableViewCell {
     var webButton = UIButton()
     var callButton = UIButton()
     
+    var callView = CallView()
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayoutOfHeaderCell()
@@ -43,6 +45,7 @@ class ApplyCell: UITableViewCell {
     func setupCallButton(){
         callButton = setupButton()
         applyView.addSubview(callButton)
+        callButton.addTarget(self, action: "showCallView", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func setupButton() -> UIButton {
@@ -59,6 +62,10 @@ class ApplyCell: UITableViewCell {
         headerApplyView.backgroundColor = UIColor.whiteColor()
     }
     
+    func showCallView() {
+        AppDelegate.shareInstance().window?.addSubview(callView)
+        callView.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
+    }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -24,7 +24,7 @@ class PopView: UIView {
     
     var higherButton : PickerButton
     var lowerButton :  PickerButton
-    var menuBT = MenuButton()
+    var menuBT : MenuButton?
         
     var clickButton = UIButton()
     var vc : InformationVC?
@@ -35,7 +35,6 @@ class PopView: UIView {
         self.higherButton = higherButton
         self.lowerButton = lowerButton
         super.init(frame: CGRectZero)
-
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -46,8 +45,8 @@ class PopView: UIView {
     override func layoutSubviews() {
         self.clipsToBounds = true
         createPopFilter()
-        self.menuBT = MenuButton(frame: frame)
         super.layoutSubviews()
+        
     }
 
     // MARK: - create Views
@@ -62,6 +61,7 @@ class PopView: UIView {
         coverButton.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
         coverButton.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
         coverButton.addTarget(self, action: "hidePopView:", forControlEvents: UIControlEvents.TouchUpInside)
+
     }
     
     func createPopBody(){
@@ -145,13 +145,12 @@ class PopView: UIView {
     }
     
     func hidePopView(sender: UIButton) {
-        self.removeFromSuperview()
-        hideContainerPickerView()
+        menuBT?.selected = false
     }
+
     
     func hideContainerPickerView() {
         higherButton.containerPickerView.removeFromSuperview()
         lowerButton.containerPickerView.removeFromSuperview()
     }
-    
 }
