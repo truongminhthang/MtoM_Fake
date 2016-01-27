@@ -23,29 +23,23 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
         createPickerView()
     }
     
-    func showPicker() {
-        let constraintBottom = dict["innerBottomToBottom"]
-        UIView.animateWithDuration(0.5) { () -> Void in
-            constraintBottom?.constant = 0
-            self.layoutIfNeeded()
-        }
-    }
-    
-    func hidePickerView(sender : AnyObject) {
-        self.hidden = true
-    }
-    
+//    func showPicker() {
+//        let constraintBottom = dict["innerBottomToBottom"]
+//        UIView.animateWithDuration(0.5) { () -> Void in
+//            constraintBottom?.constant = 0
+//            self.layoutIfNeeded()
+//        }
+//    }
+
     func createPickerView(){
         self.addSubview(pickerView)
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.roundBorder()
-        dict = pickerView.mt_InnerAlign(PinPosition.LowCenter, space: 0, size: CGSize(width: 300, height: 120))
+        dict = pickerView.mt_InnerAlign(PinPosition.LowCenter, space: 0, size: CGSize(width: 312, height: 120))
         print(dict)
         pickerView.backgroundColor = UIColor.whiteColor()
         pickerView.selectRow(defaultRow, inComponent: 0, animated: true)
-        
-        
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -61,5 +55,20 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
        
+    }
+    
+    func showPicker() {
+        UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseOut, animations: {
+            var pickerBottomFrame = self.pickerView.frame
+            pickerBottomFrame.origin.y -= pickerBottomFrame.size.height
+            
+            self.pickerView.frame = pickerBottomFrame
+            }, completion: { finished in
+        })
+        self.layoutIfNeeded()
+    }
+    
+    func hidePickerView(sender : AnyObject) {
+        self.hidden = true
     }
 }

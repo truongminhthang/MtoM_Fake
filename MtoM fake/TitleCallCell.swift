@@ -9,11 +9,10 @@
 import UIKit
 
 class TitleCallCell: UITableViewCell {
-    var titleLabel = UILabel()
-    var background = UIView()
     var clouseButton = UIButton()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layoutBodyCell()
     }
@@ -23,19 +22,12 @@ class TitleCallCell: UITableViewCell {
     }
 
     func layoutBodyCell(){
-        self.addSubview(background)
-        background.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
-        background.backgroundColor = UIColor.redColor()
-    }
-    func setupBodyCell() {
-        background.addSubview(titleLabel)
-        titleLabel.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
-        
-        titleLabel.addSubview(clouseButton)
-        clouseButton.mt_InnerAlign(PinPosition.MidRight, space: 0, size: CGSize(width: 15, height: 15))
-        clouseButton.setTitle("X", forState: UIControlState.Normal)
+        self.backgroundColor = UIColor.redColor()
+        self.addSubview(clouseButton)
+        clouseButton.mt_InnerAlign(PinPosition.MidRight, space: 8, size: CGSize(width: 20, height: 20))
         clouseButton.roundBorder()
-        clouseButton.backgroundColor = UIColor.greenColor()
+        clouseButton.setTitle("X", forState: UIControlState.Normal)
+        clouseButton.backgroundColor = UIColor.whiteColor()
+        clouseButton.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
     }
-    
 }

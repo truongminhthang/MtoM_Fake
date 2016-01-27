@@ -54,6 +54,7 @@ class TitleCell: UITableViewCell {
         detailLabel.mt_innerAlign(left: 16, top: 8, right: 8, bottom: 8)
         detailLabel.textColor = UIColor.mainColor()
         detailLabel.font = UIFont.boldSystemFontOfSize(16)
+        
         // layout seperateLine
         
     }

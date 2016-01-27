@@ -116,9 +116,7 @@ class MenuButton: UIButton, PickerButtonProtocol {
         resetOtherButton()
         selected = !selected
     }
-    
- 
-    
+
     func resetOtherButton() {
         for item in otherButtons {
             if item.selected == true {

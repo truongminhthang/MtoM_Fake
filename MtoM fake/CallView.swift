@@ -64,7 +64,7 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
     
     func creataCallBody() {
         self.addSubview(callBoody)
-        callBoody.mt_InnerAlign(PinPosition.Center, space: 0, size: CGSize(width: 300, height: 250))
+        callBoody.mt_InnerAlign(PinPosition.Center, space: 0, size: CGSize(width: 300, height: 200))
     }
     
     func hideCallView(){
@@ -98,7 +98,7 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = UIColor.clearColor()
+//        cell.backgroundColor = UIColor.clearColor()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -116,7 +116,7 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
         if cell == nil {
             switch callCellType.cellId() {
             case "titleCell" :
-                cell = TitleCell(style: UITableViewCellStyle.Default, reuseIdentifier: callCellType.cellId())
+                cell = TitleCallCell(style: UITableViewCellStyle.Default, reuseIdentifier: callCellType.cellId())
             case "textCell" :
                 cell = TextCell(style: UITableViewCellStyle.Default, reuseIdentifier: callCellType.cellId())
             case "applyCell" :
@@ -126,9 +126,11 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
         }
         switch callCellType {
         case .Title:
-            let titleCell = cell as! TitleCell
-            titleCell.detailLabel.text = dataCallTbv[indexPath.section].title
-            titleCell.detailLabel.tintColor = UIColor.redColor()
+            let titleCell = cell as! TitleCallCell
+            titleCell.textLabel?.text = dataCallTbv[indexPath.section].title
+            titleCell.textLabel?.textAlignment = NSTextAlignment.Center
+            titleCell.backgroundColor = UIColor.redColor()
+            titleCell.textLabel?.textColor = UIColor.whiteColor()
         case .Description:
             let descriptionCell = cell as! TextCell
             descriptionCell.textDetailLabel.text = "Description"

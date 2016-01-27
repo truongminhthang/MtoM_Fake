@@ -62,9 +62,8 @@ class PickerButton: UIButton {
     func showPickerView() {
         AppDelegate.shareInstance().window?.addSubview(containerPickerView)
         containerPickerView.mt_innerAlign(left: 4, top: nil, right: 4, bottom: 0)
-        containerPickerView.mt_innerAlign(left: nil, top: (0, delegate?.anchorTopView), right: nil, bottom: nil)
+        containerPickerView.mt_innerAlign(left: nil, top: (170, delegate?.anchorTopView), right: nil, bottom: nil)
         containerPickerView.showPicker()
-        containerPickerView.backgroundColor = UIColor.redColor()
     }
     
 
