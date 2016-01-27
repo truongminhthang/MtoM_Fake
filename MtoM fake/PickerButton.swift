@@ -13,13 +13,13 @@ protocol PickerButtonProtocol {
 
 class PickerButton: UIButton {
     
-    var containerPickerView = ContainerPickerView()
+    var containerPickerView : ContainerPickerView!
 
     var delegate: PickerButtonProtocol?
     
     init (data: [String]) {
         super.init(frame: CGRectZero)
-        containerPickerView.data = data
+        containerPickerView = ContainerPickerView(pickerButton: self, data: data)
         setupPickerButton()
         layoutArrowDown()
         containerPickerView.roundBorder()
@@ -68,6 +68,6 @@ class PickerButton: UIButton {
     
 
     func hidePickerView() {
-        containerPickerView.removeFromSuperview()
+        containerPickerView.hidePickerView(self)
     }
 }

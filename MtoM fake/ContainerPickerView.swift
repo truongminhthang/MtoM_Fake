@@ -10,18 +10,27 @@ import UIKit
 
 class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     var pickerView = UIPickerView()
-    var data = [String]()
+    var data : [String]
     var defaultRow = 1
     var dict : [String: NSLayoutConstraint]!
-    override init(frame: CGRect) {
+    weak var pickerButton : PickerButton!
+    
+    convenience init(pickerButton: PickerButton, data: [String]) {
+        self.init(frame: CGRectZero, pickerButton: pickerButton, data: data)
+
+    }
+    
+    init(frame: CGRect, pickerButton: PickerButton, data: [String]) {
+        self.pickerButton = pickerButton
+        self.data = data
         super.init(frame: frame)
         createPickerView()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        createPickerView()
+        fatalError("init(coder:) has not been implemented")
     }
+    
     
 //    func showPicker() {
 //        let constraintBottom = dict["innerBottomToBottom"]
@@ -54,7 +63,7 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
         return data[row]
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-       
+       pickerButton.setTitle(data[row], forState: UIControlState.Normal)
     }
     
     func showPicker() {
@@ -65,10 +74,18 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
             self.pickerView.frame = pickerBottomFrame
             }, completion: { finished in
         })
-        self.layoutIfNeeded()
+
     }
     
     func hidePickerView(sender : AnyObject) {
-        self.hidden = true
+        UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseOut, animations: {
+            var pickerBottomFrame = self.pickerView.frame
+            pickerBottomFrame.origin.y += pickerBottomFrame.size.height
+            
+            self.pickerView.frame = pickerBottomFrame
+            }, completion: { finished in
+                self.removeFromSuperview()
+        })
+
     }
 }

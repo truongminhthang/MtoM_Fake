@@ -43,6 +43,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     var tbv = UITableView()
     var menuVC : Menu?
+    var callView : CallView?
     
     var data : [Job] = {
         var result = [Job]()
@@ -82,6 +83,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         menuVC = Menu(vc: self, frame: CGRectZero)
+        callView = CallView(frame: CGRectZero)
         
         // Do any additional setup after loading the view.
         self.navigationItem.title = "Job Search"

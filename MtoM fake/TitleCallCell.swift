@@ -10,9 +10,9 @@ import UIKit
 
 class TitleCallCell: UITableViewCell {
     var clouseButton = UIButton()
+    var callView : CallView?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layoutBodyCell()
     }
@@ -25,9 +25,15 @@ class TitleCallCell: UITableViewCell {
         self.backgroundColor = UIColor.redColor()
         self.addSubview(clouseButton)
         clouseButton.mt_InnerAlign(PinPosition.MidRight, space: 8, size: CGSize(width: 20, height: 20))
-        clouseButton.roundBorder()
-        clouseButton.setTitle("X", forState: UIControlState.Normal)
+        clouseButton.layer.cornerRadius = 9
+        let title = "X"
+        clouseButton.setTitle(title, forState: UIControlState.Normal)
         clouseButton.backgroundColor = UIColor.whiteColor()
         clouseButton.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+        clouseButton.addTarget(self, action: "hideCallView", forControlEvents: UIControlEvents.TouchUpInside)
     }
+    func hideCallView() {
+        callView?.hideCallView()
+    }
+    
 }

@@ -38,16 +38,21 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
     var coverButton = UIButton()
     var callBoody = UIView()
     var callTableView = UITableView()
+    var vc : InformationVC?
     
-    override init(frame: CGRect) {
+    convenience init(vc : InformationVC) {
+        self.init()
+        self.vc = vc
+    }
+    
+   override init(frame: CGRect) {
         super.init(frame: frame)
         creataCallView()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        creataCallView()
-    }
+
+   required init?(coder aDecoder: NSCoder) {
+       fatalError("init(coder:) has not been implemented")
+   }
     
     func creataCallView(){
         creataCoverButton()
@@ -71,19 +76,7 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
         self.removeFromSuperview()
     }
     
-    // MARK : create CallTableView 
-    
-    var dataCallTbv : [dataCallTableView] =  {
-        var result = [dataCallTableView]()
-        var item = dataCallTableView()
-        item.title = "KeangNam pro 01"
-        item.description = "13st floor Keangnam Landmark 72"
-        item.job = ""
-//        item.phoneNumber = "0123-456-789"
-        
-        result += [item]
-        return result
-    }()
+    // MARK : create CallTableView
     
     func createCallTableView() {
         layoutCallTableView()
@@ -102,7 +95,7 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return dataCallTbv.count
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -127,18 +120,18 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
         switch callCellType {
         case .Title:
             let titleCell = cell as! TitleCallCell
-            titleCell.textLabel?.text = dataCallTbv[indexPath.section].title
+            titleCell.textLabel?.text = vc!.data[indexPath.section].title
             titleCell.textLabel?.textAlignment = NSTextAlignment.Center
             titleCell.backgroundColor = UIColor.redColor()
             titleCell.textLabel?.textColor = UIColor.whiteColor()
         case .Description:
             let descriptionCell = cell as! TextCell
             descriptionCell.textDetailLabel.text = "Description"
-            descriptionCell.textContentLabel.text = dataCallTbv[indexPath.section].description
+            descriptionCell.textContentLabel.text = vc!.data[indexPath.section].description
         case .Jobtype:
             let jobCell = cell as! TextCell
             jobCell.textDetailLabel.text = "Job"
-            jobCell.textContentLabel.text = dataCallTbv[indexPath.section].job
+            jobCell.textContentLabel.text = vc!.data[indexPath.section].job
         case .Apply:
             let applyCell = cell as! DetailsCell
             applyCell.detailButton.setTitle("Show", forState: UIControlState.Normal)
