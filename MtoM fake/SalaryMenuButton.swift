@@ -23,10 +23,15 @@ class SalaryMenuButton: MenuButton {
         salaryTypeButton.delegate = self
         salaryRangeButton.delegate = self
         popView!.menuBT = self
+        setupTitleForButton()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func setupTitleForButton() {
+        salaryTypeButton.setTitle(salaryTypeData.first, forState: UIControlState.Normal)
+        salaryRangeButton.setTitle(salaryRangeData.first, forState: UIControlState.Normal)
+    }
 }

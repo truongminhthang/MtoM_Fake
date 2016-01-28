@@ -24,10 +24,16 @@ class PlaceMenuButton: MenuButton {
         cityPickerButton.delegate = self
         provincePickerButton.delegate = self
         popView!.menuBT = self
+        setupTitleForPickerButton()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupTitleForPickerButton() {
+        cityPickerButton.setTitle(cityList.first, forState: UIControlState.Normal)
+        provincePickerButton.setTitle(provinceList.first, forState: UIControlState.Normal)
     }
     
 }

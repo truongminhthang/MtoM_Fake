@@ -28,7 +28,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="START!">
-                                    <color key="titleColor" red="1" green="0.15841195197395375" blue="0.15343832862567719" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.71372549019999998" green="0.0" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="Euv-ON-y6f" kind="show" id="XGT-DV-mZk"/>

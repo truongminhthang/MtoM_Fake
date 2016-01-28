@@ -9,5 +9,5 @@
 import Foundation
 
 class dataCallTableView : Job {
-//    var phoneNumber : String = ""
+    var phoneNumber : String = ""
 }

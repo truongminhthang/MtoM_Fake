@@ -12,7 +12,7 @@ enum CallCellType: Int {
     case Title
     case Description
     case Jobtype
-//    case Phonenumber
+    case Phonenumber
     case Apply
     case All
     func cellId() -> String{
@@ -23,8 +23,8 @@ enum CallCellType: Int {
             return "textCell"
         case .Jobtype:
             return "textCell"
-//        case .Phonenumber:
-//            return "phoneCell"
+        case .Phonenumber:
+            return "phoneCell"
         case .Apply:
             return "applyCell"
         case .All:
@@ -38,16 +38,16 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
     var coverButton = UIButton()
     var callBoody = UIView()
     var callTableView = UITableView()
-    var vc : InformationVC?
+    var vcCV = InformationVC()
     
-    convenience init(vc : InformationVC) {
-        self.init()
-        self.vc = vc
-    }
     
-   override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         creataCallView()
+    }
+    init( vc: InformationVC) {
+        self.init()
+        self.vcCV = vc
     }
 
    required init?(coder aDecoder: NSCoder) {
@@ -62,14 +62,14 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
     
     func creataCoverButton() {
         self.addSubview(coverButton)
-        coverButton.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
+        coverButton.mt_InnerAlign(allSpace: 0)
         coverButton.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
         coverButton.addTarget(self, action: "hideCallView", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func creataCallBody() {
         self.addSubview(callBoody)
-        callBoody.mt_InnerAlign(PinPosition.Center, space: 0, size: CGSize(width: 300, height: 200))
+        callBoody.mt_InnerAlign(PinPosition.Center, space: 0, size: CGSize(width: 310, height: 230))
     }
     
     func hideCallView(){
@@ -83,11 +83,13 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
         callTableView.dataSource = self
         callTableView.delegate = self
         callTableView.roundBorder()
+        self.callTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.callTableView.allowsSelection = false
     }
     
     func layoutCallTableView() {
         callBoody.addSubview(callTableView)
-        callTableView.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
+        callTableView.mt_InnerAlign(allSpace: 0)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -99,41 +101,48 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return CallCellType.All.rawValue
+        return CallCellType.All.hashValue
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let callCellType: CallCellType = CallCellType(rawValue: indexPath.row)!
-        
+        var dataCallView = vcCV.data
         var cell = callTableView.dequeueReusableCellWithIdentifier(callCellType.cellId())
         if cell == nil {
             switch callCellType.cellId() {
             case "titleCell" :
                 cell = TitleCallCell(style: UITableViewCellStyle.Default, reuseIdentifier: callCellType.cellId())
             case "textCell" :
-                cell = TextCell(style: UITableViewCellStyle.Default, reuseIdentifier: callCellType.cellId())
+                cell = TextCallCell(style: UITableViewCellStyle.Default, reuseIdentifier: callCellType.cellId())
+            case "phoneCell" :
+                cell = PhoneCell(style: UITableViewCellStyle.Default, reuseIdentifier: callCellType.cellId())
             case "applyCell" :
-                cell = DetailsCell(style: UITableViewCellStyle.Default, reuseIdentifier: callCellType.cellId())
+                cell = ApplyCallCell(style: UITableViewCellStyle.Default, reuseIdentifier: callCellType.cellId())
             default : break
             }
         }
         switch callCellType {
         case .Title:
             let titleCell = cell as! TitleCallCell
-            titleCell.textLabel?.text = vc!.data[indexPath.section].title
+            titleCell.textLabel?.text = dataCallView[indexPath.section].title
             titleCell.textLabel?.textAlignment = NSTextAlignment.Center
             titleCell.backgroundColor = UIColor.redColor()
             titleCell.textLabel?.textColor = UIColor.whiteColor()
         case .Description:
-            let descriptionCell = cell as! TextCell
+            let descriptionCell = cell as! TextCallCell
             descriptionCell.textDetailLabel.text = "Description"
-            descriptionCell.textContentLabel.text = vc!.data[indexPath.section].description
+            descriptionCell.textContentLabel.text = dataCallView[indexPath.section].description
         case .Jobtype:
-            let jobCell = cell as! TextCell
+            let jobCell = cell as! TextCallCell
             jobCell.textDetailLabel.text = "Job"
-            jobCell.textContentLabel.text = vc!.data[indexPath.section].job
+            jobCell.textContentLabel.text = dataCallView[indexPath.section].job
+        case .Phonenumber:
+            let phoneCell = cell as! PhoneCell
+            phoneCell.textDetailLabel.text = "Phone"
+            phoneCell.textContentLabel.text = dataCallView[indexPath.section].phonenumber
+            phoneCell.textContentLabel.textColor = UIColor.redColor()
         case .Apply:
-            let applyCell = cell as! DetailsCell
+            let applyCell = cell as! ApplyCallCell
             applyCell.detailButton.setTitle("Show", forState: UIControlState.Normal)
         default : break
         }

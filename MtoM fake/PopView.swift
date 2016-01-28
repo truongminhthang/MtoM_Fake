@@ -27,7 +27,7 @@ class PopView: UIView {
     var menuBT : MenuButton?
         
     var clickButton = UIButton()
-    var vc : InformationVC?
+    weak var vcPV : InformationVC?
     
     init (higherButton: PickerButton, lowerButton: PickerButton, higherLabelTitle: String, lowerLabelTitle: String) {
         self.higherLabelTitle = higherLabelTitle
@@ -39,17 +39,18 @@ class PopView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-
     }
-
+    
     override func layoutSubviews() {
         self.clipsToBounds = true
+        self.vcPV = InformationVC(popView: self)
         createPopFilter()
         super.layoutSubviews()
         
     }
 
     // MARK: - create Views
+    
     func createPopFilter(){
         createCoverButton()
         createPopBody()
@@ -59,7 +60,7 @@ class PopView: UIView {
     func createCoverButton(){
         self.addSubview(coverButton)
         coverButton.mt_innerAlign(left: 0, top: 0, right: 0, bottom: 0)
-        coverButton.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
+        coverButton.backgroundColor = UIColor.coverButtonColor().colorWithAlphaComponent(0.5)
         coverButton.addTarget(self, action: "hidePopView:", forControlEvents: UIControlEvents.TouchUpInside)
 
     }
@@ -126,6 +127,12 @@ class PopView: UIView {
         clickButton.setTitle("Click", forState: .Normal)
         clickButton.backgroundColor = UIColor.redColor()
         clickButton.addTarget(self, action: "showTableView", forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
+    func showTableView() {
+        AppDelegate.shareInstance().window?.addSubview((vcPV!.tbv))
+        (vcPV?.tbv)!.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
+        (vcPV?.tbv)!.mt_innerAlign(left: nil, top: (0, menuBT), right: nil, bottom: nil)
     }
 
     private func createLabel() -> UILabel{

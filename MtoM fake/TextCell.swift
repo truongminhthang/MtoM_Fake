@@ -42,7 +42,7 @@ class TextCell: UITableViewCell {
     
     func setupTextContentLabel(){
         textContentLabel.tintColor = UIColor.blackColor()
-        textContentLabel.mt_innerAlign(left: nil, top: 8, right: 8, bottom: 8)
+        textContentLabel.mt_innerAlign(left: nil, top: 8, right: 0, bottom: 8)
         textContentLabel.mt_innerAlign(left: (16, textDetailLabel), top: nil, right: nil, bottom: nil)
         textContentLabel.font = UIFont.systemFontOfSize(13)
     }
@@ -56,7 +56,7 @@ class TextCell: UITableViewCell {
     
     func setupDashLine(){
         viewText.addSubview(dashLine)
-        dashLine.mt_innerAlign(left: 0, top: 0 ,right: 0, bottom: 0)
+        dashLine.mt_InnerAlign(allSpace: 0)
         dashLine.backgroundColor = UIColor.clearColor()
     }
     

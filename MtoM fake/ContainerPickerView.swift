@@ -11,7 +11,7 @@ import UIKit
 class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     var pickerView = UIPickerView()
     var data : [String]
-    var defaultRow = 1
+    var defaultRow = 0
     var dict : [String: NSLayoutConstraint]!
     weak var pickerButton : PickerButton!
     
@@ -30,15 +30,6 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-//    func showPicker() {
-//        let constraintBottom = dict["innerBottomToBottom"]
-//        UIView.animateWithDuration(0.5) { () -> Void in
-//            constraintBottom?.constant = 0
-//            self.layoutIfNeeded()
-//        }
-//    }
 
     func createPickerView(){
         self.addSubview(pickerView)
@@ -63,7 +54,8 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
         return data[row]
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-       pickerButton.setTitle(data[row], forState: UIControlState.Normal)
+        let dataPicker = data[row]
+       pickerButton.setTitle(dataPicker, forState: UIControlState.Normal)
     }
     
     func showPicker() {
@@ -74,7 +66,6 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
             self.pickerView.frame = pickerBottomFrame
             }, completion: { finished in
         })
-
     }
     
     func hidePickerView(sender : AnyObject) {
@@ -86,6 +77,5 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
             }, completion: { finished in
                 self.removeFromSuperview()
         })
-
     }
 }

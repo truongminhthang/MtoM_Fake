@@ -10,6 +10,8 @@
 		3F7067571C50ED3500C43F14 /* PlaceMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7067561C50ED3500C43F14 /* PlaceMenuButton.swift */; };
 		3F7067591C50ED4500C43F14 /* SalaryMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7067581C50ED4500C43F14 /* SalaryMenuButton.swift */; };
 		3F70675B1C50ED5400C43F14 /* JobMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70675A1C50ED5400C43F14 /* JobMenuButton.swift */; };
+		3F7970391C5A0A8A00E6A585 /* PhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7970381C5A0A8A00E6A585 /* PhoneCell.swift */; };
+		3F79703B1C5A0DA300E6A585 /* ApplyCallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F79703A1C5A0DA300E6A585 /* ApplyCallCell.swift */; };
 		3F7FB6851C47461A00A60BAB /* PopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7FB6841C47461A00A60BAB /* PopView.swift */; };
 		3F82CEBF1C45ECA900C27413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F82CEBD1C45ECA900C27413 /* Main.storyboard */; };
 		3F82F3E71C55AC4E00E65BA7 /* dataCallTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82F3E61C55AC4E00E65BA7 /* dataCallTableView.swift */; };
@@ -17,6 +19,7 @@
 		3F84F9211C4DCF1100E0B7FB /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84F9201C4DCF1100E0B7FB /* PickerButton.swift */; };
 		3F859B5C1C51C22D0058A6EC /* CallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F859B5B1C51C22D0058A6EC /* CallView.swift */; };
 		3FA0DBE01C3D0E99005B4D4E /* MTAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0DBDF1C3D0E99005B4D4E /* MTAutoLayout.swift */; };
+		3FC2A8D71C58C53B00CA213F /* TextCallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2A8D61C58C53B00CA213F /* TextCallCell.swift */; };
 		3FEE36B71C4CC96E00598F5B /* ContainerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE36B61C4CC96E00598F5B /* ContainerPickerView.swift */; };
 		FF30B46E1C16D00C00550D71 /* InformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B46D1C16D00C00550D71 /* InformationVC.swift */; };
 		FF30B4731C16D9EE00550D71 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30B4721C16D9EE00550D71 /* TitleCell.swift */; };
@@ -65,6 +68,8 @@
 		3F7067561C50ED3500C43F14 /* PlaceMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMenuButton.swift; sourceTree = "<group>"; };
 		3F7067581C50ED4500C43F14 /* SalaryMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalaryMenuButton.swift; sourceTree = "<group>"; };
 		3F70675A1C50ED5400C43F14 /* JobMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobMenuButton.swift; sourceTree = "<group>"; };
+		3F7970381C5A0A8A00E6A585 /* PhoneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneCell.swift; sourceTree = "<group>"; };
+		3F79703A1C5A0DA300E6A585 /* ApplyCallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplyCallCell.swift; sourceTree = "<group>"; };
 		3F7FB6841C47461A00A60BAB /* PopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopView.swift; sourceTree = "<group>"; };
 		3F82CEBE1C45ECA900C27413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../MtoM_Fake copy/MtoM fake/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		3F82F3E61C55AC4E00E65BA7 /* dataCallTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataCallTableView.swift; sourceTree = "<group>"; };
@@ -72,6 +77,7 @@
 		3F84F9201C4DCF1100E0B7FB /* PickerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
 		3F859B5B1C51C22D0058A6EC /* CallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallView.swift; sourceTree = "<group>"; };
 		3FA0DBDF1C3D0E99005B4D4E /* MTAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTAutoLayout.swift; sourceTree = "<group>"; };
+		3FC2A8D61C58C53B00CA213F /* TextCallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCallCell.swift; sourceTree = "<group>"; };
 		3FEE36B61C4CC96E00598F5B /* ContainerPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerPickerView.swift; sourceTree = "<group>"; };
 		FF30B46D1C16D00C00550D71 /* InformationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationVC.swift; sourceTree = "<group>"; };
 		FF30B4721C16D9EE00550D71 /* TitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
@@ -160,6 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				3F82F3E91C55BACB00E65BA7 /* TitleCallCell.swift */,
+				3FC2A8D61C58C53B00CA213F /* TextCallCell.swift */,
+				3F7970381C5A0A8A00E6A585 /* PhoneCell.swift */,
+				3F79703A1C5A0DA300E6A585 /* ApplyCallCell.swift */,
 			);
 			name = CallTableView;
 			sourceTree = "<group>";
@@ -448,6 +457,7 @@
 				FF30B4731C16D9EE00550D71 /* TitleCell.swift in Sources */,
 				3F859B5C1C51C22D0058A6EC /* CallView.swift in Sources */,
 				3F70675B1C50ED5400C43F14 /* JobMenuButton.swift in Sources */,
+				3F7970391C5A0A8A00E6A585 /* PhoneCell.swift in Sources */,
 				3FA0DBE01C3D0E99005B4D4E /* MTAutoLayout.swift in Sources */,
 				3F82F3E71C55AC4E00E65BA7 /* dataCallTableView.swift in Sources */,
 				FF7C6CF11C159C37003FE40C /* PickerViewController.swift in Sources */,
@@ -455,6 +465,7 @@
 				3F82F3EA1C55BACB00E65BA7 /* TitleCallCell.swift in Sources */,
 				3F84F9211C4DCF1100E0B7FB /* PickerButton.swift in Sources */,
 				FF8C353F1C0C63D10024474F /* ViewController.swift in Sources */,
+				3FC2A8D71C58C53B00CA213F /* TextCallCell.swift in Sources */,
 				FF82B80F1C199EE600DBF9DC /* SetDashLine.swift in Sources */,
 				FF5F52DD1C0F1F37005EAD2C /* SexViewController.swift in Sources */,
 				FF30B46E1C16D00C00550D71 /* InformationVC.swift in Sources */,
@@ -474,6 +485,7 @@
 				FF30B47F1C16F30C00550D71 /* Job.swift in Sources */,
 				FF8C356F1C0C7E9A0024474F /* LivingPlaceViewController.swift in Sources */,
 				FF7624F01C0DD9AB00F21D31 /* WorkingViewController.swift in Sources */,
+				3F79703B1C5A0DA300E6A585 /* ApplyCallCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

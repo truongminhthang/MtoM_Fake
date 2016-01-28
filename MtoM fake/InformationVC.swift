@@ -43,7 +43,13 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     var tbv = UITableView()
     var menuVC : Menu?
-    var callView : CallView?
+    weak var callView : CallView?
+    var popView : PopView?
+    
+    convenience init(popView: PopView) {
+        self.init()
+        self.popView = popView
+    }
     
     var data : [Job] = {
         var result = [Job]()
@@ -54,6 +60,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         item.address = "13st Floor Keangnam Landmark 72"
         item.description = "iOS developer"
         item.job = "Swift Developer"
+        item.phonenumber = "0123-456-789"
         result += [item]
         var item2 = Job()
         item2.title = "Keangnam Pro 1"
@@ -61,6 +68,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         item2.address = "14st Floot Nguyen Tuan 1"
         item2.description = "Apple"
         item2.job = "Java Developer"
+        item2.phonenumber = "0123-789-456"
         result += [item2]
         var item3 = Job()
         item3.title = "Keangnam Pro 2"
@@ -68,6 +76,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         item3.address = "13st Floot Nguyen Tuan 2"
         item3.description = "Apple"
         item3.job = "Object-tive C Developer"
+        item3.phonenumber = "0983-283-190"
         result += [item3]
         var item4 = Job()
         item4.title = "Keangnam Pro 3"
@@ -75,6 +84,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         item4.address = "12st Floot Nguyen Tuan 3"
         item4.description = "Apple"
         item4.job = "C# Developer"
+        item4.phonenumber = "0975-893-152"
         result += [item4]
         return result
         
@@ -83,7 +93,7 @@ class InformationVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         menuVC = Menu(vc: self, frame: CGRectZero)
-        callView = CallView(frame: CGRectZero)
+        callView = CallView(vc:self)
         
         // Do any additional setup after loading the view.
         self.navigationItem.title = "Job Search"

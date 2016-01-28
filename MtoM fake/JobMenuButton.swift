@@ -25,10 +25,15 @@ class JobMenuButton: MenuButton {
         jobPickerButton.delegate = self
         subPickerButton.delegate = self
         popView!.menuBT = self
+        setupTitleForButton()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func setupTitleForButton() {
+        jobPickerButton.setTitle(jobData.first, forState: UIControlState.Normal)
+        subPickerButton.setTitle(subJobData.first, forState: UIControlState.Normal)
+    }
 }
