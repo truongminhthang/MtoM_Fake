@@ -11,6 +11,7 @@ import UIKit
 class IncomeCell: TextCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = UIColor.headerColor()
         textContentLabel.font = UIFont.boldSystemFontOfSize(20)
         textContentLabel.textColor = UIColor.mainColor()
         }

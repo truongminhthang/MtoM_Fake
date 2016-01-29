@@ -19,7 +19,6 @@ class TextCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(viewText)
         layoutBodyCell()
-        contentView.backgroundColor = UIColor.headerColor()
         
     }
     
@@ -33,7 +32,7 @@ class TextCell: UITableViewCell {
         viewText.backgroundColor = UIColor.whiteColor()
         viewText.addSubview(textContentLabel)
         viewText.addSubview(textDetailLabel)
-        
+        contentView.backgroundColor = UIColor.headerColor()
         setupTextContentLabel()
         setupTextDetailLabel()
         setupDashLine()

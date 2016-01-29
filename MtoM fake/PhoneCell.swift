@@ -13,6 +13,8 @@ class PhoneCell: TextCell {
     override func layoutBodyCell() {
         super.layoutBodyCell()
         viewText.mt_InnerAlign(allSpace: 0)
+        dashLine.removeFromSuperview()
+        contentView.backgroundColor = UIColor.whiteColor()
     }
     
     override func prepareForReuse() {

@@ -15,6 +15,7 @@ class ApplyCallCell: DetailsCell {
         detailView.addSubview(detailButton)
         detailButton.mt_innerAlign(left: 32, top: 8, right: 32, bottom: 8)
         setupDetailButton()
+        contentView.backgroundColor = UIColor.whiteColor()
     }
     override func setupDetailButton() {
         detailButton.backgroundColor = UIColor.redColor()

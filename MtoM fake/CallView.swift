@@ -33,31 +33,32 @@ enum CallCellType: Int {
     }
 }
 
-
 class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
     var coverButton = UIButton()
     var callBoody = UIView()
     var callTableView = UITableView()
-    var vcCV = InformationVC()
-    
+    var tbvCV = TableView()
+    var job : Job!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         creataCallView()
     }
-    init( vc: InformationVC) {
-        self.init()
-        self.vcCV = vc
+    
+    convenience init(job: Job) {
+        self.init(frame: CGRectZero)
+        self.job = job
     }
-
-   required init?(coder aDecoder: NSCoder) {
-       fatalError("init(coder:) has not been implemented")
-   }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func creataCallView(){
         creataCoverButton()
         creataCallBody()
         createCallTableView()
+        self.backgroundColor = UIColor.whiteColor()
     }
     
     func creataCoverButton() {
@@ -76,7 +77,7 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
         self.removeFromSuperview()
     }
     
-    // MARK : create CallTableView
+// MARK : create CallTableView
     
     func createCallTableView() {
         layoutCallTableView()
@@ -85,6 +86,7 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
         callTableView.roundBorder()
         self.callTableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.callTableView.allowsSelection = false
+        self.callTableView.backgroundColor = UIColor.whiteColor()
     }
     
     func layoutCallTableView() {
@@ -93,7 +95,7 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        cell.backgroundColor = UIColor.clearColor()
+        //        cell.backgroundColor = UIColor.clearColor()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -106,7 +108,6 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let callCellType: CallCellType = CallCellType(rawValue: indexPath.row)!
-        var dataCallView = vcCV.data
         var cell = callTableView.dequeueReusableCellWithIdentifier(callCellType.cellId())
         if cell == nil {
             switch callCellType.cellId() {
@@ -124,22 +125,22 @@ class CallView: UIView, UITableViewDataSource,UITableViewDelegate {
         switch callCellType {
         case .Title:
             let titleCell = cell as! TitleCallCell
-            titleCell.textLabel?.text = dataCallView[indexPath.section].title
+            titleCell.textLabel?.text = job.title
             titleCell.textLabel?.textAlignment = NSTextAlignment.Center
             titleCell.backgroundColor = UIColor.redColor()
             titleCell.textLabel?.textColor = UIColor.whiteColor()
         case .Description:
             let descriptionCell = cell as! TextCallCell
             descriptionCell.textDetailLabel.text = "Description"
-            descriptionCell.textContentLabel.text = dataCallView[indexPath.section].description
+            descriptionCell.textContentLabel.text = job.description
         case .Jobtype:
             let jobCell = cell as! TextCallCell
             jobCell.textDetailLabel.text = "Job"
-            jobCell.textContentLabel.text = dataCallView[indexPath.section].job
+            jobCell.textContentLabel.text = job.job
         case .Phonenumber:
             let phoneCell = cell as! PhoneCell
             phoneCell.textDetailLabel.text = "Phone"
-            phoneCell.textContentLabel.text = dataCallView[indexPath.section].phonenumber
+            phoneCell.textContentLabel.text = job.phonenumber
             phoneCell.textContentLabel.textColor = UIColor.redColor()
         case .Apply:
             let applyCell = cell as! ApplyCallCell

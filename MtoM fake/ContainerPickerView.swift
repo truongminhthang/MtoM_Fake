@@ -68,7 +68,7 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
         })
     }
     
-    func hidePickerView(sender : AnyObject) {
+    func hidePickerView() {
         UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseOut, animations: {
             var pickerBottomFrame = self.pickerView.frame
             pickerBottomFrame.origin.y += pickerBottomFrame.size.height
@@ -77,5 +77,9 @@ class ContainerPickerView: UIView ,UIPickerViewDelegate, UIPickerViewDataSource{
             }, completion: { finished in
                 self.removeFromSuperview()
         })
+    }
+    
+    func selected() {
+        pickerButton.selected = false
     }
 }

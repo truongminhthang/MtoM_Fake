@@ -68,6 +68,8 @@ class PickerButton: UIButton {
     
 
     func hidePickerView() {
-        containerPickerView.hidePickerView(self)
+        containerPickerView.hidePickerView()
     }
+    
+    
 }

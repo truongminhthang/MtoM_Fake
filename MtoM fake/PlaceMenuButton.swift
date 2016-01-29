@@ -30,7 +30,6 @@ class PlaceMenuButton: MenuButton {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     func setupTitleForPickerButton() {
         cityPickerButton.setTitle(cityList.first, forState: UIControlState.Normal)
         provincePickerButton.setTitle(provinceList.first, forState: UIControlState.Normal)
