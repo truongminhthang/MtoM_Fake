@@ -32,6 +32,9 @@ extension UIColor{
     static func contentCellColor() -> UIColor {
         return UIColor.colorFormHext(0xFFD9B1, alpha: 1)
     }
+    static func coverButtonColor() -> UIColor {
+        return UIColor.colorFormHext(0x454545, alpha: 1)
+    }
     
     static func colorFormHext(hex: UInt32, alpha: Int) -> UIColor{
         let div = CGFloat (255)

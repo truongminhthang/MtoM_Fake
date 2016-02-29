@@ -13,9 +13,12 @@ class DetailsCell: UITableViewCell {
     var searchImageView = UIImageView()
     var searchImage = UIImage(named: "ic_search")
     var detailButton = UIButton(type: UIButtonType.System)
+    var webTV = WebTableView()
+    var vc: InformationVC?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = UIColor.headerColor()
         self.addSubview(detailView)
         LayoutOfDetailsCell()
     }
@@ -41,6 +44,7 @@ class DetailsCell: UITableViewCell {
         detailButton.clipsToBounds = true
         detailButton.backgroundColor = UIColor.whiteColor()
         detailButton.setTitleColor(UIColor.mainColor(), forState: .Normal)
+        detailButton.addTarget(self, action: "showTableView", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func setupSearchView(){
@@ -48,6 +52,11 @@ class DetailsCell: UITableViewCell {
         searchImageView.image = UIImage(named: "ic_search")
         searchImageView.mt_innerAlign(left: nil, top: 6, right: nil  , bottom: 6)
         searchImageView.mt_innerAlign(left: nil, top: nil, right: (2, detailButton.titleLabel), bottom: nil)
+    }
+    
+    func showTableView() {
+        AppDelegate.shareInstance().window?.addSubview(webTV)
+        webTV.mt_innerAlign(left: 0, top: 63, right: 0, bottom: 0)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

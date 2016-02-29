@@ -8,40 +8,20 @@
 
 import UIKit
 
-class MenuButton: UIButton {
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-    // Drawing code
-    }
-    */
+class MenuButton: UIButton, PickerButtonProtocol {
     
     private var selectedButtonTitle = NSMutableAttributedString()
     private var normalButtonTitle = NSMutableAttributedString()
     private var mutableSubTitle = NSMutableAttributedString()
-    
     var otherButtons = [MenuButton]()
     let imageArrow = UIImageView(image: UIImage(named: "ic_arrow_down"))
-    
-    var informationVC : InformationVC?
     var popView : PopView?
-    weak var menuBt : Menu!
-    
-    
-    
-    convenience init(informationVC:InformationVC) {
-        self.init()
-        self.informationVC = informationVC
+
+    var anchorTopView : UIView {
+        get {
+            return popView!.popBody
+        }
     }
-    
-    convenience init(menuBt: Menu) {
-        self.init()
-        self.menuBt = menuBt
-        
-    }
-    
     var title : String = "" {
         didSet {
             if title != "" {
@@ -68,17 +48,18 @@ class MenuButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupMenuButton()
+
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupMenuButton()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
+
     func setupMenuButton() {
         selected = false
         setTitleColor(UIColor.redColor(), forState: UIControlState.Selected)
@@ -101,18 +82,27 @@ class MenuButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         if selected {
-            backgroundColor = UIColor.whiteColor()
-            menuBt.showPopView(self)
+            showPopView()
         } else {
-            backgroundColor = UIColor.clearColor()
-            menuBt.hidePopViewIfNeed()
+            hidePopView()
         }
-        
         layoutArrowDown()
     }
     
+    func showPopView() {
+        self.backgroundColor = UIColor.whiteColor()
+        AppDelegate.shareInstance().window?.addSubview(popView!)
+        popView?.mt_innerAlign(left: 0, top: nil, right: 0, bottom: 0)
+        popView?.mt_innerAlign(left: nil, top: (-5, self), right: nil, bottom: nil)
+    }
+    
+    func hidePopView() {
+        popView?.removeFromSuperview()
+        popView?.hideContainerPickerView()
+        self.backgroundColor = UIColor.clearColor()
+    }
+    
     func layoutArrowDown() {
-        print(selected)
         if !selected {
             self.addSubview(imageArrow)
             imageArrow.mt_InnerAlign(PinPosition.LowCenter, space: 5, size: CGSize(width: 15, height: 15))
@@ -126,6 +116,7 @@ class MenuButton: UIButton {
         resetOtherButton()
         selected = !selected
     }
+
     func resetOtherButton() {
         for item in otherButtons {
             if item.selected == true {
